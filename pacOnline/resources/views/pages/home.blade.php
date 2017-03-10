@@ -30,11 +30,8 @@
 
 <div class="jumbotron">
   <div class="container text-center">
-    <h1>Pac Online</h1>      
-<<<<<<< HEAD
-=======
+    <h1>Pac Online</h1>
     <p>james, Vission & Tom</p>
->>>>>>> 5bb227f868028a8103a64dfc23b25e7a1b848a53
   </div>
 </div>
 
