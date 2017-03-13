@@ -12,6 +12,10 @@
 */
 
 Route::get('/', function () {
+    return view('pages/home');
+});
+/*
+Route::get('/', function () {
 	return realpath(base_path('resources/views'));
     return view('welcome');
 });
@@ -19,7 +23,7 @@ Route::get('users', ['uses' => 'UsersController@index']);
 Route::get('users/create', ['uses' => 'UsersController@create']);
 Route::post('users', ['uses' => 'UsersController@store']);
 
-/*
+
 Route::get('users', function() {
 	$users = [
 		'0' => [
@@ -41,6 +45,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+*/
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
