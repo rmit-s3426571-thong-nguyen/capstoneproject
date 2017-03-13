@@ -47,8 +47,8 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About Us</a></li>
+        <li><a href="/">Home</a></li>
+        <li class="active"><a href="#">About Us</a></li>
         <li><a href="#">FAQ</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -61,6 +61,9 @@
 
 <div class="text">    
   <p>One person's trash is another's treasure!</p>
+  <p>We are the middleman between you and other people around the world. Our site provides users with the
+  	oppotunity to buy and sell goods from other ordinary people out there</p>
+  <p>Brand new or pre-loved, you are welcome to sell your goods on PAC!</p>
 
 
 
