@@ -19,15 +19,19 @@ class CreateUserRoleTable extends Migration
             $table->timestamps();
 			$table->integer('user_id');
 			$table->integer('role_id');
-    })
+        });
+    }
+
+
     /**
      * Reverse the migrations.
      *
      * @return void
      */
+    
     public function down()
     {
 		// below created by linh
         Schema::drop('user_role');
     }
-}
+    }
