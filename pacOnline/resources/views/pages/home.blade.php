@@ -31,7 +31,7 @@
 <div class="jumbotron">
   <div class="container text-center">
     <h1>Pac Online</h1>
-    <p>james, Vission & Tom</p>
+    <p>Est. 2017</p>
   </div>
 </div>
 
@@ -48,13 +48,11 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Products</a></li>
-        <li><a href="#">Deals</a></li>
-        <li><a href="#">Stores</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="about">About Us</a></li>
+        <li><a href="#">FAQ</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
+        <li><a href="http://localhost:8000/login"><span class="glyphicon glyphicon-user"></span> Sign Up </a></li>
         <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
       </ul>
     </div>
