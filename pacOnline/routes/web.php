@@ -11,13 +11,25 @@
 |
 */
 
-Route::get('/', function () {
-    return view('pages/home');
-});
+// All request go through this route will redirect to ProductController
+Route::get('/', [
+    'uses' => 'ProductController@getIndex',
+    'as' => 'product.index'
+]);
+
 
 Route::get('about',function(){
 	return view('pages/about');
 });
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
 
 Auth::routes();
 
