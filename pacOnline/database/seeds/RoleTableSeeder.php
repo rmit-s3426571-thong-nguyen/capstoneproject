@@ -14,12 +14,14 @@ class RoleTableSeeder extends Seeder
     {
         // below created by linh
 		$role_user = new \App\Role();
-		$role_user->name = 'User';
+		$role_user->id = 2;
+		$role_user->name = 'user';
 		$role_user->description = 'General registered users';
 		$role_user->save();
 		
 		$role_admin = new \App\Role();
-		$role_admin->name = 'Admin';
+		$role_admin->id = 1;
+		$role_admin->name = 'admin';
 		$role_admin->description = 'An administrator';
 		$role_admin->save();
     }
