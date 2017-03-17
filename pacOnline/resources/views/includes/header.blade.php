@@ -1,3 +1,7 @@
+<!--
+    This was adapted from https://www.w3schools.com/bootstrap/bootstrap_templates.asp
+    this is for educational purposes only
+ -->
 <div class="jumbotron">
     <div class="container text-center">
         <h1>Pac Online</h1>
@@ -12,11 +16,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Logo</a>
+            <a class="navbar-brand" href="/">Logo</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="/">Home</a></li>
                 <li><a href="about">About Us</a></li>
                 <li><a href="#">FAQ</a></li>
             </ul>
