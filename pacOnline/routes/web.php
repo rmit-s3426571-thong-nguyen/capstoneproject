@@ -12,10 +12,20 @@
 */
 
 // All request go through this route will redirect to ProductController
-Route::get('/', [
-    'uses' => 'ProductController@getIndex',
-    'as' => 'product.index'
-]);
+
+//GET request 
+Route::get('/','ProductController@index');
+
+Route::get('/products/create','ProductController@create');
+
+Route::get('/products/{product}','ProductController@show');
+
+//POST request
+Route::post('/products','ProductController@store');
+
+
+
+
 
 
 Route::get('about',function(){
