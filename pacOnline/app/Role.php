@@ -11,4 +11,3 @@ class Role extends Model
 		return $this->belongsToMany('App\User', 'user_role', 'role_id', 'user_id');
 	}
 }
-?><mnbv c

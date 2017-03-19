@@ -30,14 +30,27 @@
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::user()->name }} <span class="caret"></span>
+                            {{ Auth::user()->name }} , My Pac <span class="caret"></span>
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
                             <li>
+                                <a href="">
+                                    My Listings
+                                </a>
+
+                            </li>
+
+                            <li>
+                                <a href="{{ url('products/create') }}">
+                                    Sell a product
+                                </a>
+                            </li>
+
+                            <li>
                                 <a href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
                                     Logout
                                 </a>
 
@@ -45,10 +58,16 @@
                                     {{ csrf_field() }}
                                 </form>
                             </li>
+
                         </ul>
                     </li>
                 @endif
-                <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+                <li>
+                    <a href="{{ route('product.cart') }}">
+                        <span class="glyphicon glyphicon-shopping-cart"></span> Cart
+                        <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : ''}}</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
