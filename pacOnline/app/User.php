@@ -27,18 +27,23 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+	
+	// below created by linh
+	public function roles() {
+		// sets matching table and foreign key
+		return $this->belongsToMany('App\Role', 'user_role', 'user_id', 'role_id');
+	}
+
     public function setNameAttribute($value)
     {
         $this->attributes['name'] = ucfirst($value);
     }
+
+
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
     }
 
-    public function getNameAttribute($value)
-    {
-        return strtoupper($value);
-    }
     
 }
