@@ -6,23 +6,54 @@
 
 @section('content')
     @if(Session::has('cart'))
-        <div class="row">
-            <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-                @foreach($products as $product)
-                    <li class="list-group-product">
-                        <span class="badge">{{ $product['qty'] }}</span>
+        <table>
+            <tr>
+                <th>
+                    ITEM
+                </th>
+                <th>
+                    QTY
+                </th>
+                <th>
+                    Total
+                </th>
+                <th>
+
+                </th>
+            </tr>
+            @foreach($products as $product)
+            <tr>
+                <td>
+                    <span>
+                        <img src="{{ $product['product']['imageLocation'] }}" alt="..." style="max-height: 50px" class="img-responsive">
+                    </span>
+                    <span>
                         {{ $product['product']['title'] }}
-                        <span class="lable label-success">{{ $product['price'] }}</span>
-                    </li>
-                @endforeach
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-                <strong>Total Price : {{$totalPrice}}</strong>
-            </div>
-        </div>
-        <hr>
+                    </span>
+                </td>
+                <td>
+                    {{ $product['qty'] }}
+                </td>
+                <td>
+                    {{ $product['price'] }}
+                </td>
+            </tr>
+            @endforeach
+            <tr>
+                <td></td>
+                <td>
+                    Total
+                </td>
+                <td>
+                    {{$totalPrice}}
+                </td>
+                <td>
+                </td>
+            </tr>
+
+
+
+        </table>
         <div class="row">
             <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
                 <button type="button" class="btn btn-success">Checkout</button>
