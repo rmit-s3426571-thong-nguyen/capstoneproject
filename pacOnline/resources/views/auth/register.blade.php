@@ -43,6 +43,10 @@
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password" required>
+                                <label> Password must contain combination of:<br>
+                                - Uppercase characters or Lowercase characters<br>
+                                - Base 10 digits (0-9)<br>
+                                - Non-alphanumeric (eg. !,@,$,#,%,^,&,* or ?) </label>
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
