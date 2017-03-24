@@ -31,7 +31,7 @@ class User extends Authenticatable
 	// below created by linh
 	public function roles() {
 		// sets matching table and foreign key
-		return $this->belongsToMany('App\Role', 'user_role', 'user_id', 'role_id');
+		return $this->belongsToMany('App\Role', 'user_role', 'user_id','role_id');
 	}
 
     public function setNameAttribute($value)
