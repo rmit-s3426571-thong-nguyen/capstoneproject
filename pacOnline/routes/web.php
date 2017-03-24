@@ -20,6 +20,14 @@ Route::get('/products/create','ProductController@create');
 
 Route::get('/products/{product}','ProductController@show');
 
+Route::get('/cart/{id}',[
+    'uses' => 'ProductController@addToCart',
+    'as'   => 'product.addToCart']);
+
+Route::get('/cart',[
+    'uses' => 'ProductController@cart',
+    'as'   => 'product.cart']);
+
 //POST request
 Route::post('/products','ProductController@store');
 
@@ -38,14 +46,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index');

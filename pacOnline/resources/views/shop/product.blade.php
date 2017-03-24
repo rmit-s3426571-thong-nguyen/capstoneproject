@@ -9,13 +9,15 @@
                 <h3>{{ $product->title }}</h3>
             </a>
 
-            <p class="product-meta">{{ $product->created_at->toFormattedDateString() }}</p>
+            <p class="product-meta">
+                {{ $product->user->name  }} on
+                {{ $product->created_at->diffForHumans() }}</p>
 
             <p>{{ $product->desc }}.</p>
 
             <div class="clearfix">
                 <div class="pull-left">${{ $product->price }}</div>
-                <a href="#" class="btn btn-primary pull-right"  role="button">Add to cart</a>
+                <a href="{{ route('product.addToCart',['id' => $product->id]) }}" class="btn btn-primary pull-right"  role="button">Add to cart</a>
             </div>
 
         </div>
