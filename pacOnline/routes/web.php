@@ -28,6 +28,10 @@ Route::get('/cart',[
     'uses' => 'ProductController@cart',
     'as'   => 'product.cart']);
 
+Route::get('/login', [
+    'name' => 'login', 
+]);
+
 //POST request
 Route::post('/products','ProductController@store');
 
@@ -45,5 +49,3 @@ Route::get('about',function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-
-
