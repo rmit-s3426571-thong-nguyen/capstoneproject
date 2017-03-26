@@ -38,6 +38,20 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('Date of birth') ? ' has-error' : '' }}">
+                            <label for="name" class="col-md-4 control-label">Date of Birth</label>
+
+                            <div class="col-md-6">
+                                <input id="birth" type="birth" class="form-control" name="birth" value="{{ old('birth') }}" required autofocus>
+
+                                @if ($errors->has('birth'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('birth') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
 
