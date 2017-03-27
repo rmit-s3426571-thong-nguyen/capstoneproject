@@ -4,6 +4,7 @@
  -->
 <div class="jumbotron">
     <div class="container text-left">
+        <img src="{{ URL::to('/image/logo.png') }}" alt="logo" class="navbar-brand" href="/">
         <h2>Pac Online</h2>
         <div class="container text-center">
             <p>Est. 2017</p>
@@ -18,7 +19,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Logo</a>
+            <image img src="/image/logo.png" alt="logo" class="nabar-brand" href="/"></image>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
