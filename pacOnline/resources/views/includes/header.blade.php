@@ -3,9 +3,11 @@
     this is for educational purposes only
  -->
 <div class="jumbotron">
-    <div class="container text-center">
-        <h1>Pac Online</h1>
-        <p>Est. 2017</p>
+    <div class="container text-left">
+        <h2>Pac Online</h2>
+        <div class="container text-center">
+            <p>Est. 2017</p>
+        </div>
     </div>
 </div>
 <nav class="navbar navbar-inverse">
@@ -30,15 +32,19 @@
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::user()->name }} , My Pac <span class="caret"></span>
+                            {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
                             <li>
+                                <a href="{{ url('mydetails') }}">
+                                    My Details
+                                </a>
+                            </li>
+                            <li>
                                 <a href="">
                                     My Listings
                                 </a>
-
                             </li>
 
                             <li>

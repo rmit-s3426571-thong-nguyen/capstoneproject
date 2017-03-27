@@ -32,6 +32,10 @@ Route::get('/login', [
     'name' => 'login', 
 ]);
 
+Route::get('mydetails', function(){
+	return view('user/mydetails');
+});
+
 //POST request
 Route::post('/products','ProductController@store');
 
