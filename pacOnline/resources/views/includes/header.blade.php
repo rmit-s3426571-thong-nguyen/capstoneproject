@@ -18,7 +18,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="{{URL::to('/')}}"><img src="{!! asset('images/logo.png') !!}" alt="logo" class="navbar-brand"</image></a>
+            <a href="{!! URL::to('/') !!}"><img src="{!! asset('images/logo.png') !!}" alt="logo" class="navbar-brand"</image></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
