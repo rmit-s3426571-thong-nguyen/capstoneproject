@@ -4,10 +4,9 @@
  -->
 <div class="jumbotron">
     <div class="container text-left">
-        <img src="{{ URL::to('/image/logo.png') }}" alt="logo" class="navbar-brand" href="/">
         <h2>Pac Online</h2>
-        <div class="container text-center">
-            <p>Est. 2017</p>
+        <div>
+            <p class="container text-center">Est. 2017</p>
         </div>
     </div>
 </div>
@@ -19,7 +18,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <image img src="/image/logo.png" alt="logo" class="nabar-brand" href="/"></image>
+            <a href="{{URL::to('/')}}"><img src="{!! asset('images/logo.png') !!}" alt="logo" class="navbar-brand"</image></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
