@@ -43,7 +43,7 @@
 
                             <div class="col-md-6">
                                 <input id="birth" type="birth" class="form-control" name="birth" value="{{ old('birth') }}" required autofocus>
-
+                                <label>dd/mm/yyyy</label>
                                 @if ($errors->has('birth'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('birth') }}</strong>
