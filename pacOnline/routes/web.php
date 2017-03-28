@@ -32,20 +32,21 @@ Route::get('/login', [
     'name' => 'login', 
 ]);
 
-Route::get('mydetails', function(){
-	return view('user/mydetails');
-});
 
 //POST request
 Route::post('/products','ProductController@store');
 
+Route::post('/mydetails','UserController@displaydetails');
 
 
 
-
-
+// GET views
 Route::get('about',function(){
 	return view('pages/about');
+});
+
+Route::get('mydetails', function(){
+	return view('User/mydetails');
 });
 
 
