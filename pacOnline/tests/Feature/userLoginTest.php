@@ -14,7 +14,7 @@ class userLoginTest extends TestCase
      *
      * @return void
      */
-    public function testUserLogin()
+    /*public function testUserLogin()
     {
         $this->visit('/login');
         $this->seePageIs('/login');
@@ -31,5 +31,5 @@ class userLoginTest extends TestCase
         $this->type('james@gmail.com', 'email');
         $this->type('123456', 'password');
         $this->press('Login');
-    }
+    }*/
 }
