@@ -46,17 +46,18 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+
+   // protected $dt = new Carbon\Carbon();
+    //protected $before = $dt->subYears(13);
+
     protected function validator(array $data)
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
-            //'birth' => 'required|date_format:Y-n-j',
+            'birth' => 'required|date_format:"d/m/Y"|before_or_equal:-13 years|after_or_equal:-80 years',
             'Phone' => 'required|regex:/^0[0-8]\d{8}$/',
             'password' => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!@$#%^&*?]).*$/|confirmed',
-
-            
-
         ]);
     }
 
@@ -77,5 +78,6 @@ class RegisterController extends Controller
             'password' => $data['password'],
         ]);
     }
+
 
 }
