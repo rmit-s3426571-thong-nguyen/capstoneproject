@@ -39,7 +39,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('birth') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Date of Birth</label>
+                            <label for="birth" class="col-md-4 control-label">Date of Birth</label>
 
                             <div class="col-md-6">
                                 <input id="birth" type="birth" class="form-control" name="birth" value="{{ old('birth') }}" required autofocus>
@@ -53,11 +53,11 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('Phone') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Phone number</label>
+                            <label for="Phone" class="col-md-4 control-label">Phone number</label>
 
                             <div class="col-md-6">
-                                <input id="Phone" type="text" class="form-control" name="Phone" value="{{ old('name') }}" required autofocus>
-
+                                <input id="Phone" type="text" class="form-control" name="Phone" value="{{ old('Phone') }}" required autofocus>
+                                <label>eg. 0411122233</label>
                                 @if ($errors->has('Phone'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('Phone') }}</strong>
@@ -67,10 +67,10 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('Address') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Address</label>
+                            <label for="Address" class="col-md-4 control-label">Address</label>
 
                             <div class="col-md-6">
-                                <input id="Address" type="text" class="form-control" name="Address" value="{{ old('name') }}" required autofocus>
+                                <input id="Address" type="text" class="form-control" name="Address" value="{{ old('Address') }}" required autofocus>
 
                                 @if ($errors->has('Address'))
                                     <span class="help-block">
