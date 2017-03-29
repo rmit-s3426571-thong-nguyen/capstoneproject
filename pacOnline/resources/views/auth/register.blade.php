@@ -131,7 +131,8 @@
                                 <label> Password must contain combination of:<br>
                                 - Uppercase characters or Lowercase characters<br>
                                 - Base 10 digits (0-9)<br>
-                                - Non-alphanumeric (eg. !,@,$,#,%,^,&,* or ?) </label>
+                                - Non-alphanumeric (eg. !,@,$,#,%,^,&,* or ?) <br>
+                                - Min 6 Characters</label>
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
