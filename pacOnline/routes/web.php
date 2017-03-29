@@ -28,21 +28,29 @@ Route::get('/cart',[
     'uses' => 'ProductController@cart',
     'as'   => 'product.cart']);
 
+Route::get('/login', [
+    'name' => 'login', 
+]);
+
+
 //POST request
 Route::post('/products','ProductController@store');
 
+Route::post('/mydetails','UserController@displaydetails');
 
 
 
-
-
+// GET views
 Route::get('about',function(){
 	return view('pages/about');
 });
+
+Route::get('mydetails', function(){
+	return view('User/mydetails');
+});
+
 
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-
-

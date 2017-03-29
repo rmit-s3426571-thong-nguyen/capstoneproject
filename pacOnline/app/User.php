@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'birth', 'Phone', 'Address', 'City', 'State', 'ZIP', 'password',
     ];
 
     /**
@@ -26,11 +26,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
 	
-	// below created by linh
 	public function roles() {
 		// sets matching table and foreign key
-		return $this->belongsToMany('App\Role', 'user_role', 'user_id', 'role_id');
+		return $this->belongsToMany('App\Role', 'user_role', 'user_id','role_id');
 	}
 
     public function setNameAttribute($value)
@@ -43,9 +43,9 @@ class User extends Authenticatable
         $this->attributes['password'] = bcrypt($value);
     }
 
-
     public function products()
     {
 	    return $this->hasMany(Product::class);
     }
+    
 }

@@ -52,6 +52,7 @@
         <li><a href="#">FAQ</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+
         @if (Auth::guest())
          <li><a href="http://localhost:8000/login"><span class="glyphicon glyphicon-user"></span> Login / Register </a></li>
                         @else

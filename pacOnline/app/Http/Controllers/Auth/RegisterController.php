@@ -27,6 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
+
     protected $redirectTo = '/';
 
     /**
@@ -45,12 +46,19 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+
+   // protected $dt = new Carbon\Carbon();
+    //protected $before = $dt->subYears(13);
+
     protected function validator(array $data)
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
+            'birth' => 'required|date_format:"d/m/Y"|before_or_equal:-13 years|after_or_equal:-80 years',
+            'Phone' => 'required|regex:/^0[0-8]\d{8}$/',
+            'ZIP' => 'required|regex:/^[0-9]\d{3}$/',
+            'password' => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!@$#%^&*?]).*$/|confirmed',
         ]);
     }
 
@@ -65,7 +73,15 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'birth' => $data['birth'],
+            'Phone' => $data['Phone'],
+            'Address' => $data['Address'],
+            'City' => $data['City'],
+            'State' => $data['State'],
+            'ZIP' => $data['ZIP'],
             'password' => $data['password'],
         ]);
     }
+
+
 }

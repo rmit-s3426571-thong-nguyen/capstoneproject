@@ -3,9 +3,11 @@
     this is for educational purposes only
  -->
 <div class="jumbotron">
-    <div class="container text-center">
-        <h1>Pac Online</h1>
-        <p>Est. 2017</p>
+    <div class="container text-left">
+        <h2>Pac Online</h2>
+        <div>
+            <p class="container text-center">Est. 2017</p>
+        </div>
     </div>
 </div>
 <nav class="navbar navbar-inverse">
@@ -16,7 +18,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Logo</a>
+            <a href="{!! URL::to('/') !!}"><img src="{!! asset('images/logo.png') !!}" alt="logo" class="navbar-brand"</image></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
@@ -26,19 +28,23 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::guest())
-                    <li><a href="http://localhost:8000/login"><span class="glyphicon glyphicon-user"></span> Login / Register </a></li>
+                    <li><a href=" {{ route('login') }}" ><span class="glyphicon glyphicon-user"></span> Login / Register </a></li>
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::user()->name }} , My Pac <span class="caret"></span>
+                            {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
                             <li>
+                                <a href="{{ url('mydetails') }}">
+                                    My Details
+                                </a>
+                            </li>
+                            <li>
                                 <a href="">
                                     My Listings
                                 </a>
-
                             </li>
 
                             <li>
