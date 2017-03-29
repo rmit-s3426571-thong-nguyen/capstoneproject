@@ -80,6 +80,49 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('City') ? ' has-error' : '' }}">
+                            <label for="City" class="col-md-4 control-label">City</label>
+
+                            <div class="col-md-6">
+                                <input id="City" type="text" class="form-control" name="City" value="{{ old('City') }}" required autofocus>
+
+                                @if ($errors->has('City'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('City') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('State') ? ' has-error' : '' }}">
+                            <label for="State" class="col-md-4 control-label">State</label>
+
+                            <div class="col-md-6">
+                                <input id="State" type="text" class="form-control" name="State" value="{{ old('State') }}" required autofocus>
+
+                                @if ($errors->has('State'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('State') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('ZIP') ? ' has-error' : '' }}">
+                            <label for="ZIP" class="col-md-4 control-label">ZIP</label>
+
+                            <div class="col-md-6">
+                                <input id="ZIP" type="text" class="form-control" name="ZIP" value="{{ old('ZIP') }}" required autofocus>
+
+                                @if ($errors->has('ZIP'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('ZIP') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
 

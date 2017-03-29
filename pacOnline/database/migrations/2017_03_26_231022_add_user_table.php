@@ -15,8 +15,11 @@ class AddUserTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->string('phone')->after('birth');
+            $table->integer('phone')->after('birth');
             $table->string('address')->after('phone');
+            $table->string('city')->after('address');
+            $table->string('state')->after('city');
+            $table->integer('ZIP')->after('state');
         });
     }
 

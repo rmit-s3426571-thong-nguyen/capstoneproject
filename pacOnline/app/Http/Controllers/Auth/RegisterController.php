@@ -55,9 +55,10 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
-            'birth' => 'required|date_format:"d/m/Y"|before_or_equal:-13 years|after_or_equal:-80 years',
+            //'birth' => 'required|date_format:"d/m/Y"|before_or_equal:-13 years|after_or_equal:-80 years',
             'Phone' => 'required|regex:/^0[0-8]\d{8}$/',
-            'password' => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!@$#%^&*?]).*$/|confirmed',
+            'ZIP' => 'required|regex:/^[0-9]\d{3}$/',
+            //'password' => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!@$#%^&*?]).*$/|confirmed',
         ]);
     }
 
@@ -75,6 +76,9 @@ class RegisterController extends Controller
             'birth' => $data['birth'],
             'Phone' => $data['Phone'],
             'Address' => $data['Address'],
+            'City' => $data['City'],
+            'State' => $data['State'],
+            'ZIP' => $data['ZIP'],
             'password' => $data['password'],
         ]);
     }
