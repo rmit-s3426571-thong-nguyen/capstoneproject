@@ -20,7 +20,9 @@ class UserTableSeeder extends Seeder
 		$user = new App\User();
 		$user->name = 'general';
 		$user->email = 'general@example.com';
-		$user->birth = '29/02/1993'
+		$user->birth = '29/02/1993';
+		$user->phone = 04123123123;
+		$user->address = 'default';
 		$user->password = 'general';
 		$user->save();
 		$user->roles()->attach($role_user);
@@ -31,7 +33,9 @@ class UserTableSeeder extends Seeder
 		$admin = new App\User();
 		$admin->name = 'admin';
 		$admin->email = 'admin@example.com';
-		$user->birth = '5/06/1990'
+		$admin->birth = '5/06/1990';
+		$admin->phone = 04123123123;
+		$admin->address = 'default';
 		$admin->password = 'admin';
 		$admin->save();
 		$admin->roles()->attach($role_admin);

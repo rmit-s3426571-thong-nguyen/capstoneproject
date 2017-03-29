@@ -14,6 +14,7 @@ class userLoginTest extends TestCase
      *
      * @return void
      */
+    //all functions below added by james
     /*public function testUserLogin()
     {
         $this->visit('/login');

@@ -28,7 +28,7 @@ class userRegistration extends TestCase
         $this->type('A1!!!!', 'password_confirmation');
         $this->press('Register');       
     }
-    /*
+    
 
     public function testEmailError()
     {
@@ -103,6 +103,6 @@ class userRegistration extends TestCase
         $this->type('A1!!!!', 'password_confirmation');
         $this->press('Register');
         //$this->expectException(ValidationException::class);
-    }*/
+    }
 
 }

@@ -22,7 +22,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="jumbotron">
             <div class="container">
                 <div class="navbar-header">
 
@@ -35,9 +35,9 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <h2 class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'PAC Online') }}
-                    </a>
+                    </h2>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
