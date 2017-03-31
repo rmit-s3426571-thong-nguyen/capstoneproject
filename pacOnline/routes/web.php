@@ -49,6 +49,9 @@ Route::get('mydetails', function(){
 	return view('User/mydetails');
 });
 
+Route::get('result', function(){
+	return view('search/result');
+});
 
 
 Auth::routes();
