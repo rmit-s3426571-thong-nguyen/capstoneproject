@@ -36,7 +36,7 @@ Route::get('/login', [
 //POST request
 Route::post('/products','ProductController@store');
 
-Route::post('/mydetails','UserController@displaydetails');
+//Route::post('/mydetails','UserController@displaydetails');
 
 
 
@@ -45,9 +45,7 @@ Route::get('about',function(){
 	return view('pages/about');
 });
 
-Route::get('mydetails', function(){
-	return view('User/mydetails');
-});
+Route::get('/mydetails/{username}', 'UserController@mydetails');
 
 
 

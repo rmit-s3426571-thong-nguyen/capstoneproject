@@ -5,30 +5,27 @@
     My Details
 @endsection
 
+<style type="text/css">
+  .userdetails-img{
+    max-width: 150px;
+    border: 5px solid #fff;
+    border-radius: 100%;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);  
+  }
+</style>
 @section('content')
-	<div class="container">
-		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
-				<div class="panel panel-default">
-					<div class="panel-heading"> My Details </div>
-					
-					<form method="POST" action="">
-  						<input type="hidden" name="_token" value="">
-  						<input type="hidden" name="_method" value="PUT">
-  <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" name="name" value="" class="form-control">
-  </div>
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input type="email" name="email" value="" class="form-control">
-  </div>
-  <button type="submit" class="btn btn-primary">
-    <i class="fa fa-btn fa-sign-in"></i>Update
-  </button>
-</form>
-				</div>
-			</div>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-default">
+        <div class="panel-body text-center">
+            <img class="userdetails-img" src="http://4.bp.blogspot.com/-EswNjNJ2PCE/Te8OnAY7haI/AAAAAAAABdk/VpY48SVsVO0/s1600/pedo-bear-is-sad.jpeg">
+
+            <h1>{{$user->name}}</h1>
+            <h5>{{$user->email}}</h5>
+            <h5>{{$user->birth}}</h3>
+
         </div>
+      </div>
     </div>
-@endsection
+  </div>
+  @endsection
