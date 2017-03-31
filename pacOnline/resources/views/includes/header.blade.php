@@ -3,9 +3,9 @@
     this is for educational purposes only
  -->
 <div class="jumbotron">
-    <div class="container text-left">
+    <div class="container-fluid text-left">
         <h2>Pac Online</h2>
-        <div>@include('includes.searchbar')</div>
+        <div>@include('search.searchbar')</div>
     </div>
 </div>
 <nav class="navbar navbar-inverse">
