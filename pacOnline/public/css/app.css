@@ -2895,6 +2895,14 @@ td,th{padding:0}
 				}
 /* End of Jumbotron */
 
+/*new css*/
+				.container-list {
+					margin-right: 150px;
+					margin-left: 150px;
+
+				}	
+/*end of new css*/
+
 				.thumbnail {
 					display:block; 
 					padding:4px;
