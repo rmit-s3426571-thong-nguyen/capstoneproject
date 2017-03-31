@@ -5,9 +5,7 @@
 <div class="jumbotron">
     <div class="container text-left">
         <h2>Pac Online</h2>
-        <div>
-            <p class="container text-center">Est. 2017</p>
-        </div>
+        <div>@include('includes.searchbar')</div>
     </div>
 </div>
 <nav class="navbar navbar-inverse">
