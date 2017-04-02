@@ -33,11 +33,14 @@ Route::get('/login', [
 ]);
 
 
+//GET requests through SearchController
+Route::get('/result','SearchController@index');
+
+
 //POST request
 Route::post('/products','ProductController@store');
 
 Route::post('/mydetails','UserController@displaydetails');
-
 
 
 // GET views
@@ -47,10 +50,6 @@ Route::get('about',function(){
 
 Route::get('mydetails', function(){
 	return view('User/mydetails');
-});
-
-Route::get('result', function(){
-	return view('search/result');
 });
 
 
