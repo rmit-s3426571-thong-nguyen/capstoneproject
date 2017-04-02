@@ -2,7 +2,7 @@
 	 this is for educational purposes only -->
 
 <div class="container-fluid text-center">
-	<form class="form-inline" action="{!! URL::to('Search.search') !!}" method="get">
+	<form class="form-inline" action="search" method="GET">
 
 		<div class="input-group custom-search-form">
 			<input type="text" class="form-control" size="50" name="s" placeholder="Search . . ."

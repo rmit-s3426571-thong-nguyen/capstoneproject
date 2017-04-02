@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'PAC Online') }}</title>
+    <title>@yield('title')</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -76,8 +76,9 @@
                     </ul>
                 </div>
             </div>
+<div class="container-fluid text-center">@yield('search')</div>
+            
         </nav>
-
         @yield('content')
     </div>
 
