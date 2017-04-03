@@ -23,7 +23,7 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/">Home</a></li>
-                <li><a href="about">About Us</a></li>
+                <li><a href="/about">About Us</a></li>
                 <li><a href="#">FAQ</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -37,7 +37,7 @@
 
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="{{ url('mydetails') }}">
+                                <a href="/mydetails/{{Auth::user()->id}}">
                                     My Details
                                 </a>
                             </li>

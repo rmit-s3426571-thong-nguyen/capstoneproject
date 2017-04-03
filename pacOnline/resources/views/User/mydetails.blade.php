@@ -20,9 +20,9 @@
         <div class="panel-body text-center">
             <img class="userdetails-img" src="http://4.bp.blogspot.com/-EswNjNJ2PCE/Te8OnAY7haI/AAAAAAAABdk/VpY48SVsVO0/s1600/pedo-bear-is-sad.jpeg">
 
-            <h1>{{$user->name}}</h1>
-            <h5>{{$user->email}}</h5>
-            <h5>{{$user->birth}}</h3>
+            <h1>{{Auth::user()->name}}</h1>
+            <h5>{{Auth::user()->email}}</h5>
+            <h5>{{Auth::user()->birth}}</h3>
 
         </div>
       </div>

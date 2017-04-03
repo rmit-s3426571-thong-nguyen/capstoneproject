@@ -46,7 +46,7 @@ Route::get('about',function(){
 });
 
 Route::get('/mydetails/{username}', 'UserController@mydetails');
-
+Route::get('/edit/{username}', 'UserController@edit');
 
 
 Auth::routes();
