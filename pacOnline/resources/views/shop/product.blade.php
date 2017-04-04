@@ -1,3 +1,4 @@
+{{-- This page changes the products on index page --}}
 <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
 
@@ -6,14 +7,14 @@
         <div class="caption">
 
             <a href="/products/{{ $product->id }}">
-                <h3>{{ $product->title }}</h3>
+                <h3>{{ str_limit($product->title, 35) }}</h3>
             </a>
 
             <p class="product-meta">
                 {{ $product->user->name  }} on
                 {{ $product->created_at->diffForHumans() }}</p>
 
-            <p>{{ $product->desc }}.</p>
+            <p>{{ str_limit($product->desc, 60) }}</p>
 
             <div class="clearfix">
                 <div class="pull-left">${{ $product->price }}</div>

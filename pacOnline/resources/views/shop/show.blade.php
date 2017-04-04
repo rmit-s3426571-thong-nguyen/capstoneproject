@@ -1,3 +1,5 @@
+{{-- This page changes the products on products page --}}
+
 @extends('layouts.master')
 
 @section('title')
