@@ -19,19 +19,31 @@ class userLoginTest extends TestCase
     {
         $this->visit('/login');
         $this->seePageIs('/login');
-        $this->type('Hansen@gmail.com', 'email');
-        $this->type('A1!!!!', 'password');
+        $this->type('jy@gmail.com', 'email');
+        $this->type('A!1111', 'password');
         $this->press('Login');
         $this->seePageIs('/');
         
     }
 
-      public function testUserLoginFail()
+      public function testPasswordMismatch()
     {
         $this->visit('/login');
         $this->seePageIs('/login');
-        $this->type('james@gmail.com', 'email');
-        $this->type('123456', 'password');
+        $this->type('jy@gmail.com', 'email');
+        $this->type('A!1112', 'password');
         $this->press('Login');
+        $this->seePageIs('/login');
+    }
+
+    public function testEmailMismatch()
+    {
+        $this->visit('/login');
+        $this->seePageIs('/login');
+        $this->type('jyyc@gmail.com', 'email');
+        $this->type('A!1111', 'password');
+        $this->press('Login');
+        $this->seePageIs('/login');
+        
     }
 }

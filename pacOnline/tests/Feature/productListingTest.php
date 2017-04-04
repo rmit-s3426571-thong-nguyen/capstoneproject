@@ -14,8 +14,89 @@ class productListingTest extends TestCase
      *
      * @return void
      */
-    public function testExample()
+   public function testWorkingListProduct()
     {
-        $this->assertTrue(true);
+        $this->visit('/login');
+        $this->seePageIs('/login');
+        $this->type('jy@gmail.com', 'email');
+        $this->type('A!1111', 'password');
+        $this->press('Login');
+        $this->seePageIs('/');
+        $this->visit('/products/create');
+        $this->seePageIs('/products/create');
+        $this->type('phptest', 'title');
+        $this->type('phptest', 'desc');
+        $this->type('1234','price');
+        $this->type('blah blah','imageLocation');
+        $this->press('Sell this product');
+    }
+
+    public function testDescMissing()
+    {
+        $this->visit('/login');
+        $this->seePageIs('/login');
+        $this->type('jy@gmail.com', 'email');
+        $this->type('A!1111', 'password');
+        $this->press('Login');
+        $this->seePageIs('/');
+        $this->visit('/products/create');
+        $this->seePageIs('/products/create');
+        $this->type('descmissing', 'title');
+        $this->type('1234','price');
+        $this->type('blah blah','imageLocation');
+        $this->press('Sell this product');
+    }
+
+
+
+    public function testPriceMissing()
+    {
+        $this->visit('/login');
+        $this->seePageIs('/login');
+        $this->type('jy@gmail.com', 'email');
+        $this->type('A!1111', 'password');
+        $this->press('Login');
+        $this->seePageIs('/');
+        $this->visit('/products/create');
+        $this->seePageIs('/products/create');
+        $this->type('pricemissing', 'title');
+        $this->type('blah','desc');
+        $this->type('blah blah','imageLocation');
+        $this->press('Sell this product');
+    }
+
+    public function testPriceInvalid()
+    {
+        $this->visit('/login');
+        $this->seePageIs('/login');
+        $this->type('jy@gmail.com', 'email');
+        $this->type('A!1111', 'password');
+        $this->press('Login');
+        $this->seePageIs('/');
+        $this->visit('/products/create');
+        $this->seePageIs('/products/create');
+        $this->type('phptest', 'title');
+        $this->type('phptest', 'desc');
+        $this->type('abcd','price');
+        $this->type('blah blah','imageLocation');
+        $this->expectException(PDOException::class);
+        $this->press('Sell this product');
+
+    }
+
+    public function testImageMissing()
+    {
+        $this->visit('/login');
+        $this->seePageIs('/login');
+        $this->type('jy@gmail.com', 'email');
+        $this->type('A!1111', 'password');
+        $this->press('Login');
+        $this->seePageIs('/');
+        $this->visit('/products/create');
+        $this->seePageIs('/products/create');
+        $this->type('phptest', 'title');
+        $this->type('phptest', 'desc');
+        $this->type('1234','price');
+        $this->press('Sell this product');
     }
 }
