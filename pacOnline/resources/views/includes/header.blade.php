@@ -4,7 +4,7 @@
  -->
 <div class="jumbotron">
     <div class="container-fluid text-left">
-        <h2>Pac Online</h2>
+        <div class="banner-header"><a href="{!! URL::to('/') !!}" style="text-decoration: none">Pac Online</a></div>
         <div>@include('search.searchbar')</div>
     </div>
 </div>
