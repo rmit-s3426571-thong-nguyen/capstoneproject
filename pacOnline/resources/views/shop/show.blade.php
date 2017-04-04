@@ -7,28 +7,32 @@
 @endsection
 
 @section('content')
-	<div class="container-list">
+	<div class="product-container">
 
-        <img src="{{ $product->imageLocation }}" alt="..." style="max-height: 150px" class="img-responsive">
+        <div class="product-padding">
 
-        <div class="caption">
+            <div class="product-image gap-bottom">
+                <img src="{{ $product->imageLocation }}" alt="..." style="max-height: 150px"
+                    class="img-responsive">
+            </div>
 
-            <a href="/products/{{ $product->id }}">
+            <a class="text-left" style="text-decoration: none">
                 <h3>{{ $product->title }}</h3>
             </a>
 
-            <p class="product-meta">
-                {{ $product->user->name  }} posted
-                {{ $product->created_at->diffForHumans() }}</p>
-
-            <p>{{ $product->desc }}.</p>
-
-            <div class="clearfix">
-                <div class="pull-left">${{ $product->price }}</div>
-                <div><a href="{{ route('product.addToCart',['id' => $product->id]) }}" class="btn btn-primary"  role="button">Add to cart</a></div>
+            <div class ="gap-bottom">
+                <p class="product-container">{{ $product->user->name  }} posted 
+                    {{ $product->created_at->diffForHumans() }}</p>
                 
-            </div>
+                <div class="pull-left product-container"><b>${{ $product->price }}</b></div>
 
+                <div><a href="{{ route('product.addToCart',['id' => $product->id]) }}"
+                    class="btn btn-primary product-button"  role="button">Add to cart</a>
+                </div>
+            </div>
+            <div class="gap-bottom">
+                <p style="clear:both;">{{ $product->desc }}.</p>
+            </div>
         </div>
     </div>
 @endsection

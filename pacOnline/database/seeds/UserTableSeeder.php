@@ -23,6 +23,9 @@ class UserTableSeeder extends Seeder
 		$user->birth = '29/02/1993';
 		$user->phone = 04123123123;
 		$user->address = 'default';
+		$user->city = 'default';
+		$user->state = 'default';
+		$user->zip = 0000;
 		$user->password = 'general';
 		$user->save();
 		$user->roles()->attach($role_user);
@@ -36,6 +39,9 @@ class UserTableSeeder extends Seeder
 		$admin->birth = '5/06/1990';
 		$admin->phone = 04123123123;
 		$admin->address = 'default';
+		$admin->city = 'default';
+		$admin->state = 'default';
+		$admin->zip = 0000;
 		$admin->password = 'admin';
 		$admin->save();
 		$admin->roles()->attach($role_admin);
