@@ -11,7 +11,7 @@
             </a>
 
             <p class="product-meta">
-                {{ $product->user->name  }} on
+                {{ $product->user->name  }} posted
                 {{ $product->created_at->diffForHumans() }}</p>
 
             <p>{{ str_limit($product->desc, 60) }}</p>
