@@ -29,9 +29,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <h2 class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'PAC Online') }}
-                    </h2>
+                            <div class="banner-header"><a href="{!! URL::to('/') !!}" style="text-decoration: none">Pac Online</a></div>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
