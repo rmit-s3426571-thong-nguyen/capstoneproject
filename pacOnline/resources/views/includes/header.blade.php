@@ -68,7 +68,13 @@
                 @endif
                 <li>
                     <a href="{{ route('product.cart') }}">
-                        <span class="glyphicon glyphicon-shopping-cart"></span> Cart
+                        <div class="pull-left shoppingbasket"> 
+                            <!--Shopping cart from http://codepen.io/512Finn/pen/ZYXzoL-->
+                            <div class="top"></div>
+                            <div class="bottom"></div>
+                            <div class="left"></div>
+                            <div class="right"></div>
+                        </div>
                         <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : ''}}</span>
                     </a>
                 </li>

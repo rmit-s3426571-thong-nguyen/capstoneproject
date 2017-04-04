@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('title')
+    Create Listing
+@endsection
+
 @section('content')
 
 <div class="col-sm-12">
