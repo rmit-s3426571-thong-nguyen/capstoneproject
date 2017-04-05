@@ -23,7 +23,10 @@
             <h1>{{Auth::user()->name}}</h1>
             <h5>{{Auth::user()->email}}</h5>
             <h5>{{Auth::user()->birth}}</h3>
-
+              <br>
+              <small>
+                <a href="/edit/{{Auth::user()->id}}">Edit Profile</a>
+              </small>
         </div>
       </div>
     </div>

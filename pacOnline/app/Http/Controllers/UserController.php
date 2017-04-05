@@ -13,6 +13,7 @@ class UserController extends Controller
      return view('User.mydetails', compact('user'));
    }
 
+
    public function store(Request $request)
    {
    	 User::create($request->all());
@@ -26,7 +27,13 @@ class UserController extends Controller
 
    public function update(Request $request, $id)
    {
-    $user = User::findOrFail($id);
+    /*$user = User::findOrFail($id);
     $user->update($request->all());
+    return Redirect::to('/mydetails/{username}');*/
+    $user = Auth::user();
+    $user->name = Request::input('name');
+    $user->email = Request::input('email');
+    $user->save();
+    return view('/mydetails/{username}');
    }
 }

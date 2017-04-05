@@ -42,16 +42,18 @@ Route::get('search', 'SearchController@search');
 Route::post('/products','ProductController@store');
 
 //Route::post('/mydetails','UserController@displaydetails');
-Route::post('/edit/{username}', 'UserController@update');
+Route::post('/edit/{username}', 'UserController2@update');
 
 // GET views
 Route::get('about',function(){
 	return view('pages/about');
 });
 
-Route::get('/mydetails/{username}', 'UserController@mydetails');
-//Route::get('/edit/{username}', 'UserController@edit');
+Route::get('/mydetails/{username}', 'UserController2@index');
+Route::get('/edit/{username}', 'UserController2@edit');
+//Route::get('/edit/{username}', 'userController@index');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::resource('users', 'UserController2' );
