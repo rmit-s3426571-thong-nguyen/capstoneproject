@@ -37,7 +37,7 @@ Route::get('/login', [
 Route::post('/products','ProductController@store');
 
 //Route::post('/mydetails','UserController@displaydetails');
-
+Route::post('/edit/{username}', 'UserController@update');
 
 
 // GET views
@@ -46,7 +46,7 @@ Route::get('about',function(){
 });
 
 Route::get('/mydetails/{username}', 'UserController@mydetails');
-Route::get('/edit/{username}', 'UserController@edit');
+//Route::get('/edit/{username}', 'UserController@edit');
 
 
 Auth::routes();
