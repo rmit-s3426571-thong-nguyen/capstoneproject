@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-float">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -39,11 +39,11 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('birth') ? ' has-error' : '' }}">
-                            <label for="birth" class="col-md-4 control-label">Date of Birth</label>
+                            <label for="birth" class="col-md-4 control-label" placeholder="dd/mm/yyyy">Date of Birth</label>
 
                             <div class="col-md-6">
-                                <input id="birth" type="birth" class="form-control" name="birth" value="{{ old('birth') }}" required autofocus>
-                                <label>dd/mm/yyyy</label>
+                                <input id="birth" type="birth" class="form-control" name="birth" placeholder="dd/mm/yyyy"
+                                    value="{{ old('birth') }}" required autofocus>
                                 @if ($errors->has('birth'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('birth') }}</strong>
@@ -56,8 +56,8 @@
                             <label for="Phone" class="col-md-4 control-label">Phone number</label>
 
                             <div class="col-md-6">
-                                <input id="Phone" type="text" class="form-control" name="Phone" value="{{ old('Phone') }}" required autofocus>
-                                <label>eg. 0411122233</label>
+                                <input id="Phone" type="text" class="form-control" name="Phone" placeholder="0411122233"
+                                    value="{{ old('Phone') }}" required autofocus>
                                 @if ($errors->has('Phone'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('Phone') }}</strong>

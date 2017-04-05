@@ -5,20 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'PAC Online') }}</title>
+    <title>@yield('title')</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
-    <script>
-        window.PAC Online = {!! json_encode([
-            'csrfToken' => csrf_token(),
-        ]) !!};
-    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
 </head>
 <body>
     <div id="app">
@@ -35,9 +29,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <h2 class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'PAC Online') }}
-                    </h2>
+                            <div class="banner-header"><a href="{!! URL::to('/') !!}" style="text-decoration: none">Pac Online</a></div>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -76,12 +68,14 @@
                     </ul>
                 </div>
             </div>
+<div class="container-fluid text-center">@yield('search')</div>
+            
         </nav>
-
         @yield('content')
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
