@@ -1,4 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);/*!
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+@import url(http://fonts.googleapis.com/css?family=Comfortaa:300);
+/*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
@@ -2983,3 +2985,79 @@ td,th{padding:0}
 
 				/* Line below needs to be separated */
 				.hide{display:none!important}.show{display:block!important}.invisible{visibility:hidden}.text-hide{font:0/0 a;color:transparent;text-shadow:none;background-color:transparent;border:0}.hidden{display:none!important}.affix{position:fixed}@-ms-viewport{width:device-width}.visible-lg,.visible-lg-block,.visible-lg-inline,.visible-lg-inline-block,.visible-md,.visible-md-block,.visible-md-inline,.visible-md-inline-block,.visible-sm,.visible-sm-block,.visible-sm-inline,.visible-sm-inline-block,.visible-xs,.visible-xs-block,.visible-xs-inline,.visible-xs-inline-block{display:none!important}@media (max-width:767px){.visible-xs{display:block!important}table.visible-xs{display:table!important}tr.visible-xs{display:table-row!important}td.visible-xs,th.visible-xs{display:table-cell!important}}@media (max-width:767px){.visible-xs-block{display:block!important}}@media (max-width:767px){.visible-xs-inline{display:inline!important}}@media (max-width:767px){.visible-xs-inline-block{display:inline-block!important}}@media (min-width:768px) and (max-width:991px){.visible-sm{display:block!important}table.visible-sm{display:table!important}tr.visible-sm{display:table-row!important}td.visible-sm,th.visible-sm{display:table-cell!important}}@media (min-width:768px) and (max-width:991px){.visible-sm-block{display:block!important}}@media (min-width:768px) and (max-width:991px){.visible-sm-inline{display:inline!important}}@media (min-width:768px) and (max-width:991px){.visible-sm-inline-block{display:inline-block!important}}@media (min-width:992px) and (max-width:1199px){.visible-md{display:block!important}table.visible-md{display:table!important}tr.visible-md{display:table-row!important}td.visible-md,th.visible-md{display:table-cell!important}}@media (min-width:992px) and (max-width:1199px){.visible-md-block{display:block!important}}@media (min-width:992px) and (max-width:1199px){.visible-md-inline{display:inline!important}}@media (min-width:992px) and (max-width:1199px){.visible-md-inline-block{display:inline-block!important}}@media (min-width:1200px){.visible-lg{display:block!important}table.visible-lg{display:table!important}tr.visible-lg{display:table-row!important}td.visible-lg,th.visible-lg{display:table-cell!important}}@media (min-width:1200px){.visible-lg-block{display:block!important}}@media (min-width:1200px){.visible-lg-inline{display:inline!important}}@media (min-width:1200px){.visible-lg-inline-block{display:inline-block!important}}@media (max-width:767px){.hidden-xs{display:none!important}}@media (min-width:768px) and (max-width:991px){.hidden-sm{display:none!important}}@media (min-width:992px) and (max-width:1199px){.hidden-md{display:none!important}}@media (min-width:1200px){.hidden-lg{display:none!important}}.visible-print{display:none!important}@media print{.visible-print{display:block!important}table.visible-print{display:table!important}tr.visible-print{display:table-row!important}td.visible-print,th.visible-print{display:table-cell!important}}.visible-print-block{display:none!important}@media print{.visible-print-block{display:block!important}}.visible-print-inline{display:none!important}@media print{.visible-print-inline{display:inline!important}}.visible-print-inline-block{display:none!important}@media print{.visible-print-inline-block{display:inline-block!important}}@media print{.hidden-print{display:none!important}}
+
+				
+				/* This code has been adapted from https://codepen.io/k-ya/pen/ZYXzoL
+				 * For educational purposes only
+				 * 
+				 * Following code is for the cart
+				 */
+				.shoppingbasket {
+					width:25px;
+  					height:25px;
+  					background-color:#222;
+  					position:relative;
+  					font-family: 'Comfortaa', cursive;
+				}
+
+				.basketitems {
+  					color:#fff;
+  					font-size:80%;
+  					background-color:#e74c3c;
+  					position:absolute;
+  					top:50%;
+  					left:50%;
+  					-webkit-transform:translate(-50%,-90%);
+  					-moz-transform:translate(-50%,-90%);
+  					transform:translate(-50%,-90%);
+  					padding:0 12%;
+  					border-radius:1000px;
+				}
+				.shoppingbasket .top {
+  					width:60%;
+  					height:10%;
+  					border-radius:1000px;
+  					background-color:#fff;
+  					position:absolute;
+  					top:25%;
+  					left:50%;
+  					-webkit-transform: translateX(-50%);
+  					-moz-transform: translateX(-50%);
+  					transform: translateX(-50%);
+				}
+				.shoppingbasket .bottom {
+  					width:50%;
+  					height:10%;
+  					border-radius:1000px;
+  					background-color:#fff;
+  					position:absolute;
+  					bottom:25%;
+  					left:50%;
+  					-webkit-transform: translateX(-50%);
+  					-moz-transform: translateX(-50%);
+  					transform: translateX(-50%);
+				}
+				.shoppingbasket .left {
+  					width:50%;
+  					height:10%;
+  					border-radius:1000px;
+  					background-color:#fff;
+  					position:absolute;
+  					top:45%;
+  					left:1%;
+  					-webkit-transform: rotate(80deg);
+  					-moz-transform: translateX(80deg);
+  					transform: translateX(80deg);
+				}
+				.shoppingbasket .right {
+  					width:50%;
+  					height:10%;
+  					border-radius:1000px;
+  					background-color:#fff;
+  					position:absolute;
+  					top:45%;
+  					right:1%;
+  					-webkit-transform: rotate(-80deg);
+  					-moz-transform: translateX(-80deg);
+  					transform: translateX(-80deg);
+				}
