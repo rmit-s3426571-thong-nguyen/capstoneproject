@@ -75,11 +75,10 @@ class productListingTest extends TestCase
         $this->seePageIs('/');
         $this->visit('/products/create');
         $this->seePageIs('/products/create');
-        $this->type('phptest', 'title');
+        $this->type('priceinvalid', 'title');
         $this->type('phptest', 'desc');
         $this->type('abcd','price');
         $this->type('blah blah','imageLocation');
-        $this->expectException(PDOException::class);
         $this->press('Sell this product');
 
     }
@@ -94,7 +93,7 @@ class productListingTest extends TestCase
         $this->seePageIs('/');
         $this->visit('/products/create');
         $this->seePageIs('/products/create');
-        $this->type('phptest', 'title');
+        $this->type('imagemissing', 'title');
         $this->type('phptest', 'desc');
         $this->type('1234','price');
         $this->press('Sell this product');
