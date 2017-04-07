@@ -16,17 +16,7 @@ class ExampleTest1 extends TestCase
      */
 
 
-    public function testEmailDatabase()
-    {
-
-        $this->seeInDatabase('users', ['email' => 'Hansen@gmail.com']);
-    }
-
-    public function testNameDatabase()
-    {
-
-        $this->seeInDatabase('users', ['name' => 'Hansen']);
-    }
+    
 
 
     public function forgotPassword()
