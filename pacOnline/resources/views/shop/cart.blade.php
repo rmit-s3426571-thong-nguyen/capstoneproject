@@ -55,7 +55,7 @@
 
         </table>
         <div class="row">
-            <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+            <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3 text-right">
                 <button type="button" class="btn btn-success">Checkout</button>
             </div>
         </div>

@@ -3,11 +3,9 @@
     this is for educational purposes only
  -->
 <div class="jumbotron">
-    <div class="container text-left">
-        <h2>Pac Online</h2>
-        <div>
-            <p class="container text-center">Est. 2017</p>
-        </div>
+    <div class="container-fluid text-left">
+        <div class="banner-header"><a href="{!! URL::to('/') !!}" style="text-decoration: none">Pac Online</a></div>
+        <div>@include('search.searchbar')</div>
     </div>
 </div>
 <nav class="navbar navbar-inverse">
@@ -23,7 +21,7 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/">Home</a></li>
-                <li><a href="about">About Us</a></li>
+                <li><a href="/about">About Us</a></li>
                 <li><a href="#">FAQ</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -37,7 +35,7 @@
 
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="{{ url('mydetails') }}">
+                                <a href="/mydetails/{{Auth::user()->id}}">
                                     My Details
                                 </a>
                             </li>
@@ -70,7 +68,13 @@
                 @endif
                 <li>
                     <a href="{{ route('product.cart') }}">
-                        <span class="glyphicon glyphicon-shopping-cart"></span> Cart
+                        <div class="pull-left shoppingbasket"> 
+                            <!--Shopping cart from http://codepen.io/512Finn/pen/ZYXzoL-->
+                            <div class="top"></div>
+                            <div class="bottom"></div>
+                            <div class="left"></div>
+                            <div class="right"></div>
+                        </div>
                         <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : ''}}</span>
                     </a>
                 </li>

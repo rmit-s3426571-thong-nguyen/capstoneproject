@@ -24,6 +24,9 @@ class userRegistration extends TestCase
         $this->type('17/04/2000','birth');
         $this->type('0411122233','Phone');
         $this->type('sdfafsdafdasf','Address');
+        $this->type('melbourne','City');
+        $this->type('VIC','State');
+        $this->type('3000','ZIP');
         $this->type('A1!!!!', 'password');
         $this->type('A1!!!!', 'password_confirmation');
         $this->press('Register');       
@@ -39,6 +42,9 @@ class userRegistration extends TestCase
         $this->type('17/04/2000','birth');
         $this->type('0411122233','Phone');
         $this->type('sdfafsdafdasf','Address');
+        $this->type('melbourne','City');
+        $this->type('VIC','State');
+        $this->type('3000','ZIP');
         $this->type('A1!!!!', 'password');
         $this->type('A1!!!!', 'password_confirmation');
         $this->press('Register');
@@ -54,6 +60,9 @@ class userRegistration extends TestCase
         $this->type('17/04/2000','birth');
         $this->type('0411122233','Phone');
         $this->type('sdfafsdafdasf','Address');
+        $this->type('melbourne','City');
+        $this->type('VIC','State');
+        $this->type('3000','ZIP');
         $this->type('123456', 'password');
         $this->type('123456', 'password_confirmation');
         $this->press('Register');
@@ -69,6 +78,9 @@ class userRegistration extends TestCase
         $this->type('17/04/2000','birth');
         $this->type('0411122233','Phone');
         $this->type('sdfafsdafdasf','Address');
+        $this->type('melbourne','City');
+        $this->type('VIC','State');
+        $this->type('3000','ZIP');
         $this->type('A1!!!!', 'password');
         $this->type('A1!!!!!', 'password_confirmation');
         $this->press('Register');
@@ -84,6 +96,9 @@ class userRegistration extends TestCase
         $this->type('17/04/2000','birth');
         $this->type('0411122233','Phone');
         $this->type('sdfafsdafdasf','Address');
+        $this->type('melbourne','City');
+        $this->type('VIC','State');
+        $this->type('3000','ZIP');
         $this->type('A11111', 'password');
         $this->type('A11111', 'password_confirmation');
         $this->press('Register');
@@ -99,6 +114,9 @@ class userRegistration extends TestCase
         $this->type('17/04/2000','birth');
         $this->type('0411122233','Phone');
         $this->type('sdfafsdafdasf','Address');
+        $this->type('melbourne','City');
+        $this->type('VIC','State');
+        $this->type('3000','ZIP');
         $this->type('A1!!!!', 'password');
         $this->type('A1!!!!', 'password_confirmation');
         $this->press('Register');

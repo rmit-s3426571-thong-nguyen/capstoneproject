@@ -33,24 +33,27 @@ Route::get('/login', [
 ]);
 
 
+//GET requests through SearchController
+Route::get('/result','SearchController@index');
+Route::get('search', 'SearchController@search');
+
+
 //POST request
 Route::post('/products','ProductController@store');
 
-Route::post('/mydetails','UserController@displaydetails');
-
-
+//Route::post('/mydetails','UserController@displaydetails');
+Route::post('/edit/{username}', 'UserController2@update');
 
 // GET views
 Route::get('about',function(){
 	return view('pages/about');
 });
 
-Route::get('mydetails', function(){
-	return view('User/mydetails');
-});
-
-
+Route::get('/mydetails/{username}', 'UserController2@index');
+Route::get('/edit/{username}', 'UserController2@edit');
+//Route::get('/edit/{username}', 'userController@index');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::resource('users', 'UserController2' );
