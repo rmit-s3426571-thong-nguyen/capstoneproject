@@ -1,11 +1,32 @@
-@extends('layouts.app')
+<?php /* 
+maybe extends master view here :P
+@extends('layouts.app') 
+*/?>
 
+@extends('layouts.master')
 
 @section('title')
-	Search Result
+    Search Result
 @endsection
 
+@section('content')
+    
+    @if(count($products) > 0)
+    	<div class="row">
+        	@foreach($products as $product)
+            	@include('shop.product')
+        	@endforeach
+        </div>
+    @else
+        <div class="alert alert-danger fade in">
+    		<p><strong>Sorry!</strong> The product you are trying to find is NOT available.</p>
+    		<p>Please search for something else.</p>
+		</div>
+	@endif
+@endsection
 
+<!--
+<?php /*
 @section('search')
 	<div class="container-fluid text-center">
 		<form class="form-inline" action="search" method="GET">
@@ -63,3 +84,5 @@
 		})
 	</script>
 @endsection
+*/ ?>
+-->

@@ -36,8 +36,14 @@ Route::get('/login', [
 
 
 //GET requests through SearchController
-Route::get('/result','SearchController@index');
-Route::get('search', 'SearchController@search');
+//Route::get('/result','SearchController@index');
+//Route::get('search', 'SearchController@search');
+
+
+Route::get('search', array(
+     'as'    =>  'search',
+     'uses'  =>  'SearchController@index'
+ ));
 
 
 //POST request

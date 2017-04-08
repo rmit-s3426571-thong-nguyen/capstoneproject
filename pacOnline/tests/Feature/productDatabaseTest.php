@@ -9,13 +9,9 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class productDatabaseTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testExample()
+   public function testTitleDatabase()
     {
-        $this->assertTrue(true);
+
+        $this->seeInDatabase('products', ['title' => 'phptest']);
     }
 }

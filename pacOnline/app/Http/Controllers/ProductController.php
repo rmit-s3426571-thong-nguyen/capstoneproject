@@ -48,7 +48,7 @@ class ProductController extends Controller
         $this->validate(request(),[
             'title' => 'required',
             'desc' => 'required',
-            'price' => 'required',
+            'price' => 'required|regex:/^[0-9]+(\.[0-9][0-9]?)?$/',
             'imageLocation' => 'required',
         ]);
 
