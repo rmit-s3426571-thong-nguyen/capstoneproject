@@ -11,7 +11,7 @@ class ProductController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['index','show']);
+        $this->middleware('auth')->except(['index','show', ]);
     }
 
     // get all products from database and pass to index to render.
@@ -21,6 +21,14 @@ class ProductController extends Controller
         $products = Product::latest()->get();
 
         return view('shop.index',compact('products'));
+    }
+
+    //get all products and pass to UserProducts
+     public function index2($id)
+    {
+        //using Elequent to get all the products
+        $products = Product::whereUser_id($id)->get();
+        return view('shop.mylistingindex', compact('products'));
     }
 
 

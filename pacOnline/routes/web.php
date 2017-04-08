@@ -20,6 +20,8 @@ Route::get('/products/create','ProductController@create');
 
 Route::get('/products/{product}','ProductController@show');
 
+Route::get('/UserProducts/{id}', 'ProductController@index2');
+
 Route::get('/cart/{id}',[
     'uses' => 'ProductController@addToCart',
     'as'   => 'product.addToCart']);
@@ -50,6 +52,7 @@ Route::get('about',function(){
 });
 
 Route::get('/mydetails/{username}', 'UserController2@index');
+
 Route::get('/edit/{username}', 'UserController2@edit');
 //Route::get('/edit/{username}', 'userController@index');
 
