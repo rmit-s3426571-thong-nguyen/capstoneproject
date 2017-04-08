@@ -67,14 +67,7 @@
                     </li>
                 @endif
                 <li>
-                    <a href="{{ route('product.cart') }}">
-                        <div class="pull-left shoppingbasket"> 
-                            <!--Shopping cart from http://codepen.io/512Finn/pen/ZYXzoL-->
-                            <div class="top"></div>
-                            <div class="bottom"></div>
-                            <div class="left"></div>
-                            <div class="right"></div>
-                        </div>
+                    <a href="{{ route('product.cart') }}"><i class="fa fa-shopping-cart"></i> Cart 
                         <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : ''}}</span>
                     </a>
                 </li>
