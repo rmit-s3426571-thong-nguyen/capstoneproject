@@ -68,6 +68,21 @@ class ProductController extends Controller
         return redirect('/');
     }
 
+    public function edit($id)
+    {
+        $products = Product::findOrFail($id);
+        return view('shop.editproduct', compact('products'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $products = Product::findOrFail($id);
+        $products->update($request->all());
+        return redirect("/UserProducts/$products->id");
+
+    }
+
+
     public function addToCart(Request $request, $id)
     {
         $product = Product::find($id);

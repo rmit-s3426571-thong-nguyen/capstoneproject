@@ -21,6 +21,7 @@ Route::get('/products/create','ProductController@create');
 Route::get('/products/{product}','ProductController@show');
 
 Route::get('/UserProducts/{id}', 'ProductController@index2');
+Route::get('/editproduct/{id}', 'ProductController@edit');
 
 Route::get('/cart/{id}',[
     'uses' => 'ProductController@addToCart',
@@ -51,6 +52,7 @@ Route::post('/products','ProductController@store');
 
 //Route::post('/mydetails','UserController@displaydetails');
 Route::post('/edit/{username}', 'UserController2@update');
+Route::post('/edit/{id}', 'ProductController@update');
 
 // GET views
 Route::get('about',function(){
@@ -66,3 +68,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 Route::resource('users', 'UserController2' );
+Route::resource('product', 'ProductController' );
