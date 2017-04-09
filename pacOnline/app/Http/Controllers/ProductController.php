@@ -12,7 +12,7 @@ class ProductController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['index','show']);
+        $this->middleware('auth')->except(['index','show', ]);
     }
 
     // get all products from database and pass to index to render.
@@ -22,6 +22,14 @@ class ProductController extends Controller
         $products = Product::latest()->get();
 
         return view('shop.index',compact('products'));
+    }
+
+    //get all products and pass to UserProducts
+     public function index2($id)
+    {
+        //using Elequent to get all the products
+        $products = Product::whereUser_id($id)->get();
+        return view('shop.mylistingindex', compact('products'));
     }
 
 
@@ -63,6 +71,21 @@ class ProductController extends Controller
         // redirect to home page
         return redirect('/');
     }
+
+    public function edit($id)
+    {
+        $products = Product::findOrFail($id);
+        return view('shop.editproduct', compact('products'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $products = Product::findOrFail($id);
+        $products->update($request->all());
+        return redirect("/UserProducts/$products->id");
+
+    }
+
 
     public function addToCart(Request $request, $id)
     {
