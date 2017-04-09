@@ -26,6 +26,5 @@
 			</span>
 		</div>
 		
-		@include('includes.errors')
 	</form>
 </div>

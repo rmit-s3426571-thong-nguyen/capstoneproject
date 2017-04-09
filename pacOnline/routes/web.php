@@ -43,6 +43,9 @@ Route::get('search', array(
      'uses'  =>  'SearchController@index'
  ));
 
+//Category
+Route::resource('categories','CategoryController');
+
 
 //POST request
 Route::post('/products','ProductController@store');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cart;
 use App\Product;
+use App\Category;
 use Illuminate\Http\Request;
 use Session;
 
@@ -26,7 +27,8 @@ class ProductController extends Controller
 
     public function create()
     {
-    	return view('shop.create');
+        $categories = Category::all();
+    	return view('shop.create',compact('categories'));
     }
 
     public function show(Product $product)
@@ -40,6 +42,7 @@ class ProductController extends Controller
         $this->validate(request(),[
             'title' => 'required',
             'desc' => 'required',
+            'category_id' => 'required|integer',
             'price' => 'required|regex:/^[0-9]+(\.[0-9][0-9]?)?$/',
             'imageLocation' => 'required',
         ]);
@@ -50,6 +53,7 @@ class ProductController extends Controller
         $product->user_id = auth()->id();
         $product->title = request('title');
         $product->desc = request('desc');
+        $product->category_id = request('category_id');
         $product->price = request('price');
         $product->imageLocation = request('imageLocation');
 

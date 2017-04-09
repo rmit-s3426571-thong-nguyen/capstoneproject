@@ -24,6 +24,15 @@
 		</div>
 
 		<div class="form-group">
+			<label for="category_id">Category</label>
+			<select class="form-control" name="category_id">
+				@foreach($categories as $category)
+					<option value="{{ $category->id }}"> {{ $category->name }}</option>
+				@endforeach
+			</select>
+		</div>
+
+		<div class="form-group">
 			<label for="price">Price</label>
 			<textarea type="body" class="form-control" id="price" value="{{ old('price') }}" name="price" ></textarea>
 		</div>

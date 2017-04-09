@@ -15,6 +15,8 @@
                 {{ $product->user->name  }} posted
                 {{ $product->created_at->diffForHumans() }}</p>
 
+            <span class="label label-success">{{ $product->category->name }}</span>
+
             <p>{{ str_limit($product->desc, 45) }}</p>
 
             <div class="clearfix">
