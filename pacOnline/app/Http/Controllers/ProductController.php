@@ -86,6 +86,15 @@ class ProductController extends Controller
 
     }
 
+    public function destroy($id)
+    {
+        $products = Product::findOrFail($id);
+
+        $products->delete();
+
+        return redirect("/UserProducts/$products->id");
+    }
+    
 
     public function addToCart(Request $request, $id)
     {

@@ -18,7 +18,18 @@
 
             <div class="clearfix">
                 <div class="pull-left"><p><b>${{ $product->price }}</b></p></div>
-                <a href="/editproduct/{{$product->id}}" class="btn btn-primary pull-right"  role="button">Edit Product</a>
+
+                @if($product->user_id == Auth::id())
+                <form method="POST" action="/product/{{$product->id}}">
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+
+                <button class="btn btn-primary btn-danger pull-right"  role="button">Delete</button>
+                </form>
+                @endif
+                <a href="/editproduct/{{$product->id}}" class="btn btn-primary pull-right"  role="button">Edit </a>
+
+                
             </div>
 
         </div>
