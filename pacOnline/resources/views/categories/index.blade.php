@@ -4,18 +4,26 @@
 
     <div class="row">
         <div class="col-md-8">
-            <h1>Categories</h1>
-                <ul>
-                    @foreach ($categories as $category)
+            <div data-role="page" id="pageone">
+                <div data-role="header">
+                    <h1>Manage Categories</h1>
+                </div>
 
-                        <li><a href="{{ route('categories.edit', $category->id ) }}">{{ $category->name }}</a>
-                            @if(count($category->children))
-                                @include('categories.subcategories',['children' => $category->children])
-                            @endif
-                        </li>
-                    @endforeach
-                </ul>
-
+                <div data-role="main" class="ui-content">
+                    <h2>Category Lists</h2>
+                    <div data-role="collapsible">
+                        <ul>
+                            @foreach ($categories as $category)
+                                <li><a href="{{ route('categories.edit', $category->id ) }}">{{ $category->name }}</a>
+                                    @if(count($category->children))
+                                        @include('categories.subcategories',['children' => $category->children])
+                                    @endif
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div> <!-- end show category section  -->
         <div class="col-md-4">
             <div class="well">

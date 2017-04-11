@@ -79,9 +79,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-
+        $allCategories = Category::orderBy('name')->get();
         $category = Category::whereId($id)->first();        
-        return view('categories.edit', compact('category'));
+        return view('categories.edit', compact('category','allCategories'));
     }
 
     /**
@@ -99,6 +99,8 @@ class CategoryController extends Controller
         $input = $request->all();
 
         $category = Category::whereId($id)->first();
+
+        $input['parent_id'] = empty($input['parent_id']) ? 0 : $input['parent_id'];
 
         $category->fill($input)->save();
 
