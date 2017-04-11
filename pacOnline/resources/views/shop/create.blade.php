@@ -19,7 +19,7 @@
 		</div>
 
 		<div class="form-group">
-			<label for="desc">Desciption</label>
+			<label for="desc">Description</label>
 			<textarea type="body" class="form-control" id="desc" value="{{ old('desc') }}" name="desc"></textarea>
 		</div>
 
@@ -29,6 +29,7 @@
 				@foreach($categories as $category)
 					<option value="{{ $category->id }}"> {{ $category->name }}</option>
 				@endforeach
+				<option>1</option>
 			</select>
 		</div>
 
