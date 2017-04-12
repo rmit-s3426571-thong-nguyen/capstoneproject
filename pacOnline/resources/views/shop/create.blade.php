@@ -29,7 +29,6 @@
 				@foreach($categories as $category)
 					<option value="{{ $category->id }}"> {{ $category->name }}</option>
 				@endforeach
-				<option>1</option>
 			</select>
 		</div>
 

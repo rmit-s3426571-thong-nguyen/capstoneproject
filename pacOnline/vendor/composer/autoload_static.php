@@ -304,7 +304,6 @@ class ComposerStaticInit0757d6bd43b668fa6b673544fa2611bd
     );
 
     public static $classMap = array (
-        'AddCategoryIdToProducts' => __DIR__ . '/../..' . '/database/migrations/2017_04_08_045438_add_category_id_to_products.php',
         'AddUserTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_26_231022_add_user_table.php',
         'ArithmeticError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/ArithmeticError.php',
         'AssertionError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/AssertionError.php',
