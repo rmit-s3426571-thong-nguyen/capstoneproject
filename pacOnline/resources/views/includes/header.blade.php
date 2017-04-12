@@ -40,7 +40,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="/UserProducts/{{Auth::user()->id}}">
+                                <a href="/userproducts/{{Auth::user()->id}}">
                                     My Listings
                                 </a>
                             </li>
