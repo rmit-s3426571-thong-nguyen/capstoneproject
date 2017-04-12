@@ -2,6 +2,9 @@
 	 this is for educational purposes only -->
 
 <div class="container-fluid text-center">
+<!--
+<?php 
+/*
 	<form class="form-inline" action="{!! URL::to('SearchController.search') !!}" method="get">
 
 		<div class="input-group custom-search-form">
@@ -11,5 +14,17 @@
 				<button type="submit" class="btn btn-default-sm">Search</button>
 			</span>
 		</div>
+	</form>
+ */
+ ?>
+-->
+	<form class="form-inline" action="{{ url('/search') }}" method="get">
+		<div class="input-group custom-search-form">
+			<input type="text" name="search" id="search" class="form-control" size="50" placeholder="Search . . .">
+			<span class="input-group-btn">
+				<button type="submit" class="btn btn-default-sm">Search</button>
+			</span>
+		</div>
+		
 	</form>
 </div>

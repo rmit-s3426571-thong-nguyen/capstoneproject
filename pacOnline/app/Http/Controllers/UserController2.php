@@ -35,16 +35,18 @@ class UserController2 extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+ protected function validator(array $data)
     {
-          $this->validate(request(),[
-           'name' => 'required|max:255',
+        return Validator::make($data, [
+            'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'birth' => 'required|date_format:"d/m/Y"|before_or_equal:-13 years|after_or_equal:-80 years',
             'Phone' => 'required|regex:/^0[0-8]\d{8}$/',
             'ZIP' => 'required|regex:/^[0-9]\d{3}$/',
             'password' => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!@$#%^&*?]).*$/|confirmed',
         ]);
+    
+
 /*
         // create a new product
         $user = new User;
@@ -80,7 +82,8 @@ class UserController2 extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return $user;
     }
 
     /**
@@ -105,8 +108,11 @@ class UserController2 extends Controller
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
-        $user->update($request->all());
+        if ($user->password) {
+         $user->update($request->all());
         return redirect('/mydetails/{username}');
+         }
+
     }
 
     /**

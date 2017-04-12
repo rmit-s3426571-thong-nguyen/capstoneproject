@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cart;
 use App\Product;
+use App\Category;
 use Illuminate\Http\Request;
 use Session;
 
@@ -11,7 +12,7 @@ class ProductController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['index','show']);
+        $this->middleware('auth')->except(['index','show', ]);
     }
 
     // get all products from database and pass to index to render.
@@ -23,10 +24,19 @@ class ProductController extends Controller
         return view('shop.index',compact('products'));
     }
 
+    //get all products and pass to UserProducts
+     public function index2($id)
+    {
+        //using Elequent to get all the products
+        $products = Product::whereUser_id($id)->get();
+        return view('shop.mylistingindex', compact('products'));
+    }
+
 
     public function create()
     {
-    	return view('shop.create');
+        $categories = Category::all();
+    	return view('shop.create',compact('categories'));
     }
 
     public function show(Product $product)
@@ -40,7 +50,8 @@ class ProductController extends Controller
         $this->validate(request(),[
             'title' => 'required',
             'desc' => 'required',
-            'price' => 'required',
+            'category_id' => 'required|integer',
+            'price' => 'required|regex:/^[0-9]+(\.[0-9][0-9]?)?$/',
             'imageLocation' => 'required',
         ]);
 
@@ -50,6 +61,7 @@ class ProductController extends Controller
         $product->user_id = auth()->id();
         $product->title = request('title');
         $product->desc = request('desc');
+        $product->category_id = request('category_id');
         $product->price = request('price');
         $product->imageLocation = request('imageLocation');
 
@@ -59,6 +71,30 @@ class ProductController extends Controller
         // redirect to home page
         return redirect('/');
     }
+
+    public function edit($id)
+    {
+        $products = Product::findOrFail($id);
+        return view('shop.editproduct', compact('products'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $products = Product::findOrFail($id);
+        $products->update($request->all());
+        return redirect("/UserProducts/$products->id");
+
+    }
+
+    public function destroy($id)
+    {
+        $products = Product::findOrFail($id);
+
+        $products->delete();
+
+        return redirect("/UserProducts/$products->id");
+    }
+    
 
     public function addToCart(Request $request, $id)
     {

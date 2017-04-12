@@ -2,19 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Product;
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use DB;
 
 class SearchController extends Controller
 {
     // Displays listings
-    public function index() {
+    public function index(Request $request) {
 
+        $this->validate($request, [
+        'search' => 'required',
+        ]);
+
+        $query = $request->get('search');
+
+        $products = $query
+            ? Product::where('title', 'Like', "%$query%")->orWhere('desc', 'LIKE', '%'.$request->search.'%')->latest()->get()
+            : Product::latest()->get();
     	
-        return view('search.result');
+        return view('search.result', compact('products'));
+        //return view('search.result');
     }
 
     public function search(Resquest $request)
