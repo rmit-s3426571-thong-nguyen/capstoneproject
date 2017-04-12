@@ -20,6 +20,7 @@ Route::get('/products/create','ProductController@create');
 
 Route::get('/products/{product}','ProductController@show');
 
+
 Route::get('/UserProducts/{id}', 'ProductController@index2');
 Route::get('/editproduct/{id}', 'ProductController@edit');
 
