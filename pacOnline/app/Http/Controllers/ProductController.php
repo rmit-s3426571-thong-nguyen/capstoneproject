@@ -102,7 +102,7 @@ class ProductController extends Controller
     {
         $products = Product::findOrFail($id);
 
-        $products->delete();
+        $products->delete($id);
 
         return redirect("/UserProducts/$products->id");
     }
