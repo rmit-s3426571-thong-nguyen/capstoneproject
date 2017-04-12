@@ -8,7 +8,6 @@
                 <div data-role="header">
                     <h1>Manage Categories</h1>
                 </div>
-
                 <div data-role="main" class="ui-content">
                     <h2>Category Lists</h2>
                     <div data-role="collapsible">

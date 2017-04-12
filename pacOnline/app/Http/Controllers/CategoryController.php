@@ -94,7 +94,7 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, array(
-            'name' => 'required|unique:categories|max:255'));
+            'name' => 'unique:categories|max:255'));
 
         $input = $request->all();
 

@@ -10,7 +10,7 @@
 			    {{ csrf_field() }}
                 <div class="form-group">
                     <label for="name">New Name:</label>
-                    <input type="text" class="form-control" id="name" name="name">
+                    <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
                 </div>
                 <div class="form-group">
                     <select class="form-control" name="parent_id">
