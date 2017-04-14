@@ -21,9 +21,11 @@ class CategoryController extends Controller
     {
         // display all categories 
         // also have a form on the same page
-        $categories = Category::orderBy('name')->get();
 
-        return view('categories.index',compact('categories'));
+        $categories = Category::orderBy('name')->where('parent_id', '=', 0)->get();
+        $allCategories = Category::orderBy('name')->get();
+
+        return view('categories.index',compact('allCategories','categories'));
     }
 
     /**
@@ -47,9 +49,12 @@ class CategoryController extends Controller
         $this->validate($request, array(
             'name' => 'required|unique:categories|max:255'));
 
-        $category = new Category;
-        $category->name = $request->name;
-        $category->save();
+        $input = $request->all();
+
+        $input['parent_id'] = empty($input['parent_id']) ? 0 : $input['parent_id'];
+
+        Category::create($input);
+
 
         return redirect()->route('categories.index');
 
@@ -74,9 +79,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-
+        $allCategories = Category::orderBy('name')->get();
         $category = Category::whereId($id)->first();        
-        return view('categories.edit', compact('category'));
+        return view('categories.edit', compact('category','allCategories'));
     }
 
     /**
@@ -89,11 +94,13 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, array(
-            'name' => 'required|unique:categories|max:255'));
+            'name' => 'unique:categories|max:255'));
 
         $input = $request->all();
 
         $category = Category::whereId($id)->first();
+
+        $input['parent_id'] = empty($input['parent_id']) ? 0 : $input['parent_id'];
 
         $category->fill($input)->save();
 

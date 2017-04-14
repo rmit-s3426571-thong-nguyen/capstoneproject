@@ -9,6 +9,7 @@ return array(
     'AddUserTable' => $baseDir . '/database/migrations/2017_03_26_231022_add_user_table.php',
     'ArithmeticError' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/ArithmeticError.php',
     'AssertionError' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/AssertionError.php',
+    'CategoriesTableSeeder' => $baseDir . '/database/seeds/CategoriesTableSeeder.php',
     'Collator' => $vendorDir . '/symfony/symfony/src/Symfony/Component/Intl/Resources/stubs/Collator.php',
     'CreateCategoriesTable' => $baseDir . '/database/migrations/2017_04_08_044926_create_categories_table.php',
     'CreateCommentsTable' => $baseDir . '/database/migrations/2017_03_19_061434_create_comments_table.php',

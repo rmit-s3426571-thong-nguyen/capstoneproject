@@ -307,6 +307,7 @@ class ComposerStaticInit0757d6bd43b668fa6b673544fa2611bd
         'AddUserTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_26_231022_add_user_table.php',
         'ArithmeticError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/ArithmeticError.php',
         'AssertionError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/AssertionError.php',
+        'CategoriesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CategoriesTableSeeder.php',
         'Collator' => __DIR__ . '/..' . '/symfony/symfony/src/Symfony/Component/Intl/Resources/stubs/Collator.php',
         'CreateCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_08_044926_create_categories_table.php',
         'CreateCommentsTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_19_061434_create_comments_table.php',

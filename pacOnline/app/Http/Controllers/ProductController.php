@@ -55,7 +55,23 @@ class ProductController extends Controller
             'imageLocation' => 'required',
         ]);
 
-        // create a new product
+        if (request()->get('sell')){
+            $product = new Product;
+
+            $product->user_id = auth()->id();
+            $product->title = request('title');
+            $product->desc = request('desc');
+            $product->category_id = request('category_id');
+            $product->price = request('price');
+            $product->imageLocation = request('imageLocation');
+
+            // save to the database
+            $product->save();
+
+            // redirect to home page
+            return redirect('/');
+        }
+
         $product = new Product;
 
         $product->user_id = auth()->id();
@@ -65,11 +81,7 @@ class ProductController extends Controller
         $product->price = request('price');
         $product->imageLocation = request('imageLocation');
 
-        // save to the database
-        $product->save();
-
-        // redirect to home page
-        return redirect('/');
+        return view('shop.preview', compact('product'));
     }
 
     public function edit($id)
@@ -82,7 +94,7 @@ class ProductController extends Controller
     {
         $products = Product::findOrFail($id);
         $products->update($request->all());
-        return redirect("/UserProducts/$products->id");
+        return redirect("/userproducts/$products->user_id");
 
     }
 
@@ -90,9 +102,9 @@ class ProductController extends Controller
     {
         $products = Product::findOrFail($id);
 
-        $products->delete();
+        $products->delete($id);
 
-        return redirect("/UserProducts/$products->id");
+        return redirect("/userproducts/$products->user_id");
     }
     
 
