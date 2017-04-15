@@ -26,6 +26,8 @@
               <br>
               <small>
                 <a href="/edit/{{Auth::user()->id}}">Edit Profile</a>
+                <br>
+                <a href="/editpassword/{{Auth::user()->id}}">Edit Password</a>
               </small>
         </div>
       </div>

@@ -56,6 +56,7 @@ Route::post('/products','ProductController@store');
 
 //Route::post('/mydetails','UserController@displaydetails');
 Route::post('/edit/{username}', 'UserController2@update');
+Route::post('/editpassword/{username}', 'UserController2@updatepassword');
 Route::post('/edit/{id}', 'ProductController@update');
 
 // GET views
@@ -65,7 +66,9 @@ Route::get('about',function(){
 
 Route::get('/mydetails/{username}', 'UserController2@index');
 
+Route::get('/editpassword/{username}', 'UserController2@editpassword');
 Route::get('/edit/{username}', 'UserController2@edit');
+
 //Route::get('/edit/{username}', 'userController@index');
 
 Auth::routes();

@@ -98,6 +98,12 @@ class UserController2 extends Controller
         return view('User.edit', compact('user'));
     }
 
+    public function editpassword($id)
+    {
+        $user = User::findOrFail($id);
+        return view('User.editpassword', compact('user'));
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -115,6 +121,33 @@ class UserController2 extends Controller
 
     }
 
+  public function updatepassword(Request $request)
+    {
+        $this->validate($request, [
+            'old' => 'required',
+            'password' => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!@$#%^&*?]).*$/|confirmed',
+        ]);
+ 
+        $user = User::find(Auth::id());
+        $hashedPassword = $user->password;
+ 
+        if (Hash::check($request->old, $hashedPassword)) {
+            //Change the password
+            $user->fill([
+                'password' => Hash::make($request->password)
+            ])->save();
+ 
+            $request->session()->flash('success', 'Your password has been changed.');
+ 
+            return back();
+        }
+ 
+        $request->session()->flash('failure', 'Your password has not been changed.');
+ 
+        return back();
+ 
+ 
+    }
     /**
      * Remove the specified resource from storage.
      *
