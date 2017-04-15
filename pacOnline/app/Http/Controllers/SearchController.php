@@ -87,40 +87,58 @@ class SearchController extends Controller
         $scoreTitleKey = 5; // Match title in part
         $scoreFullDesc = 5; //Exact match in description
         $scoreDescKey = 3; // Match description in part
-        $scoreCat = 1; // Match with Category
-        $score = 0; // starting score
+        $noScore = 0; // starting score
 
         $keywords = filter($query);
         $products = DB::table('products');
         $titleSQL = array();
         $descSQL = array();
-        $catSQL = array();
 
         // Exact match ; higher chances of appearing at top of result
-        if (count($keywords)) {
-            $titleSQL[] = "if (title LIKE '%''.$query.''%', {$scoreFullTitle}, 0)";
-            $descSQL[] = "if (desc LIKE '%''.$query.''%', {$scoreFullDesc}, 0)";
-        }
+        if (count($keywords) > 1) {
+           // $titleSQL[] = "if (title LIKE '%''.$query.''%', {$scoreFullTitle}, 0)";
+           // $descSQL[] = "if (desc LIKE '%''.$query.''%', {$scoreFullDesc}, 0)";
 
-        // Part match
-        foreach($keywords as $key) {
-            $titleSQL[] = "if (title LIKE '%''.DB::escape($key).''%',,{$scoreTitleKey},0)";
-            $sumSQL[] = "if (desc LIKE '%''.DB::escape($key).''%',,{$scoreDescKey},0)";
+            // Part match
+            foreach($keywords as $key) {
+                $titleSQL[] = "if (title LIKE '%''.DB::escape($key).''%',,{$scoreTitleKey},0)";
+                $sumSQL[] = "if (desc LIKE '%''.DB::escape($key).''%',,{$scoreDescKey},0)";
 
-
-
-            if($products) {
-                foreach($products as $key => $product) {
-                    $output.='<tr>'.
-                             '<td>'.$product->imageLocation.'</td>'.
-                             '<td>'.$product->title.'</td>'.
-                             '<td>'.$product->desc.'</td>'.
-                             '<td>'.$product->price.'</td>'.
-                             '<td>'.$product->user->name.'</td>'.
-                             '<td>'.$product->created_at->diffForHumans.'</td>'.
-                             '</tr>';
+                // Just incase it's empty, add 0
+                if (empty($titleSQL)){
+                    $titleSQL[] = $noScore;
                 }
-            return Response($output);
+                if (empty($descSQL)){
+                    $descSQL[] = $noScore;
+                }
+
+                $sql = "SELECT products.title,products.desc
+                        (
+                            (-- Title score
+                                ".implode(" + ", $titleSQL)." ) 
+                            +
+                            (-- Description score
+                                ".implode(" + ", $descSQL)." )
+                        ) as relevance
+                        FROM products
+                        HAVING relevance > 0
+                        ORDER BY relevance title
+                        LIMIT 10";
+                
+
+                if($products) {
+                    foreach($products as $key => $product) {
+                       $output.='<tr>'.
+                                '<td>'.$product->imageLocation.'</td>'.
+                                '<td>'.$product->title.'</td>'.
+                                '<td>'.$product->desc.'</td>'.
+                                '<td>'.$product->price.'</td>'.
+                                '<td>'.$product->user->name.'</td>'.
+                                '<td>'.$product->created_at->diffForHumans.'</td>'.
+                                '</tr>';
+                    }
+                    return Response($output);
+                }
             }
         }
     }

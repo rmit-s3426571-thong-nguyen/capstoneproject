@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Search extends Model
 {
-    #code ...
+    /* Insert code */
 }

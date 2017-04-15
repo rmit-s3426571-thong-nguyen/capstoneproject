@@ -13,6 +13,7 @@ maybe extends master view here :P
     
     @if(count($products) > 0)
     	<div class="row">
+            <h4 class="text-center"> This is what we could find ... </h4>
         	@foreach($products as $product)
             	@include('shop.product')
         	@endforeach
