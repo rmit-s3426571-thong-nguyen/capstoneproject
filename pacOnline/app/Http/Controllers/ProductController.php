@@ -94,7 +94,7 @@ class ProductController extends Controller
     {
         $products = Product::findOrFail($id);
         $products->update($request->all());
-        return redirect("/UserProducts/$products->id");
+        return redirect("/userproducts/$products->user_id");
 
     }
 
@@ -102,9 +102,9 @@ class ProductController extends Controller
     {
         $products = Product::findOrFail($id);
 
-        $products->delete();
+        $products->delete($id);
 
-        return redirect("/UserProducts/$products->id");
+        return redirect("/userproducts/$products->user_id");
     }
     
 
