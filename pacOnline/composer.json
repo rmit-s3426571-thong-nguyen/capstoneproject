@@ -56,4 +56,5 @@
         "preferred-install": "dist",
         "sort-packages": true
     }
+    "nicolaslopezj/searchable": "1.*"
 }

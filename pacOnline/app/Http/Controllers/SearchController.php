@@ -8,45 +8,21 @@ use DB;
 
 class SearchController extends Controller
 {
-    // Displays listings
     public function index(Request $request) {
 
-        $this->validate($request, [
-        'search' => 'required',
-        ]);
+        $this->validate($request, ['search' => 'required',]);
 
         $query = $request->get('search');
 
         $products = $query
-            ? Product::where('title', 'Like', "%$query%")->orWhere('desc', 'LIKE', '%'.$request->search.'%')->latest()->get()
+            ? Product::where('title', 'LIKE', "%$query%")
+                     ->orWhere('desc', 'LIKE', '%'.$request->search.'%')->latest()->get()
             : Product::latest()->get();
     	
         return view('search.result', compact('products'));
         //return view('search.result');
     }
 
-    /* ORIGINAL LINDEAR SEARCH FUNCTION
-    public function search(Resquest $request)
-    {
-    	if($request->ajax()) {
-    		$output="";
-    		$products=DB::table('products')->where('title', 'LIKE', '%'.$request->search.'%')
-    									   ->orWhere('desc', 'LIKE', '%'.$request->search.'%')->get();
-    		if($products) {
-    			foreach($products as $key => $product) {
-    				$output.='<tr>'.
-    						 '<td>'.$product->imageLocation.'</td>'.
-    						 '<td>'.$product->title.'</td>'.
-    						 '<td>'.$product->desc.'</td>'.
-    						 '<td>'.$product->price.'</td>'.
-    						 '<td>'.$product->user->name.'</td>'.
-    						 '<td>'.$product->created_at->diffForHumans.'</td>'.
-    					 	 '</tr>';
-    			}
-    			return Response($output);
-    		}
-    	}
-    } */
 
 
     /* The following code was adapted from http://idiallo.com/blog/php-mysql-search-algorithm
@@ -71,13 +47,8 @@ class SearchController extends Controller
         }
         return $words;
     }
-    
-    public static function escape($string){
-        $con = self::connect();
-        return $con->real_escape_string($string);
-    }
 
-    // Search with score
+    /* Search with score
     public function search(Resquest $request)
     {
         $query = trim($request);
@@ -85,23 +56,49 @@ class SearchController extends Controller
         // Scores
         $scoreFullTitle = 10; // Exact match in title
         $scoreTitleKey = 5; // Match title in part
-        $scoreFullDesc = 5; //Exact match in description
-        $scoreDescKey = 3; // Match description in part
-        $noScore = 0; // starting score
+        $scoreFullDesc = 8; //Exact match in description
+        $scoreDescKey = 2; // Match description in part
+        $score = 0; // initial score
 
         $keywords = filter($query);
         $products = DB::table('products');
         $titleSQL = array();
         $descSQL = array();
+        $title_arr = array();
+        $desc_arr = array();
 
         // Exact match ; higher chances of appearing at top of result
-        if (count($keywords) > 1) {
-           // $titleSQL[] = "if (title LIKE '%''.$query.''%', {$scoreFullTitle}, 0)";
-           // $descSQL[] = "if (desc LIKE '%''.$query.''%', {$scoreFullDesc}, 0)";
 
-            // Part match
+        $products=DB::table('products')->where('title', 'LIKE', '%'.$request->search.'%')
+                                       ->orWhere('desc', 'LIKE', '%'.$request->search.'%')->get();
+
+
+
+        if($products) {
+            foreach($products as $key => $product) {
+                $output.='<tr>'.
+                         '<td>'.$product->imageLocation.'</td>'.
+                         '<td>'.$product->title.'</td>'.
+                         '<td>'.$product->desc.'</td>'.
+                         '<td>'.$product->price.'</td>'.
+                         '<td>'.$product->user->name.'</td>'.
+                         '<td>'.$product->created_at->diffForHumans.'</td>'.
+                         '</tr>';
+            }
+            return Response($output);
+        }
+        
+
+
+        if (count($keywords) > 1) {
+            $titleSQL[] = "if (title LIKE '%''.$query.''%', {$scoreFullTitle}, 0)";
+            $descSQL[] = "if (desc LIKE '%''.$query.''%', {$scoreFullDesc}, 0)";
+
+            // Part match ; compare query and database word for word
             foreach($keywords as $key) {
-                $titleSQL[] = "if (title LIKE '%''.DB::escape($key).''%',,{$scoreTitleKey},0)";
+                $titleSQL[] = "if (
+                                    title_arr = explode(title)
+                                    title_arr LIKE '%''.DB::escape($key.''%',,{$scoreTitleKey},0)";
                 $sumSQL[] = "if (desc LIKE '%''.DB::escape($key).''%',,{$scoreDescKey},0)";
 
                 // Just incase it's empty, add 0
@@ -124,8 +121,7 @@ class SearchController extends Controller
                         HAVING relevance > 0
                         ORDER BY relevance title
                         LIMIT 10";
-                
-
+                }
                 if($products) {
                     foreach($products as $key => $product) {
                        $output.='<tr>'.
@@ -138,8 +134,7 @@ class SearchController extends Controller
                                 '</tr>';
                     }
                     return Response($output);
-                }
             }
         }
-    }
+    }*/
 }
