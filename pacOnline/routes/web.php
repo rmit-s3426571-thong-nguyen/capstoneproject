@@ -47,16 +47,19 @@ Route::get('search', array(
      'uses'  =>  'SearchController@index'
  ));
 
+
+
 //Category
 Route::resource('categories','CategoryController');
 
-Route::put('/editpassword/{username}', 'UserController2@updatepassword');
+
 //POST request
 Route::post('/products','ProductController@store');
 
 //Route::post('/mydetails','UserController@displaydetails');
-Route::post('/editpassword/{username}', 'UserController2@updatepassword');
+Route::post('/editpassword/{username}', 'UpdatePasswordController@update');
 Route::post('/edit/{username}', 'UserController2@update');
+
 
 Route::post('/edit/{id}', 'ProductController@update');
 
@@ -66,9 +69,10 @@ Route::get('about',function(){
 });
 
 Route::get('/mydetails/{username}', 'UserController2@index');
-
-Route::get('/editpassword/{username}', 'UserController2@editpassword');
+Route::get('/editpassword/{username}', 'UpdatePasswordController@edit');
 Route::get('/edit/{username}', 'UserController2@edit');
+
+
 
 //Route::get('/edit/{username}', 'userController@index');
 
@@ -77,3 +81,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 Route::resource('users', 'UserController2');
 Route::resource('product', 'ProductController' );
+Route::resource('password', 'UpdatePasswordController');

@@ -8,21 +8,7 @@ use Auth;
 
 class UserController2 extends Controller
 {
-    public function admin_credential_rules(array $data)
-{
-  $messages = [
-    'current-password.required' => 'Please enter current password',
-    'password.required' => 'Please enter password',
-  ];
-
-  $validator = Validator::make($data, [
-    'current-password' => 'required',
-    'password' => 'required|same:password',
-    'password_confirmation' => 'required|same:password',     
-  ], $messages);
-
-  return $validator;
-}  
+   
     /**
      * Display a listing of the resource.
      *
@@ -50,7 +36,7 @@ class UserController2 extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
- protected function validator(array $data)
+    protected function validator(array $data)
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
@@ -60,32 +46,11 @@ class UserController2 extends Controller
             'ZIP' => 'required|regex:/^[0-9]\d{3}$/',
             'password' => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!@$#%^&*?]).*$/|confirmed',
         ]);
-    
-
-/*
-        // create a new product
-        $user = new User;
-
-       // $user->user_id = auth()->id();
-        $user->name = request('name');
-        $user->email = request('email');
-        $user->birth = request('birth');
-        $user->Phone = request('Phone');
-        $user->Address = request('Address');
-        $user->City = request('City');
-        $user->State = request('State');
-        $user->ZIP = request('ZIP');
-        $user->password = request('password');
-
-
         
-        //$product->imageLocation = request('imageLocation');
+    }
 
-        // save to the database
-        $user->save();
-
-        // redirect to home page
-        return redirect('/');*/
+    public function store(Request $request)
+    {
         User::create($request->all());
     }
 
@@ -97,8 +62,8 @@ class UserController2 extends Controller
      */
     public function show($id)
     {
-        $user = User::findOrFail($id);
-        return $user;
+        $users = User::findOrFail($id);
+        return $users;
     }
 
     /**
@@ -109,15 +74,10 @@ class UserController2 extends Controller
      */
     public function edit($id)
     {
-        $user = User::findOrFail($id);
-        return view('User.edit', compact('user'));
+        $users = User::findOrFail($id);
+        return view('User.edit', compact('users'));
     }
 
-    public function editpassword($id)
-    {
-        $user = User::findOrFail($id);
-        return view('User.editpassword', compact('user'));
-    }
 
     /**
      * Update the specified resource in storage.
@@ -134,7 +94,7 @@ class UserController2 extends Controller
             'birth' => 'required|date_format:"d/m/Y"|before_or_equal:-13 years|after_or_equal:-80 years',
             'Phone' => 'required|regex:/^0[0-8]\d{8}$/',
             'ZIP' => 'required|regex:/^[0-9]\d{3}$/',
-            //'password' => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!@$#%^&*?]).*$/|confirmed',
+            
         ]);
         $user = User::findOrFail($id);
        
@@ -142,22 +102,7 @@ class UserController2 extends Controller
         return redirect('/mydetails/{username}');
     }
 
-    public function updatepassword(Request $request, $id)
-    {
-        $this->validate($request, [
-            //'name' => 'required|max:255',
-            //'email' => 'required|email|max:255|unique:users',
-           // 'birth' => 'required|date_format:"d/m/Y"|before_or_equal:-13 years|after_or_equal:-80 years',
-           // 'Phone' => 'required|regex:/^0[0-8]\d{8}$/',
-            //'ZIP' => 'required|regex:/^[0-9]\d{3}$/',
-            'password' => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!@$#%^&*?]).*$/|confirmed',
-        ]);
-      
-        $user = User::findOrFail($id);
-       
-        $user->update($request->all());
-        return redirect('/mydetails/{username}');
-    }
+
     /**
      * Remove the specified resource from storage.
      *
