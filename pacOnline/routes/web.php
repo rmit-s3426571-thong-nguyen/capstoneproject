@@ -50,13 +50,14 @@ Route::get('search', array(
 //Category
 Route::resource('categories','CategoryController');
 
-
+Route::put('/editpassword/{username}', 'UserController2@updatepassword');
 //POST request
 Route::post('/products','ProductController@store');
 
 //Route::post('/mydetails','UserController@displaydetails');
-Route::post('/edit/{username}', 'UserController2@update');
 Route::post('/editpassword/{username}', 'UserController2@updatepassword');
+Route::post('/edit/{username}', 'UserController2@update');
+
 Route::post('/edit/{id}', 'ProductController@update');
 
 // GET views
@@ -74,5 +75,5 @@ Route::get('/edit/{username}', 'UserController2@edit');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-Route::resource('users', 'UserController2' );
+Route::resource('users', 'UserController2');
 Route::resource('product', 'ProductController' );
