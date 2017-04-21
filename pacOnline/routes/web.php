@@ -73,3 +73,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 Route::resource('users', 'UserController2' );
 Route::resource('product', 'ProductController' );
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
