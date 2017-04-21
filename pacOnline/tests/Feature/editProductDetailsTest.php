@@ -43,5 +43,21 @@ class editProductDetailsTest extends TestCase
 	    $this->press('Sell this product');
     }
 
+    public function testEditProductDetailsWorking()
+    {
+        $this->visit('/login');
+        $this->seePageIs('/login');
+        $this->type('testuser2@gmail.com', 'email');
+        $this->type('A!1234', 'password');
+        $this->press('Login');
+        $this->seePageIs('/');
+        $this->visit('/edit/1');
+        $this->seePageIs('/edit/1');
+        $this->type('333333333', 'Phone');
+        $this->type('A!1234', 'password');
+        $this->type('A!1234', 'password_confirmation');
+        $this->press('Edit');
+    }
+
     
 }
