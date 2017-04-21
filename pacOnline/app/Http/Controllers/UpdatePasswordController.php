@@ -6,9 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use Auth;
 
-class UserController2 extends Controller
+class UpdatePasswordController extends Controller
 {
-   
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +15,8 @@ class UserController2 extends Controller
      */
     public function index($id)
     {
-         $user = User::whereId($id)->first();
-         return view('User.mydetails', compact('user'));
+        $user = User::whereId($id)->first();
+        return view('User.mydetails', compact('user'));
     }
 
     /**
@@ -30,28 +29,16 @@ class UserController2 extends Controller
         return view('auth.register');
     }
 
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'birth' => 'required|date_format:"d/m/Y"|before_or_equal:-13 years|after_or_equal:-80 years',
-            'Phone' => 'required|regex:/^0[0-8]\d{8}$/',
-            'ZIP' => 'required|regex:/^[0-9]\d{3}$/',
-            'password' => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!@$#%^&*?]).*$/|confirmed',
-        ]);
-        
-    }
-
     public function store(Request $request)
     {
-        User::create($request->all());
+         User::create($request->all());
     }
 
     /**
@@ -62,8 +49,8 @@ class UserController2 extends Controller
      */
     public function show($id)
     {
-        $users = User::findOrFail($id);
-        return $users;
+        $user = User::findOrFail($id);
+        return $user;
     }
 
     /**
@@ -74,10 +61,9 @@ class UserController2 extends Controller
      */
     public function edit($id)
     {
-        $users = User::findOrFail($id);
-        return view('User.edit', compact('users'));
+        $user = User::findOrFail($id);
+        return view('User.editpassword', compact('user'));
     }
-
 
     /**
      * Update the specified resource in storage.
@@ -89,19 +75,14 @@ class UserController2 extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required|max:255',
-            //'email' => 'required|email|max:255|unique:users',
-            'birth' => 'required|date_format:"d/m/Y"|before_or_equal:-13 years|after_or_equal:-80 years',
-            'Phone' => 'required|regex:/^0[0-8]\d{8}$/',
-            'ZIP' => 'required|regex:/^[0-9]\d{3}$/',
-            
+            'password' => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!@$#%^&*?]).*$/|confirmed',
         ]);
+      
         $user = User::findOrFail($id);
        
         $user->update($request->all());
         return redirect('/mydetails/{username}');
     }
-
 
     /**
      * Remove the specified resource from storage.
