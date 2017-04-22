@@ -16,12 +16,17 @@ class Category extends Model
 
     protected $fillable = ['slug', 'name'];
 
-    public function posts()
+    public function products()
     {
-        return $this->hasMany(Voyager::modelClass('Post'))
-            ->published()
-            ->orderBy('created_at', 'DESC');
+         return $this->hasMany(Product::class); 
     }
+
+    // public function posts()
+    // {
+    //     return $this->hasMany(Voyager::modelClass('Post'))
+    //         ->published()
+    //         ->orderBy('created_at', 'DESC');
+    // }
 
     public function parentId()
     {
