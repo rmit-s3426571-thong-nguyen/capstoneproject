@@ -84,8 +84,7 @@ Route::resource('product', 'ProductController' );
 
 Route::resource('password', 'UpdatePasswordController');
 
+
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
-
-?>
