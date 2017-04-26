@@ -16,11 +16,11 @@ class editProductDetailsTest extends TestCase
 		$this->type('testuser2', 'name');
 	    $this->type('testuser2@gmail.com', 'email');
 	    $this->type('17/04/2000','birth');
-	    $this->type('0411122233','Phone');
-	    $this->type('sdfafsdafdasf','Address');
-	    $this->type('melbourne','City');
-	    $this->type('VIC','State');
-	    $this->type('3000','ZIP');
+	    $this->type('0411122233','phone');
+	    $this->type('sdfafsdafdasf','address');
+	    $this->type('melbourne','city');
+	    $this->type('VIC','state');
+	    $this->type('3000','zip');
 	    $this->type('A!1234', 'password');
 	    $this->type('A!1234', 'password_confirmation');
 	    $this->press('Register');       
@@ -53,7 +53,7 @@ class editProductDetailsTest extends TestCase
         $this->seePageIs('/');
         $this->visit('/edit/1');
         $this->seePageIs('/edit/1');
-        $this->type('333333333', 'Phone');
+        $this->type('333333333', 'phone');
         $this->type('A!1234', 'password');
         $this->type('A!1234', 'password_confirmation');
         $this->press('Edit');

@@ -14,6 +14,7 @@ class AddUserTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
+<<<<<<< HEAD
             //
             $table->integer('phone')->after('birth');
             $table->string('address')->after('phone');
@@ -21,6 +22,13 @@ class AddUserTable extends Migration
             $table->string('state')->after('city');
             $table->integer('ZIP')->after('state');
 
+=======
+            $table->integer('phone')->nullable()->after('birth');
+            $table->string('address')->nullable()->after('phone');
+            $table->string('city')->nullable()->after('address');
+            $table->string('state')->nullable()->after('city');
+            $table->integer('zip')->nullable()->after('state');
+>>>>>>> master
         });
     }
 

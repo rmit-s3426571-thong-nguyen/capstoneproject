@@ -58,6 +58,43 @@
                                        placeholder="Email" id="email"
                                        value="@if(isset($dataTypeContent->email)){{ old('email', $dataTypeContent->email) }}@else{{old('email')}}@endif">
                             </div>
+                            <div class="form-group">
+                                <label for="birth">Date of Birth</label>
+                                <input type="text" class="form-control" name="birth"
+                                       placeholder="dd/mm/yyyy" id="birth"
+                                       value="@if(isset($dataTypeContent->birth)){{ old('birth', $dataTypeContent->birth) }}@else{{old('birth')}}@endif">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Phone">Phone number</label>
+                                <input type="text" class="form-control" name="Phone"
+                                       placeholder="0411122233" id="Phone"
+                                       value="@if(isset($dataTypeContent->phone)){{ old('Phone', $dataTypeContent->phone) }}@else{{old('Phone')}}@endif">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Address">Address</label>
+                                <input type="text" class="form-control" name="Address" id="Address"
+                                       value="@if(isset($dataTypeContent->address)){{ old('Address', $dataTypeContent->address) }}@else{{old('Address')}}@endif">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="City">City</label>
+                                <input type="text" class="form-control" name="City" id="City"
+                                       value="@if(isset($dataTypeContent->city)){{ old('City', $dataTypeContent->city) }}@else{{old('City')}}@endif">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="State">State</label>
+                                <input type="text" class="form-control" name="State" id="State"
+                                       value="@if(isset($dataTypeContent->state)){{ old('State', $dataTypeContent->state) }}@else{{old('State')}}@endif">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ZIP">ZIP</label>
+                                <input type="text" class="form-control" name="ZIP" id="ZIP"
+                                       value="@if(isset($dataTypeContent->ZIP)){{ old('ZIP', $dataTypeContent->ZIP) }}@else{{old('ZIP')}}@endif">
+                            </div>
 
                             <div class="form-group">
                                 <label for="password">Password</label>
