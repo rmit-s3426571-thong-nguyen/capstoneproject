@@ -59,7 +59,7 @@
 
                             <div class="col-md-6">
                                 <input id="Phone" type="text" class="form-control" name="Phone" placeholder="0411122233"
-                                    value="{{Auth::user()->phone}}" required autofocus>
+                                    value="0{{Auth::user()->phone}}" required autofocus>
                                 @if ($errors->has('Phone'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('Phone') }}</strong>
@@ -121,33 +121,6 @@
                                         <strong>{{ $errors->first('ZIP') }}</strong>
                                     </span>
                                 @endif
-                            </div>
-                        </div>
-                      
-                       <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-                                <label> Password must contain combination of:<br>
-                                - Uppercase characters or Lowercase characters<br>
-                                - Base 10 digits (0-9)<br>
-                                - Non-alphanumeric (eg. !,@,$,#,%,^,&,* or ?) <br>
-                                - Min 6 Characters</label>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
                         

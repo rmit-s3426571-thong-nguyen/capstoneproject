@@ -25,6 +25,10 @@ class UserController extends Controller
    	 return view('User.edit', compact('user'));
    }
 
+   public function update_avatar(Request $request){
+
+   }
+   
    public function update(Request $request, $id)
    {
     /*$user = User::findOrFail($id);

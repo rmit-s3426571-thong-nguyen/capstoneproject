@@ -59,6 +59,7 @@ Route::post('/products','ProductController@store');
 //Route::post('/mydetails','UserController@displaydetails');
 Route::post('/editpassword/{username}', 'UpdatePasswordController@update');
 Route::post('/edit/{username}', 'UserController2@update');
+Route::post('/mydetails/{username}','UserController@update_avatar');
 
 
 Route::post('/edit/{id}', 'ProductController@update');

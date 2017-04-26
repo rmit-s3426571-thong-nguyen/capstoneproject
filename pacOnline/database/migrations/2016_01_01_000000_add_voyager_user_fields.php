@@ -10,7 +10,7 @@ class AddVoyagerUserFields extends Migration
     public function up()
     {
         Schema::table('users', function ($table) {
-            $table->string('avatar')->nullable()->after('email');
+            $table->string('avatar')->default('default.jpg')->after('email');
             $table->integer('role_id')->nullable()->after('id');
         });
     }
