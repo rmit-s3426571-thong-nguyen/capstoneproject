@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 
+
 class UserController extends Controller
 {
    public function mydetails($id)
@@ -23,10 +24,6 @@ class UserController extends Controller
    {
      $user = User::findOrFail($id);
    	 return view('User.edit', compact('user'));
-   }
-
-   public function update_avatar(Request $request){
-
    }
    
    public function update(Request $request, $id)

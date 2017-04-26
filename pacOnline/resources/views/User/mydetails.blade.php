@@ -18,13 +18,7 @@
     <div class="col-md-6 col-md-offset-3">
       <div class="panel panel-default">
         <div class="panel-body text-center">
-            <img class="userdetails-img" src="uploads/avatars/{{Auth::user()->avatar}}">
-            <form enctype="multipart/form-data" action="/mydetails" method="POST">
-                <label>Update Profile Image</label>
-                <input type="file" name='avatar'>
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <input type="submit" class="pull-right btn btn-sm btn-primary">
-            </form>
+            <img class="userdetails-img" src="/uploads/avatars/{{Auth::user()->avatar}}">
             <h1>{{Auth::user()->name}}</h1>
             <h5>{{Auth::user()->email}}</h5>
             <h5>{{Auth::user()->birth}}</h3>

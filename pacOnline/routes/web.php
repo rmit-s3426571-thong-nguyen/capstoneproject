@@ -59,7 +59,7 @@ Route::post('/products','ProductController@store');
 //Route::post('/mydetails','UserController@displaydetails');
 Route::post('/editpassword/{username}', 'UpdatePasswordController@update');
 Route::post('/edit/{username}', 'UserController2@update');
-Route::post('/mydetails/{username}','UserController@update_avatar');
+//Route::post('/mydetails/{username}','UserController2@update_avatar');
 
 
 Route::post('/edit/{id}', 'ProductController@update');
@@ -89,8 +89,3 @@ Route::resource('password', 'UpdatePasswordController');
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
-<<<<<<< HEAD
-
-?>
-=======
->>>>>>> master

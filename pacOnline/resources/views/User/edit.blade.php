@@ -58,15 +58,11 @@
                             <label for="phone" class="col-md-4 control-label">Phone number</label>
 
                             <div class="col-md-6">
-<<<<<<< HEAD
-                                <input id="Phone" type="text" class="form-control" name="Phone" placeholder="0411122233"
-                                    value="0{{Auth::user()->phone}}" required autofocus>
-                                @if ($errors->has('Phone'))
-=======
+
                                 <input id="phone" type="text" class="form-control" name="phone" placeholder="0411122233"
-                                    value="{{Auth::user()->phone}}" required autofocus>
+                                    value="0{{Auth::user()->phone}}" required autofocus>
                                 @if ($errors->has('phone'))
->>>>>>> master
+
                                     <span class="help-block">
                                         <strong>{{ $errors->first('phone') }}</strong>
                                     </span>
@@ -120,16 +116,18 @@
                             <label for="zip" class="col-md-4 control-label">ZIP</label>
 
                             <div class="col-md-6">
-                                <input id="zip" type="text" class="form-control" name="zip" value="{{Auth::user()->zip}}" required autofocus>
+                                <input id="zip" type="text" class="form-control" name="zip" value="{{Auth::user()->ZIP}}" required autofocus>
 
                                 @if ($errors->has('zip'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('zip') }}</strong>
+                                        <strong>{{ $errors->first('ZIP') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
-                        
+                         <label>Update Profile Image</label>
+                         <input type="file" name='avatar' value="{{Auth::user()->avatar}}">
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
