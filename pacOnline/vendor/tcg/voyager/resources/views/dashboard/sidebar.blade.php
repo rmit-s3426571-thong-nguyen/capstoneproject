@@ -11,7 +11,7 @@
                             <img src="{{ Voyager::image($admin_logo_img) }}" alt="Logo Icon">
                         @endif
                     </div>
-                    <div class="title">{{Voyager::setting('admin_title', 'VOYAGER')}}</div>
+                    <div class="title">{{Voyager::setting('admin_title', 'Pac Online')}}</div>
                 </a>
             </div><!-- .navbar-header -->
 
