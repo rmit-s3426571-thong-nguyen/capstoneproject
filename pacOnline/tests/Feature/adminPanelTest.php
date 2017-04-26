@@ -19,4 +19,43 @@ class adminPanelTest extends TestCase
         $this->seePageIs('/admin');
        
     }
+
+    public function testAdminPasswordError()
+    {
+        $this->visit('/admin');
+        $this->seePageIs('/admin/login');
+        $this->type('admin@admin.com', 'email');
+        $this->type('Admin2016!!', 'password');
+        $this->press('Login');
+        $this->seePageIs('/admin/login');
+       
+    }
+
+    public function testAdminEmailError()
+    {
+        $this->visit('/admin');
+        $this->seePageIs('/admin/login');
+        $this->type('admin@example.com', 'email');
+        $this->type('Admin2017!!', 'password');
+        $this->press('Login');
+        $this->seePageIs('/admin/login');
+    }
+        
+    public function testAdminEmailMissing()
+    {
+        $this->visit('/admin');
+        $this->seePageIs('/admin/login');
+        $this->type('Admin2017!!', 'password');
+        $this->press('Login');
+        $this->seePageIs('/admin/login');
+    }
+
+    public function testAdminPasswordMissing()
+    {
+        $this->visit('/admin');
+        $this->seePageIs('/admin/login');
+        $this->type('admin@admin.com', 'email');
+        $this->press('Login');
+        $this->seePageIs('/admin/login');
+    }
 }
