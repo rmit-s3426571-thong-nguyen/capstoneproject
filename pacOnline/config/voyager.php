@@ -14,7 +14,7 @@ return [
         'add_default_role_on_register' => true,
         'default_role'                 => 'user',
         'namespace'                    => App\User::class,
-        'default_avatar'               => 'users/default.png',
+        'default_avatar'               => 'http://4.bp.blogspot.com/-EswNjNJ2PCE/Te8OnAY7haI/AAAAAAAABdk/VpY48SVsVO0/s1600/pedo-bear-is-sad.jpeg',
     ],
 
     /*

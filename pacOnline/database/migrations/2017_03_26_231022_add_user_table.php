@@ -20,6 +20,7 @@ class AddUserTable extends Migration
             $table->string('city')->after('address');
             $table->string('state')->after('city');
             $table->integer('ZIP')->after('state');
+
         });
     }
 
