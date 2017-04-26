@@ -11,7 +11,8 @@
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "symfony/finder": "^3.2",
-        "symfony/symfony": "^3.2"
+        "symfony/symfony": "^3.2",
+        "nicolaslopezj/searchable": "1.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -56,5 +57,4 @@
         "preferred-install": "dist",
         "sort-packages": true
     }
-    "nicolaslopezj/searchable": "1.*"
 }

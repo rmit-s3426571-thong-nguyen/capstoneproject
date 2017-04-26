@@ -5,10 +5,26 @@ namespace App\Http\Controllers;
 use App\Product;
 use Illuminate\Http\Request;
 use DB;
+use App\Search;
 
 class SearchController extends Controller
 {
     public function index(Request $request) {
+
+        $this->validate($request, ['search' => 'required',]);
+
+        $s = $request->input('search');
+
+        $products = Product::latest()
+                           ->search($s)
+                           ->paginate(10);
+    	
+        return view('search.result', compact('products'));
+        //return view('search.result');
+    }
+
+
+    /* public function index(Request $request) {
 
         $this->validate($request, ['search' => 'required',]);
 
@@ -18,10 +34,11 @@ class SearchController extends Controller
             ? Product::where('title', 'LIKE', "%$query%")
                      ->orWhere('desc', 'LIKE', '%'.$request->search.'%')->latest()->get()
             : Product::latest()->get();
-    	
+        
         return view('search.result', compact('products'));
         //return view('search.result');
-    }
+        }
+        */
 
 
 

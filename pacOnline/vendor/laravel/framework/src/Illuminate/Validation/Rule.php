@@ -64,6 +64,4 @@ class Rule
     {
         return new Rules\Unique($table, $column);
     }
-
-    
 }
