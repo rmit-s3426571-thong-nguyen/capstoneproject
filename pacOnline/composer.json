@@ -7,11 +7,13 @@
     "require": {
         "php": ">=5.6.4",
         "cartalyst/sentinel": "2.0.*",
+        "intervention/image": "^2.3",
         "laravel/browser-kit-testing": "^1.0",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "symfony/finder": "^3.2",
-        "symfony/symfony": "^3.2"
+        "symfony/symfony": "^3.2",
+        "tcg/voyager": "^0.11.9"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

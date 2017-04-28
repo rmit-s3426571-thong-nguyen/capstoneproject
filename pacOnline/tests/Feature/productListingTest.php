@@ -14,7 +14,7 @@ class productListingTest extends TestCase
      *
      * @return void
      */
-   public function testWorkingListProduct()
+   /*public function testWorkingListProduct()
     {
         $this->visit('/login');
         $this->seePageIs('/login');
@@ -29,7 +29,7 @@ class productListingTest extends TestCase
         $this->type('1234','price');
         $this->type('blah blah','imageLocation');
         $this->press('Sell this product');
-    }
+    }*/
 
     public function testDescMissing()
     {

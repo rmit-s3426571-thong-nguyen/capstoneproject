@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Category;
+use TCG\Voyager\Models\Category;
+
 
 class CategoryController extends Controller
 {

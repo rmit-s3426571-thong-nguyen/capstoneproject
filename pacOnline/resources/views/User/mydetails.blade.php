@@ -18,14 +18,15 @@
     <div class="col-md-6 col-md-offset-3">
       <div class="panel panel-default">
         <div class="panel-body text-center">
-            <img class="userdetails-img" src="http://4.bp.blogspot.com/-EswNjNJ2PCE/Te8OnAY7haI/AAAAAAAABdk/VpY48SVsVO0/s1600/pedo-bear-is-sad.jpeg">
-
+            <img class="userdetails-img" src="/uploads/avatars/{{Auth::user()->avatar}}">
             <h1>{{Auth::user()->name}}</h1>
             <h5>{{Auth::user()->email}}</h5>
             <h5>{{Auth::user()->birth}}</h3>
               <br>
               <small>
                 <a href="/edit/{{Auth::user()->id}}">Edit Profile</a>
+                <br>
+                <a href="/editpassword/{{Auth::user()->id}}">Edit Password</a>
               </small>
         </div>
       </div>

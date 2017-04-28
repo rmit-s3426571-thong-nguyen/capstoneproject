@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'birth', 'Phone', 'Address', 'City', 'State', 'ZIP', 'password',
+        'name', 'email', 'birth', 'phone', 'address', 'city', 'state', 'zip', 'password', 'avatar'
     ];
 
     /**
@@ -26,12 +26,6 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
-	
-	public function roles() {
-		// sets matching table and foreign key
-		return $this->belongsToMany('App\Role', 'user_role', 'user_id','role_id');
-	}
 
     public function setNameAttribute($value)
     {
