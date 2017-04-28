@@ -92,6 +92,7 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
+        
         $products = Product::findOrFail($id);
         $products->update($request->all());
         return redirect("/userproducts/$products->user_id");

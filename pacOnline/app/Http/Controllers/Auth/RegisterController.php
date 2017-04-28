@@ -58,6 +58,9 @@ class RegisterController extends Controller
             'birth' => 'required|date_format:"d/m/Y"|before_or_equal:-13 years|after_or_equal:-80 years',
             'phone' => 'required|regex:/^0[0-8]\d{8}$/',
             'zip' => 'required|regex:/^[0-9]\d{3}$/',
+            'first_interest' => 'required',
+            'second_interest' => 'required',
+            'third_interest' => 'required',
             'password' => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!@$#%^&*?]).*$/|confirmed',
         ]);
     }
@@ -79,6 +82,9 @@ class RegisterController extends Controller
             'city' => $data['city'],
             'state' => $data['state'],
             'zip' => $data['zip'],
+            'first_interest' => $data['first_interest'],
+            'second_interest' => $data['second_interest'],
+            'third_interest' => $data['third_interest'],
             'password' => $data['password'],
         ]);
     }

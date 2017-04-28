@@ -20,6 +20,9 @@ class AddUserTable extends Migration
             $table->string('city')->nullable()->after('address');
             $table->string('state')->nullable()->after('city');
             $table->integer('zip')->nullable()->after('state');
+            $table->string('first_interest')->nullable()->after('zip');
+            $table->string('second_interest')->nullable()->after('first_interest');
+            $table->string('third_interest')->nullable()->after('second_interest');
         });
     }
 

@@ -89,3 +89,4 @@ Route::resource('password', 'UpdatePasswordController');
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
