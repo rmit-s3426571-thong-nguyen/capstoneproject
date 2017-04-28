@@ -51,11 +51,9 @@ class editProductDetailsTest extends TestCase
         $this->type('A!1234', 'password');
         $this->press('Login');
         $this->seePageIs('/');
-        $this->visit('/edit/1');
-        $this->seePageIs('/edit/1');
-        $this->type('333333333', 'phone');
-        $this->type('A!1234', 'password');
-        $this->type('A!1234', 'password_confirmation');
+        $this->visit('/editproduct/59');
+        $this->seePageIs('/editproduct/59');
+        $this->type('4321', 'price');
         $this->press('Edit');
     }
 
