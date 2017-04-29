@@ -39,7 +39,7 @@
 
             <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
                 <div class="form-group">
-                    <label for="price">Price</label>
+                    <label for="price">Price($)</label>
                     <textarea type="body" class="form-control" id="price" value="{{ old('price') }}" name="price" ></textarea>
                 </div>
             </div>

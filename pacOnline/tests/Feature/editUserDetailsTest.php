@@ -39,10 +39,68 @@ class editDetailsTest extends TestCase
             $this->seePageIs('/');
             $this->visit('/edit/1');
             $this->seePageIs('/edit/1');
-            $this->type('333333333', 'phone');
-            $this->type('A!1234', 'password');
-            $this->type('A!1234', 'password_confirmation');
+            $this->type('0433333333', 'phone');
             $this->press('Edit');
+            $this->seePageIs('/mydetails/{username}');
         }
+
+    public function testEditDetailsPhoneError()
+        {
+            $this->visit('/login');
+            $this->seePageIs('/login');
+            $this->type('testuser1@gmail.com', 'email');
+            $this->type('A!1234', 'password');
+            $this->press('Login');
+            $this->seePageIs('/');
+            $this->visit('/edit/1');
+            $this->seePageIs('/edit/1');
+            $this->type('3333333333', 'phone');
+            $this->press('Edit');
+            $this->seePageIs('/edit/1');
+        }
+
+    public function testEditDetailsZipError()
+        {
+            $this->visit('/login');
+            $this->seePageIs('/login');
+            $this->type('testuser1@gmail.com', 'email');
+            $this->type('A!1234', 'password');
+            $this->press('Login');
+            $this->seePageIs('/');
+            $this->visit('/edit/1');
+            $this->seePageIs('/edit/1');
+            $this->type('30000', 'zip');
+            $this->press('Edit');
+            $this->seePageIs('/edit/1');
+        }
+
+    public function testEditDetailsBirthError()
+        {
+            $this->visit('/login');
+            $this->seePageIs('/login');
+            $this->type('testuser1@gmail.com', 'email');
+            $this->type('A!1234', 'password');
+            $this->press('Login');
+            $this->seePageIs('/');
+            $this->visit('/edit/1');
+            $this->seePageIs('/edit/1');
+            $this->type('17/13/2000', 'birth');
+            $this->press('Edit');
+            $this->seePageIs('/edit/1');
+        }
+    /*public function testEditDetailsEmailError()
+        {
+            $this->visit('/login');
+            $this->seePageIs('/login');
+            $this->type('testuser1@gmail.com', 'email');
+            $this->type('A!1234', 'password');
+            $this->press('Login');
+            $this->seePageIs('/');
+            $this->visit('/edit/1');
+            $this->seePageIs('/edit/1');
+            $this->type('testuser1', 'email');
+            $this->press('Edit');
+            $this->seePageIs('/edit/1');
+        }*/
     }
 
