@@ -1,59 +1,117 @@
 <?php
+/* NOTE :: I just realised that it wont show the information
+ * because search table does not hold the same information as the products table
+ * and all views are currently running of products table...
+ */
 
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Search;
 use Illuminate\Http\Request;
-use DB;
+use Session;
 
 class SearchController extends Controller
 {
     // Displays listings
     public function index(Request $request) {
 
-        $this->validate($request, [
-        'search' => 'required',
-        ]);
+        $this->validate($request, ['search' => 'required',]);
+
+        // Scores
+        $score_title = 10; // Match in title
+        $score_desc = 5; //Match in description
+        $score_interest_1 = 5; // Tag match highest priorotised interest
+        $score_interest_2 = 3; // Tag match second highest priorotised interest
+        $score_interest_3 = 1; // Tag match third third priorotised interest
+        $score_zip = 2; // Seller is located in same postcode
+        $score_state = 1; // Seller is located in same state
 
         $query = $request->get('search');
 
+        /* basic linear search
         $products = $query
-            ? Product::where('title', 'Like', "%$query%")->orWhere('desc', 'LIKE', '%'.$request->search.'%')->latest()->get()
-            : Product::latest()->get();
+            ? Product::where('title', 'LIKE', '%'.$query.'%')
+                     ->orWhere('desc', 'LIKE', '%'.$query.'%')->latest()->get()
+            : Product::latest()->get();*/
+
+        $products = Product::latest()->get();
+
+        // Clears table
+        Search::truncate();
+
+        // Adding products to search table
+        foreach ($products as $item) {
+            
+            // Give score for title match
+            if (Product::where('title', 'LIKE', '%'.$query.'%')) {
+
+                $search = new Search;
+               
+                $search->id = $item['id'];
+                $search->score = $score_Title;
+                $search->save();
+            }
+
+            // Give score for description match
+            if (Product::where('desc', 'LIKE', '%'.$query.'%')) {
+
+                if(Search::where('id', 'LIKE', $item['id'])) {
+                    $item->score += $score_Desc;
+                }
+                else {
+                    $search = new Search;
+                    
+                    $search->id = $item['id'];
+                    $search->score = $scoreDesc;
+                    $search->save();
+                }
+            }
+
+            foreach ($search as $item) {
+                
+                $user = Auth::user();
+                $seller = User::find($item->$user_id);
+
+                /* Give score based on interest and tags
+                 * CHANGE THIS WHEN TAGS AND INTERESTS HAVE BEEN ADDED
+                 */
+                if ($item->$tag LIKE $user->interest_1) {
+                    $item->score += $score_interest_1;
+                }
+
+                if ($item->$tag LIKE $user->interest_2) {
+                    $item->score += $score_interest_2;
+                }
+
+                if ($item->$tag LIKE $user->interest_3) {
+                    $item->score += $score_interest_3;
+                }
+
+                // Give score based on location
+                if ($seller->$zip LIKE $user->$zip) {
+                    $item->score += $score_zip;
+                }
+                if ($seller->state LIKE $user->$state) {
+                    $item->score += $score_state;
+                }
+            }
+        }
+
+        // Sort by score -- method 1
+        $search = Search::orderBy('score', 'DESC')->get();
     	
-        return view('search.result', compact('products'));
+        return view('search.result', compact('search'));
         //return view('search.result');
     }
 
-    /* ORIGINAL LINDEAR SEARCH FUNCTION
-    public function search(Resquest $request)
-    {
-    	if($request->ajax()) {
-    		$output="";
-    		$products=DB::table('products')->where('title', 'LIKE', '%'.$request->search.'%')
-    									   ->orWhere('desc', 'LIKE', '%'.$request->search.'%')->get();
-    		if($products) {
-    			foreach($products as $key => $product) {
-    				$output.='<tr>'.
-    						 '<td>'.$product->imageLocation.'</td>'.
-    						 '<td>'.$product->title.'</td>'.
-    						 '<td>'.$product->desc.'</td>'.
-    						 '<td>'.$product->price.'</td>'.
-    						 '<td>'.$product->user->name.'</td>'.
-    						 '<td>'.$product->created_at->diffForHumans.'</td>'.
-    					 	 '</tr>';
-    			}
-    			return Response($output);
-    		}
-    	}
-    } */
 
-
-    /* The following code was adapted from http://idiallo.com/blog/php-mysql-search-algorithm
+    /* 
+     * The following code was adapted from http://idiallo.com/blog/php-mysql-search-algorithm
      * For educational purposes only
      */
 
-    // Separates query string into individual words and filter query
+    //Separates query string into individual words and filter query
     public function filter(Request $request) {
         $query = trim(preg_replace("/(\s+)+/", " ", $request));
         $words =  array();
@@ -70,76 +128,5 @@ class SearchController extends Controller
             }
         }
         return $words;
-    }
-    
-    public static function escape($string){
-        $con = self::connect();
-        return $con->real_escape_string($string);
-    }
-
-    // Search with score
-    public function search(Resquest $request)
-    {
-        $query = trim($request);
-
-        // Scores
-        $scoreFullTitle = 10; // Exact match in title
-        $scoreTitleKey = 5; // Match title in part
-        $scoreFullDesc = 5; //Exact match in description
-        $scoreDescKey = 3; // Match description in part
-        $noScore = 0; // starting score
-
-        $keywords = filter($query);
-        $products = DB::table('products');
-        $titleSQL = array();
-        $descSQL = array();
-
-        // Exact match ; higher chances of appearing at top of result
-        if (count($keywords) > 1) {
-           // $titleSQL[] = "if (title LIKE '%''.$query.''%', {$scoreFullTitle}, 0)";
-           // $descSQL[] = "if (desc LIKE '%''.$query.''%', {$scoreFullDesc}, 0)";
-
-            // Part match
-            foreach($keywords as $key) {
-                $titleSQL[] = "if (title LIKE '%''.DB::escape($key).''%',,{$scoreTitleKey},0)";
-                $sumSQL[] = "if (desc LIKE '%''.DB::escape($key).''%',,{$scoreDescKey},0)";
-
-                // Just incase it's empty, add 0
-                if (empty($titleSQL)){
-                    $titleSQL[] = $noScore;
-                }
-                if (empty($descSQL)){
-                    $descSQL[] = $noScore;
-                }
-
-                $sql = "SELECT products.title,products.desc
-                        (
-                            (-- Title score
-                                ".implode(" + ", $titleSQL)." ) 
-                            +
-                            (-- Description score
-                                ".implode(" + ", $descSQL)." )
-                        ) as relevance
-                        FROM products
-                        HAVING relevance > 0
-                        ORDER BY relevance title
-                        LIMIT 10";
-                
-
-                if($products) {
-                    foreach($products as $key => $product) {
-                       $output.='<tr>'.
-                                '<td>'.$product->imageLocation.'</td>'.
-                                '<td>'.$product->title.'</td>'.
-                                '<td>'.$product->desc.'</td>'.
-                                '<td>'.$product->price.'</td>'.
-                                '<td>'.$product->user->name.'</td>'.
-                                '<td>'.$product->created_at->diffForHumans.'</td>'.
-                                '</tr>';
-                    }
-                    return Response($output);
-                }
-            }
-        }
     }
 }
