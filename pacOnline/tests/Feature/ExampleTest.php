@@ -7,17 +7,8 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class ExampleTest1 extends TestCase
+/*class ExampleTest1 extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-
-
-    
-
 
     public function forgotPassword()
     {
@@ -26,4 +17,4 @@ class ExampleTest1 extends TestCase
         $this->seePageIs('/about');
     }
    
-}
+}*/

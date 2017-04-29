@@ -24,7 +24,7 @@
 			</div>
 
 			<div class="form-group">
-				<label for="price">Price</label>
+				<label for="price">Price($)</label>
 				<input type="body" class="form-control" id="price" value="{{ $products->price }}" name="price" ></input>
 			</div>
 
