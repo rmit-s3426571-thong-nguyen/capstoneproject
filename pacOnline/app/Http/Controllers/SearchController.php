@@ -13,7 +13,24 @@ use Session;
 
 class SearchController extends Controller
 {
-    // Displays listings
+    // basic linear search
+    public function index(Request $request) {
+        $this->validate($request, ['search' => 'required',]);
+
+        $query = $request->get('search');
+
+        $products = $query
+            ? Product::where('title', 'LIKE', '%'.$query.'%')
+                     ->orWhere('desc', 'LIKE', '%'.$query.'%')->latest()->get()
+            : Product::latest()->get();
+
+        return view('search.result', compact('products'));
+    }
+
+/*
+ *
+ *
+ *
     public function index(Request $request) {
 
         $this->validate($request, ['search' => 'required',]);
@@ -28,13 +45,6 @@ class SearchController extends Controller
         $score_state = 1; // Seller is located in same state
 
         $query = $request->get('search');
-
-        /* basic linear search
-        $products = $query
-            ? Product::where('title', 'LIKE', '%'.$query.'%')
-                     ->orWhere('desc', 'LIKE', '%'.$query.'%')->latest()->get()
-            : Product::latest()->get();*/
-
         $products = Product::latest()->get();
 
         // Clears table
@@ -75,7 +85,7 @@ class SearchController extends Controller
 
                 /* Give score based on interest and tags
                  * CHANGE THIS WHEN TAGS AND INTERESTS HAVE BEEN ADDED
-                 */
+                 * /
                 if ($item->$tag LIKE $user->interest_1) {
                     $item->score += $score_interest_1;
                 }
@@ -102,8 +112,12 @@ class SearchController extends Controller
         $search = Search::orderBy('score', 'DESC')->get();
     	
         return view('search.result', compact('search'));
-        //return view('search.result');
     }
+ *
+ *
+ *
+ */
+
 
 
     /* 
