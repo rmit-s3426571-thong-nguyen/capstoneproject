@@ -49,7 +49,7 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
         <li><a href="about">About Us</a></li>
-        <li><a href="#">FAQ</a></li>
+        <li><a href="faq">FAQ</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
 
