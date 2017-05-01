@@ -32,4 +32,9 @@ class Category extends Model
     {
         return $this->belongsTo(self::class);
     }
+
+    public function users()
+    {
+         return $this->hasMany(User::class); 
+    }
 }

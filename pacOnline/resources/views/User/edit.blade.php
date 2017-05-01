@@ -116,7 +116,7 @@
                             <label for="zip" class="col-md-4 control-label">ZIP</label>
 
                             <div class="col-md-6">
-                                <input id="zip" type="text" class="form-control" name="zip" value="{{Auth::user()->ZIP}}" required autofocus>
+                                <input id="zip" type="text" class="form-control" name="zip" value="{{Auth::user()->zip}}" required autofocus>
 
                                 @if ($errors->has('zip'))
                                     <span class="help-block">
