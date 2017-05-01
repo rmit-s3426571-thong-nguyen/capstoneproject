@@ -6,6 +6,9 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Category;
+use Auth;
+use Session;
 
 class RegisterController extends Controller
 {
@@ -47,8 +50,7 @@ class RegisterController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
 
-   // protected $dt = new Carbon\Carbon();
-    //protected $before = $dt->subYears(13);
+
 
     protected function validator(array $data)
     {
@@ -58,13 +60,18 @@ class RegisterController extends Controller
             'birth' => 'required|date_format:"d/m/Y"|before_or_equal:-13 years|after_or_equal:-80 years',
             'phone' => 'required|regex:/^0[0-8]\d{8}$/',
             'zip' => 'required|regex:/^[0-9]\d{3}$/',
-            'first_interest' => 'required',
-            'second_interest' => 'required',
-            'third_interest' => 'required',
+            'first_interest' => 'required|integer',
+            'second_interest' => 'required|integer',
+            'third_interest' => 'required|integer',
             'password' => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!@$#%^&*?]).*$/|confirmed',
         ]);
     }
 
+    public function index($id)
+    {
+         $user = User::whereId($id)->first();
+         return view('Auth.register', compact('user'));
+    }
     /**
      * Create a new user instance after a valid registration.
      *
@@ -73,6 +80,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -87,7 +95,14 @@ class RegisterController extends Controller
             'third_interest' => $data['third_interest'],
             'password' => $data['password'],
         ]);
+
+        $categories = Category::all();
+        return view('auth.register',compact('categories'));
+
     }
+
+
+
 
 
 }

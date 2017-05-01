@@ -62,6 +62,8 @@ Route::post('/edit/{username}', 'UserController2@update');
 //Route::post('/mydetails/{username}','UserController2@update_avatar');
 
 
+
+
 Route::post('/edit/{id}', 'ProductController@update');
 
 // GET views
@@ -72,6 +74,8 @@ Route::get('about',function(){
 Route::get('/mydetails/{username}', 'UserController2@index');
 Route::get('/editpassword/{username}', 'UpdatePasswordController@edit');
 Route::get('/edit/{username}', 'UserController2@edit');
+Route::get('/edit/{username}', 'UserController2@create');
+//Route::get('/register', 'Auth\RegisterController@create');
 
 
 
@@ -82,7 +86,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 Route::resource('users', 'UserController2');
 Route::resource('product', 'ProductController' );
-
 Route::resource('password', 'UpdatePasswordController');
 
 

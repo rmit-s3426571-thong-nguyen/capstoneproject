@@ -30,7 +30,7 @@ class UserController2 extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('shop.edit',compact('categories'));
+        return view('User.edit',compact('categories'));
     }
 
     /**
