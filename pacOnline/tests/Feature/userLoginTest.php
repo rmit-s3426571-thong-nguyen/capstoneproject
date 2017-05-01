@@ -26,7 +26,7 @@ class userLoginTest extends TestCase
         
     }
 
-      public function testPasswordMismatch()
+    public function testPasswordMismatch()
     {
         $this->visit('/login');
         $this->seePageIs('/login');
@@ -42,6 +42,26 @@ class userLoginTest extends TestCase
         $this->seePageIs('/login');
         $this->type('jyyc@gmail.com', 'email');
         $this->type('A!1111', 'password');
+        $this->press('Login');
+        $this->seePageIs('/login');
+        
+    }
+
+    public function testEmailMissing()
+    {
+        $this->visit('/login');
+        $this->seePageIs('/login');
+        $this->type('A!1111', 'password');
+        $this->press('Login');
+        $this->seePageIs('/login');
+        
+    }
+
+    public function testPasswordMissing()
+    {
+        $this->visit('/login');
+        $this->seePageIs('/login');
+        $this->type('jy@gmail.com', 'email');
         $this->press('Login');
         $this->seePageIs('/login');
         

@@ -59,7 +59,5 @@
 			@include('includes.errors')
 		</form>
 	</div>
-
-
 </div>
 @endsection

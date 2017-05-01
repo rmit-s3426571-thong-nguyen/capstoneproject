@@ -21,7 +21,7 @@ class editDetailsTest extends TestCase
             $this->type('0411122233','phone');
             $this->type('sdfafsdafdasf','address');
             $this->type('melbourne','city');
-            $this->type('VIC','state');
+            $this->type('victoria','state');
             $this->type('3000','zip');
             $this->type('A!1234', 'password');
             $this->type('A!1234', 'password_confirmation');
