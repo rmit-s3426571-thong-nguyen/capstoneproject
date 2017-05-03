@@ -373,6 +373,7 @@ class ComposerStaticInit0757d6bd43b668fa6b673544fa2611bd
         'CreatePostsTable' => __DIR__ . '/../..' . '/database/migrations/2016_01_01_000000_create_posts_table.php',
         'CreateProductsTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_17_022723_create_products_table.php',
         'CreateRolesTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_21_190000_create_roles_table.php',
+        'CreateSearchScore' => __DIR__ . '/../..' . '/database/migrations/2017_04_28_071846_create_search_score.php',
         'CreateSettingsTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_21_190000_create_settings_table.php',
         'CreateTranslationsTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_14_005015_create_translations_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',

@@ -96,12 +96,15 @@ class RegisterController extends Controller
             'password' => $data['password'],
         ]);
 
-        $categories = Category::all();
-        return view('auth.register',compact('categories'));
+        
 
     }
 
-
+    public function create2()
+    {
+        $categories = Category::all();
+        return view('auth.register',compact('categories'));
+    }
 
 
 

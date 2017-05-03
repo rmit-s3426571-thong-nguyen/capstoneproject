@@ -75,7 +75,7 @@ Route::get('/mydetails/{username}', 'UserController2@index');
 Route::get('/editpassword/{username}', 'UpdatePasswordController@edit');
 Route::get('/edit/{username}', 'UserController2@edit');
 Route::get('/edit/{username}', 'UserController2@create');
-//Route::get('/register', 'Auth\RegisterController@create');
+
 
 
 
@@ -89,6 +89,8 @@ Route::resource('product', 'ProductController' );
 Route::resource('password', 'UpdatePasswordController');
 
 
+
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
