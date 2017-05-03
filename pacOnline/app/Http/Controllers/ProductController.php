@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Cart;
 use App\Product;
 use App\Category;
+use App\UserCategoriesList;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Session;
 
 class ProductController extends Controller
@@ -13,6 +15,19 @@ class ProductController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except(['index','show', ]);
+    }
+
+    public function getProductsForCatId($userId) {
+
+        $allUsersCats = UserCategoriesList::where('user_id', $userId)->get();
+
+        $products = [];
+        foreach ($allUsersCats as $userCat) {
+
+            $product = Product::where('category_id', $userCat->cat_id)->first();
+            array_push($products, $product);
+        }
+        return view('shop.index',compact('products'));
     }
 
     // get all products from database and pass to index to render.
