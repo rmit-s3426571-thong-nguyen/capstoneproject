@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Cart;
 use App\Product;
 use App\Category;
@@ -33,6 +34,18 @@ class ProductController extends Controller
     // get all products from database and pass to index to render.
     public function index()
     {
+        if($user = Auth::user())
+        {
+            $allUsersCats = UserCategoriesList::where('user_id', $user->id)->get();
+
+            $products = [];
+            foreach ($allUsersCats as $userCat) {
+
+                $product = Product::where('category_id', $userCat->cat_id)->first();
+                array_push($products, $product);
+            }
+            return view('shop.index',compact('products'));
+        }
     	//using Elequent to get all the products
         $products = Product::latest()->get();
 
