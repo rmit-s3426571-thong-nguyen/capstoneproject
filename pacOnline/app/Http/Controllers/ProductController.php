@@ -38,11 +38,12 @@ class ProductController extends Controller
         {
             $allUsersCats = UserCategoriesList::where('user_id', $user->id)->get();
 
-            $products = [];
+            //$products = [];
+            $products = collect(new Product);;
             foreach ($allUsersCats as $userCat) {
-
                 $product = Product::where('category_id', $userCat->cat_id)->first();
-                array_push($products, $product);
+                //array_push($products, $product);
+                $products->push($product);
             }
             return view('shop.index',compact('products'));
         }
