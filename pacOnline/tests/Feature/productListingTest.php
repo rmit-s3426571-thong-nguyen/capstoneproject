@@ -48,7 +48,6 @@ class productListingTest extends TestCase
     }
 
 
-
     public function testPriceMissing()
     {
         $this->visit('/login');
