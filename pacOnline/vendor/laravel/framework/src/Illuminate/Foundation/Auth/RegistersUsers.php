@@ -1,7 +1,7 @@
 <?php
 
 namespace Illuminate\Foundation\Auth;
-
+use TCG\Voyager\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
@@ -17,7 +17,9 @@ trait RegistersUsers
      */
     public function showRegistrationForm()
     {
-        return view('auth.register');
+        $categories = Category::all();
+        return view('auth.register',compact('categories'));
+
     }
 
     /**

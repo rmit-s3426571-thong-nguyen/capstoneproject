@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use App\UserCategoriesList;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -59,6 +60,7 @@ class RegisterController extends Controller
             'phone' => 'required|regex:/^0[0-8]\d{8}$/',
             'zip' => 'required|regex:/^[0-9]\d{3}$/',
             'password' => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!@$#%^&*?]).*$/|confirmed',
+            'category_id' => 'required|integer'
         ]);
     }
 
@@ -72,7 +74,7 @@ class RegisterController extends Controller
 
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'birth' => $data['birth'],
@@ -83,6 +85,13 @@ class RegisterController extends Controller
             'zip' => $data['zip'],
             'password' => $data['password'],
         ]);
+
+        $user->userCats = UserCategoriesList::create([
+            'user_id' => $user->id,
+            'cat_id' => $data['category_id']
+        ]);
+
+        return $user;
     }
 
 

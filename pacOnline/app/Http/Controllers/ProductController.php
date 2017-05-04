@@ -18,35 +18,37 @@ class ProductController extends Controller
         $this->middleware('auth')->except(['index','show', ]);
     }
 
-    public function getProductsForCatId($userId) {
+//    public function getProductsForCatId($userId) {
+//
+//        $allUsersCats = UserCategoriesList::where('user_id', $userId)->get();
+//
+//        $products = [];
+//        foreach ($allUsersCats as $userCat) {
+//            $product = Product::where('category_id', $userCat->cat_id)->first();
+//            array_push($products, $product);
+//        }
+//        return view('shop.index',compact('products'));
+//    }
 
-        $allUsersCats = UserCategoriesList::where('user_id', $userId)->get();
-
-        $products = [];
-        foreach ($allUsersCats as $userCat) {
-
-            $product = Product::where('category_id', $userCat->cat_id)->first();
-            array_push($products, $product);
-        }
-        return view('shop.index',compact('products'));
-    }
-
-    // get all products from database and pass to index to render.
     public function index()
     {
         if($user = Auth::user())
         {
             $allUsersCats = UserCategoriesList::where('user_id', $user->id)->get();
 
-            //$products = [];
-            $products = collect(new Product);;
+            $products = collect(new Product);
+
             foreach ($allUsersCats as $userCat) {
-                $product = Product::where('category_id', $userCat->cat_id)->first();
-                //array_push($products, $product);
-                $products->push($product);
+
+                $userCatProducts = Product::where('category_id', $userCat->cat_id)->get();
+
+                foreach($userCatProducts as $product){
+                    $products->push($product);
+                }
             }
             return view('shop.index',compact('products'));
         }
+
     	//using Elequent to get all the products
         $products = Product::latest()->get();
 
