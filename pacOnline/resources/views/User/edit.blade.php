@@ -114,9 +114,8 @@
 
                         <div class="form-group{{ $errors->has('zip') ? ' has-error' : '' }}">
                             <label for="zip" class="col-md-4 control-label">ZIP</label>
-
                             <div class="col-md-6">
-                                <input id="zip" type="text" class="form-control" name="zip" value="{{Auth::user()->ZIP}}" required autofocus>
+                                <input id="zip" type="text" class="form-control" name="zip" value="{{Auth::user()->zip}}" required autofocus>
 
                                 @if ($errors->has('zip'))
                                     <span class="help-block">
@@ -125,8 +124,11 @@
                                 @endif
                             </div>
                         </div>
+
+
+
                          <label>Update Profile Image</label>
-                         <input type="file" name='avatar' value="{{Auth::user()->avatar}}">
+                         <input type="file" name='avatar' value="{{ old('avatar') }}">
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

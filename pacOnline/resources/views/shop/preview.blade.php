@@ -11,7 +11,7 @@
             <div class="product-padding">
 
                 <div class="product-image gap-bottom">
-                    <img src="{{ $product->imageLocation }}" alt="..." style="max-height: 150px"
+                    <img src="/uploads/productImages/{{$product->imageLocation}}" alt="..." style="max-height: 150px"
                          class="img-responsive">
                 </div>
 

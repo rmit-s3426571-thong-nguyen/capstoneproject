@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use App\UserCategoriesList;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Category;
+use Auth;
+use Session;
 
 class RegisterController extends Controller
 {
@@ -48,8 +51,10 @@ class RegisterController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
 
-    // protected $dt = new Carbon\Carbon();
-    //protected $before = $dt->subYears(13);
+//<<<<<<< HEAD
+//    // protected $dt = new Carbon\Carbon();
+//    //protected $before = $dt->subYears(13);
+//=======
 
     protected function validator(array $data)
     {
@@ -64,6 +69,11 @@ class RegisterController extends Controller
         ]);
     }
 
+    public function index($id)
+    {
+         $user = User::whereId($id)->first();
+         return view('Auth.register', compact('user'));
+    }
     /**
      * Create a new user instance after a valid registration.
      *
@@ -94,5 +104,7 @@ class RegisterController extends Controller
         return $user;
     }
 
+
+    
 
 }

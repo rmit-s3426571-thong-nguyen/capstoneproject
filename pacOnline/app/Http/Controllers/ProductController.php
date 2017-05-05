@@ -123,6 +123,12 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->validate(request(),[
+            'title' => 'required',
+            'desc' => 'required',
+            'price' => 'required|regex:/^[0-9]+(\.[0-9][0-9]?)?$/',
+            'imageLocation' => 'required',
+        ]);
         $products = Product::findOrFail($id);
         $products->update($request->all());
         return redirect("/userproducts/$products->user_id");

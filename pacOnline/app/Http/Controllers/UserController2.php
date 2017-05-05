@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
+use App\Category;
+use Session;
 
 class UserController2 extends Controller
 {
@@ -27,7 +29,8 @@ class UserController2 extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        $categories = Category::all();
+        return view('User.edit',compact('categories'));
     }
 
     /**
