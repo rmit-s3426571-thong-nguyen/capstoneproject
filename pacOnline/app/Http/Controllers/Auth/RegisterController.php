@@ -48,7 +48,7 @@ class RegisterController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
 
-   // protected $dt = new Carbon\Carbon();
+    // protected $dt = new Carbon\Carbon();
     //protected $before = $dt->subYears(13);
 
     protected function validator(array $data)
@@ -86,17 +86,12 @@ class RegisterController extends Controller
             'password' => $data['password'],
         ]);
 
-        $user->categories()->saveMany($data['category_id[]']);
+        $user->userCats = UserCategoriesList::create([
+            'user_id' => $user->id,
+            'cat_id' => $data['category_id']
+        ]);
 
-//        $user->userCats = UserCategoriesList::create([
-//            'user_id' => $user->id,
-//            'cat_id' => $data['category_id[]']
-//        ]);
-
-        dd($user);
-
-
-        //return $user;
+        return $user;
     }
 
 
