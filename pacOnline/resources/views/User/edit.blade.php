@@ -102,7 +102,14 @@
                             <label for="state" class="col-md-4 control-label">State</label>
 
                             <div class="col-md-6">
-                                <input id="state" type="text" class="form-control" name="state" value="{{Auth::user()->state}}" required autofocus>
+                                 <select name="state" required autofocus>
+                                    <option value="new south wales">NSW</option>
+                                    <option value="queensland">QLD</option>
+                                    <option value="victoria" selected>VIC</option>
+                                    <option value="tasmania">TAS</option>
+                                    <option value="western australia">WA</option>
+                                    <option value="south australia">SA</option>
+                                  </select>
 
                                 @if ($errors->has('state'))
                                     <span class="help-block">

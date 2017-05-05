@@ -46,7 +46,7 @@
 
             <div class="form-group{{ $errors->has('imageLocation') ? ' has-error' : '' }}">
                 <div class="form-group">
-                         <label>Update Profile Image</label>
+                         <label>Upload Product Image</label>
                          <input type="file" name='imageLocation'>
                 </div>
             </div>
