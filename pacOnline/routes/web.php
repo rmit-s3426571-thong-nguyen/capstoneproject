@@ -11,7 +11,9 @@
 |
 */
 
-// All request go through this route will redirect to ProductController
+
+// recommend products base on users interested categories.
+Route::get('/user-cats/{userId}','ProductController@getProductsForCatId');
 
 //GET request 
 Route::get('/','ProductController@index');

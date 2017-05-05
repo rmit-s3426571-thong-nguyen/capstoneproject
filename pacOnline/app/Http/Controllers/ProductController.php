@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Cart;
 use App\Product;
 use App\Category;
+use App\UserCategoriesList;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Session;
 
 class ProductController extends Controller
@@ -15,9 +18,37 @@ class ProductController extends Controller
         $this->middleware('auth')->except(['index','show', ]);
     }
 
-    // get all products from database and pass to index to render.
+//    public function getProductsForCatId($userId) {
+//
+//        $allUsersCats = UserCategoriesList::where('user_id', $userId)->get();
+//
+//        $products = [];
+//        foreach ($allUsersCats as $userCat) {
+//            $product = Product::where('category_id', $userCat->cat_id)->first();
+//            array_push($products, $product);
+//        }
+//        return view('shop.index',compact('products'));
+//    }
+
     public function index()
     {
+        if($user = Auth::user())
+        {
+            $allUsersCats = $user->categories()->get();
+
+            $products = collect(new Product);
+
+            foreach ($allUsersCats as $userCat) {
+
+                $userCatProducts = Product::where('category_id', $userCat->cat_id)->get();
+
+                foreach($userCatProducts as $product){
+                    $products->push($product);
+                }
+            }
+            return view('shop.index',compact('products'));
+        }
+
     	//using Elequent to get all the products
         $products = Product::latest()->get();
 
