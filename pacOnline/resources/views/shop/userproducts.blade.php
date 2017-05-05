@@ -1,7 +1,7 @@
 <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
     @if($product->user_id == Auth::id())
-        <a href="/products/{{ $product->id }}"><img src="{{ $product->imageLocation }}" alt="..."
+        <a href="/products/{{ $product->id }}"><img src="/uploads/productImages/{{$product->imageLocation}}" alt="..."
             style="max-height: 150px" class="img-responsive"></a>
 
         <div class="caption">

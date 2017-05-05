@@ -102,7 +102,14 @@
                             <label for="state" class="col-md-4 control-label">State</label>
 
                             <div class="col-md-6">
-                                <input id="state" type="text" class="form-control" name="state" value="{{Auth::user()->state}}" required autofocus>
+                                 <select name="state" required autofocus>
+                                    <option value="new south wales">NSW</option>
+                                    <option value="queensland">QLD</option>
+                                    <option value="victoria" selected>VIC</option>
+                                    <option value="tasmania">TAS</option>
+                                    <option value="western australia">WA</option>
+                                    <option value="south australia">SA</option>
+                                  </select>
 
                                 @if ($errors->has('state'))
                                     <span class="help-block">
@@ -114,9 +121,8 @@
 
                         <div class="form-group{{ $errors->has('zip') ? ' has-error' : '' }}">
                             <label for="zip" class="col-md-4 control-label">ZIP</label>
-
                             <div class="col-md-6">
-                                <input id="zip" type="text" class="form-control" name="zip" value="{{Auth::user()->ZIP}}" required autofocus>
+                                <input id="zip" type="text" class="form-control" name="zip" value="{{Auth::user()->zip}}" required autofocus>
 
                                 @if ($errors->has('zip'))
                                     <span class="help-block">
@@ -125,8 +131,11 @@
                                 @endif
                             </div>
                         </div>
+
+
+
                          <label>Update Profile Image</label>
-                         <input type="file" name='avatar' value="{{Auth::user()->avatar}}">
+                         <input type="file" name='avatar' value="{{ old('avatar') }}">
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

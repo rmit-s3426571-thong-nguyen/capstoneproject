@@ -19,7 +19,6 @@ Route::get('/user-cats/{userId}','ProductController@getProductsForCatId');
 Route::get('/','ProductController@index');
 
 Route::get('/products/create','ProductController@create');
-
 Route::get('/products/{product}','ProductController@show');
 
 
@@ -64,6 +63,8 @@ Route::post('/edit/{username}', 'UserController2@update');
 //Route::post('/mydetails/{username}','UserController2@update_avatar');
 
 
+
+
 Route::post('/edit/{id}', 'ProductController@update');
 
 // GET views
@@ -77,6 +78,7 @@ Route::get('/edit/{username}', 'UserController2@edit');
 
 
 
+
 //Route::get('/edit/{username}', 'userController@index');
 
 Auth::routes();
@@ -84,20 +86,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 Route::resource('users', 'UserController2');
 Route::resource('product', 'ProductController' );
-
 Route::resource('password', 'UpdatePasswordController');
 
 
-Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-});
-
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
-
-Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-});
