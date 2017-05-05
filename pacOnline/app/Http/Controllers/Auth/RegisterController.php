@@ -65,7 +65,9 @@ class RegisterController extends Controller
             'phone' => 'required|regex:/^0[0-8]\d{8}$/',
             'zip' => 'required|regex:/^[0-9]\d{3}$/',
             'password' => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!@$#%^&*?]).*$/|confirmed',
-            'category_id' => 'required|integer'
+            'category_1' => 'different:category_2|different:category_3',
+            'category_2' => 'different:category_1|different:category_3',
+            'category_3' => 'different:category_1|different:category_2'
         ]);
     }
 
@@ -96,10 +98,25 @@ class RegisterController extends Controller
             'password' => $data['password'],
         ]);
 
-        $user->userCats = UserCategoriesList::create([
-            'user_id' => $user->id,
-            'cat_id' => $data['category_id']
-        ]);
+        $favCategory1 = new UserCategoriesList(['cat_id' => $data['category_1']]);
+        $user->categories()->save($favCategory1);
+
+        $favCategory2 = new UserCategoriesList(['cat_id' => $data['category_2']]);
+        $user->categories()->save($favCategory2);
+
+        $favCategory3 = new UserCategoriesList(['cat_id' => $data['category_3']]);
+        $user->categories()->save($favCategory3);
+
+//        $user->categories()->saveMany([
+//            new UserCategoriesList(['cat_id' => $data['category_1']]),
+//            new UserCategoriesList(['cat_id' => $data['category_2']]),
+//            new UserCategoriesList(['cat_id' => $data['category_3']]),
+//        ]);
+
+//        $user->userCats = UserCategoriesList::create([
+//            'user_id' => $user->id,
+//            'cat_id' => $data['category_id']
+//        ]);
 
         return $user;
     }

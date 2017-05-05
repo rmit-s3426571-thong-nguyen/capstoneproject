@@ -160,9 +160,25 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="password-confirm" class="col-md-4 control-label">Favourite Categories </label>
+                                <label for="password-confirm" class="col-md-4 control-label">Favourite Categories 1 </label>
                                 <div class="col-md-6">
-                                    <select class="form-control" name="category_id">
+                                    <select class="form-control" name="category_1">
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category->id }}"> {{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <label for="password-confirm" class="col-md-4 control-label">Favourite Categories 2 </label>
+                                <div class="col-md-6">
+                                    <select class="form-control" name="category_2">
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category->id }}"> {{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <label for="password-confirm" class="col-md-4 control-label">Favourite Categories 3 </label>
+                                <div class="col-md-6">
+                                    <select class="form-control" name="category_3">
                                         @foreach($categories as $category)
                                             <option value="{{ $category->id }}"> {{ $category->name }}</option>
                                         @endforeach
