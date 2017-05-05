@@ -17,7 +17,6 @@
 Route::get('/','ProductController@index');
 
 Route::get('/products/create','ProductController@create');
-Route::get('/register','RegisterController@create');
 Route::get('/products/{product}','ProductController@show');
 
 
@@ -74,7 +73,6 @@ Route::get('about',function(){
 Route::get('/mydetails/{username}', 'UserController2@index');
 Route::get('/editpassword/{username}', 'UpdatePasswordController@edit');
 Route::get('/edit/{username}', 'UserController2@edit');
-Route::get('/edit/{username}', 'UserController2@create');
 
 
 

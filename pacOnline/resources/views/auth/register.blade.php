@@ -133,54 +133,6 @@
                             </div>
                         </div>
 
-                         <div class="form-group{{ $errors->has('first_interest') ? ' has-error' : '' }}">
-                            <label for="first_interest" class="col-md-4 control-label">First Interest</label>
-                            <div class="col-md-6"> 
-                                <select class="form-control" name="first_interest">
-                                    @foreach($categories as $category)
-                                        <option value="{{ $category->id }}"> {{ $category->name }}</option>
-                                    @endforeach
-                                </select>
-                                @if ($errors->has('first_interest'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('first_interest') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('second_interest') ? ' has-error' : '' }}">
-                            <label for="second_interest" class="col-md-4 control-label">Second Interest</label>
-                            <div class="col-md-6"> 
-                                <select class="form-control" name="second_interest">
-                                    @foreach($categories as $category)
-                                        <option value="{{ $category->id }}"> {{ $category->name }}</option>
-                                    @endforeach
-                                </select>
-                                @if ($errors->has('second_interest'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('second_interest') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('third_interest') ? ' has-error' : '' }}">
-                            <label for="third_interest" class="col-md-4 control-label">Third Interest</label>
-                            <div class="col-md-6"> 
-                                <select class="form-control" name="third_interest">
-                                    @foreach($categories as $category)
-                                        <option value="{{ $category->id }}"> {{ $category->name }}</option>
-                                    @endforeach
-                                </select>
-                                @if ($errors->has('third_interest'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('third_interest') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
 
