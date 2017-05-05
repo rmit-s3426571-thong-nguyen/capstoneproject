@@ -34,7 +34,7 @@ class ProductController extends Controller
     {
         if($user = Auth::user())
         {
-            $allUsersCats = UserCategoriesList::where('user_id', $user->id)->get();
+            $allUsersCats = $user->categories()->get();
 
             $products = collect(new Product);
 

@@ -86,12 +86,17 @@ class RegisterController extends Controller
             'password' => $data['password'],
         ]);
 
-        $user->userCats = UserCategoriesList::create([
-            'user_id' => $user->id,
-            'cat_id' => $data['category_id']
-        ]);
+        $user->categories()->saveMany($data['category_id[]']);
 
-        return $user;
+//        $user->userCats = UserCategoriesList::create([
+//            'user_id' => $user->id,
+//            'cat_id' => $data['category_id[]']
+//        ]);
+
+        dd($user);
+
+
+        //return $user;
     }
 
 
