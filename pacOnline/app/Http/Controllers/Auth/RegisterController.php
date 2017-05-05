@@ -92,7 +92,6 @@ class RegisterController extends Controller
             'zip' => $data['zip'],
             'password' => $data['password'],
         ]);
-
         $user->categories()->saveMany($data['category_id[]']);
 
 //        $user->userCats = UserCategoriesList::create([
@@ -107,6 +106,6 @@ class RegisterController extends Controller
     }
 
 
-    }
+    
 
 }
