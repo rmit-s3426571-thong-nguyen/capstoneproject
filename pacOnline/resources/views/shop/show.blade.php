@@ -7,32 +7,31 @@
 @endsection
 
 @section('content')
-	<div class="product-container">
-
-        <div class="product-padding">
-
-            <div class="product-image gap-bottom">
-                <img src="{{ $product->imageLocation }}" alt="..." style="max-height: 150px"
-                    class="img-responsive">
-            </div>
-
-            <a class="text-left" style="text-decoration: none">
-                <h3>{{ $product->title }}</h3>
-            </a>
-
-            <div class ="gap-bottom">
-                <p class="product-container">{{ $product->user->name  }} posted 
-                    {{ $product->created_at->diffForHumans() }}</p>
-                
-                <div class="pull-left product-container"><b>${{ $product->price }}</b></div>
-
-                <div><a href="{{ route('product.addToCart',['id' => $product->id]) }}"
-                    class="btn btn-primary product-button"  role="button">Add to cart</a>
+	<div class="wrapper container-fluid">
+        
+        <div class="col-1-2">
+            <div class="product-wrap">
+                <div class="product-shot">
+                    <img src="{{ $product->imageLocation }}" alt="..." style="max-height: 200px">
                 </div>
             </div>
-            <div class="gap-bottom">
-                <p style="clear:both;">{{ $product->desc }}.</p>
+        </div>
+        
+        <div class="col-1-2">
+            <div class="product-info">
+                <h2>{{ $product->title }}</h2>
+                
+                <p class="gap-bottom">{{ $product->user->name  }} posted 
+                         {{ $product->created_at->diffForHumans() }} </p>
+
+                <div class ="desc"> {{ $product->desc }}. </div>
+
+                <div class="price"><h4><b>${{ $product->price }}<b></h4></div>
+
+                <div><a href="{{ route('product.addToCart',['id' => $product->id]) }}"
+                        class="btn btn-primary"  role="button">Add to cart</a></div>
             </div>
+            <div class="gap-bottom"><p style="clear:both;"></p></div>
         </div>
     </div>
 @endsection
