@@ -18,18 +18,6 @@ class ProductController extends Controller
         $this->middleware('auth')->except(['index','show', ]);
     }
 
-//    public function getProductsForCatId($userId) {
-//
-//        $allUsersCats = UserCategoriesList::where('user_id', $userId)->get();
-//
-//        $products = [];
-//        foreach ($allUsersCats as $userCat) {
-//            $product = Product::where('category_id', $userCat->cat_id)->first();
-//            array_push($products, $product);
-//        }
-//        return view('shop.index',compact('products'));
-//    }
-
     public function index()
     {
         if($user = Auth::user())

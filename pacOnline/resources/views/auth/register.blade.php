@@ -158,31 +158,56 @@
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                                 </div>
                             </div>
+                            <hr>
 
-                            <div class="form-group">
-                                <label for="password-confirm" class="col-md-4 control-label">Favourite Categories 1 </label>
+
+
+                            <div class="form-group{{ ($errors->has('category_1') || $errors->has('category_2') || $errors->has('category_3')) ? ' has-error' : '' }}">
+                                <label for="category" class="col-md-4 control-label"></label>
+
+                                <div class="col-md-6">
+                                    <label>Hi :) Please selection your three favourite categories. </br>We will do our best to help make your shopping with us easier.</label>
+                                    <label><strong>Favourite Categories :</strong></label>
+                                </div>
+
+                                <label for="category" class="col-md-4 control-label">Favourite 1 (H)</label>
                                 <div class="col-md-6">
                                     <select class="form-control" name="category_1">
                                         @foreach($categories as $category)
                                             <option value="{{ $category->id }}"> {{ $category->name }}</option>
                                         @endforeach
                                     </select>
+                                    @if ($errors->has('category_1'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('category_1') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
-                                <label for="password-confirm" class="col-md-4 control-label">Favourite Categories 2 </label>
+                                <label for="category" class="col-md-4 control-label">Favourite 2 (M) </label>
                                 <div class="col-md-6">
                                     <select class="form-control" name="category_2">
                                         @foreach($categories as $category)
                                             <option value="{{ $category->id }}"> {{ $category->name }}</option>
                                         @endforeach
                                     </select>
+                                    @if ($errors->has('category_2'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('category_2') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
-                                <label for="password-confirm" class="col-md-4 control-label">Favourite Categories 3 </label>
+                                <label for="category" class="col-md-4 control-label">Favourite 3 (L)</label>
                                 <div class="col-md-6">
                                     <select class="form-control" name="category_3">
                                         @foreach($categories as $category)
                                             <option value="{{ $category->id }}"> {{ $category->name }}</option>
                                         @endforeach
                                     </select>
+                                    @if ($errors->has('category_3'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('category_3') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
 
