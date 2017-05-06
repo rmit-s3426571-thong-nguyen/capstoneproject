@@ -18,7 +18,7 @@ class ProductController extends Controller
         $this->middleware('auth')->except(['index','show', ]);
     }
 
-    public function index()
+    public function recommendation()
     {
         if($user = Auth::user())
         {
@@ -28,16 +28,20 @@ class ProductController extends Controller
 
             foreach ($allUsersCats as $userCat) {
 
-                $userCatProducts = Product::where('category_id', $userCat->cat_id)->get();
+                $userCatProducts = Product::where('category_id', $userCat->cat_id) ->orderBy('created_at','DESC')->get();
 
                 foreach($userCatProducts as $product){
                     $products->push($product);
                 }
             }
-            return view('shop.index',compact('products'));
-        }
 
-    	//using Elequent to get all the products
+            return view('foryou.index',compact('products'));
+        }
+    }
+
+    public function index()
+    {
+        //using Elequent to get all the products
         $products = Product::latest()->get();
 
         return view('shop.index',compact('products'));

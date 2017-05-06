@@ -16,7 +16,10 @@
 Route::get('/user-cats/{userId}','ProductController@getProductsForCatId');
 
 //GET request 
+Route::get('/foryou','ProductController@recommendation');
+
 Route::get('/','ProductController@index');
+
 
 Route::get('/products/create','ProductController@create');
 Route::get('/products/{product}','ProductController@show');
@@ -47,8 +50,6 @@ Route::get('search', array(
      'as'    =>  'search',
      'uses'  =>  'SearchController@index'
  ));
-
-
 
 //Category
 Route::resource('categories','CategoryController');

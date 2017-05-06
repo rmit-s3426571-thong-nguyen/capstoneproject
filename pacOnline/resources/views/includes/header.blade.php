@@ -20,15 +20,19 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/">All Products</a></li>
+                <li><a href="/foryou">For You</a></li>
                 <li><a href="/about">About Us</a></li>
                 <li><a href="/faq">FAQ</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                @if (Auth::user())
+                    <li style="background: hotpink; border-radius: 10px;"><a href=" {{ url('products/create') }}" ><strong>Sell A Product</strong></a></li>
+                @endif
+
                 @if (Auth::guest())
                     <li><a href=" {{ route('login') }}" ><span class="glyphicon glyphicon-user"></span> Login / Register </a></li>
                 @else
-
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="position:relative; padding-left:50px;">
                             <img src="/uploads/avatars/{{Auth::user()->avatar}}" style="width:32px; height:32px; position:absolute; top:10px; left:10px; border-radius:50%">
@@ -44,12 +48,6 @@
                             <li>
                                 <a href="/userproducts/{{Auth::user()->id}}">
                                     My Listings
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="{{ url('products/create') }}">
-                                    Sell a product
                                 </a>
                             </li>
                             <li>
