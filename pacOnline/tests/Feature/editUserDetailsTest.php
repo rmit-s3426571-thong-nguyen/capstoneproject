@@ -21,7 +21,7 @@ class editDetailsTest extends TestCase
             $this->type('0411122233','phone');
             $this->type('sdfafsdafdasf','address');
             $this->type('melbourne','city');
-            $this->type('VIC','state');
+            $this->type('victoria','state');
             $this->type('3000','zip');
             $this->type('A!1234', 'password');
             $this->type('A!1234', 'password_confirmation');
@@ -37,8 +37,8 @@ class editDetailsTest extends TestCase
             $this->type('A!1234', 'password');
             $this->press('Login');
             $this->seePageIs('/');
-            $this->visit('/edit/1');
-            $this->seePageIs('/edit/1');
+            $this->visit('/edit/16');
+            $this->seePageIs('/edit/16');
             $this->type('0433333333', 'phone');
             $this->press('Edit');
             $this->seePageIs('/mydetails/{username}');
@@ -52,11 +52,11 @@ class editDetailsTest extends TestCase
             $this->type('A!1234', 'password');
             $this->press('Login');
             $this->seePageIs('/');
-            $this->visit('/edit/1');
-            $this->seePageIs('/edit/1');
+            $this->visit('/edit/16');
+            $this->seePageIs('/edit/16');
             $this->type('3333333333', 'phone');
             $this->press('Edit');
-            $this->seePageIs('/edit/1');
+            $this->seePageIs('/edit/16');
         }
 
     public function testEditDetailsZipError()
@@ -67,11 +67,11 @@ class editDetailsTest extends TestCase
             $this->type('A!1234', 'password');
             $this->press('Login');
             $this->seePageIs('/');
-            $this->visit('/edit/1');
-            $this->seePageIs('/edit/1');
+            $this->visit('/edit/16');
+            $this->seePageIs('/edit/16');
             $this->type('30000', 'zip');
             $this->press('Edit');
-            $this->seePageIs('/edit/1');
+            $this->seePageIs('/edit/16');
         }
 
     public function testEditDetailsBirthError()
@@ -82,11 +82,11 @@ class editDetailsTest extends TestCase
             $this->type('A!1234', 'password');
             $this->press('Login');
             $this->seePageIs('/');
-            $this->visit('/edit/1');
-            $this->seePageIs('/edit/1');
+            $this->visit('/edit/16');
+            $this->seePageIs('/edit/16');
             $this->type('17/13/2000', 'birth');
             $this->press('Edit');
-            $this->seePageIs('/edit/1');
+            $this->seePageIs('/edit/16');
         }
     /*public function testEditDetailsEmailError()
         {
@@ -96,11 +96,11 @@ class editDetailsTest extends TestCase
             $this->type('A!1234', 'password');
             $this->press('Login');
             $this->seePageIs('/');
-            $this->visit('/edit/1');
-            $this->seePageIs('/edit/1');
+            $this->visit('/edit/16');
+            $this->seePageIs('/edit/16');
             $this->type('testuser1', 'email');
             $this->press('Edit');
-            $this->seePageIs('/edit/1');
+            $this->seePageIs('/edit/16');
         }*/
     }
 
