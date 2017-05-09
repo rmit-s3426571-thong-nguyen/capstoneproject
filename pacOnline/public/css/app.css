@@ -3032,6 +3032,9 @@ td,th{padding:0}
   			text-align: center;
   			margin-top: 4px;
 		}
+		.checkout-button {
+			margin-top: 10px;
+		}
 
 		/*
 		 * CSS code for Product page display

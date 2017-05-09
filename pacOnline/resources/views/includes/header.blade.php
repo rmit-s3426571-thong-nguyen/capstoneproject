@@ -20,14 +20,14 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li><a href="/">All Products</a></li>
-                <li><a href="/foryou">For You</a></li>
+                <li><a href="/">All Listings</a></li>
+                <li><a href="/foryou">Recommended</a></li>
                 <li><a href="/about">About Us</a></li>
                 <li><a href="/faq">FAQ</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::user())
-                    <li style="background: hotpink; border-radius: 10px;"><a href=" {{ url('products/create') }}" ><strong>Sell A Product</strong></a></li>
+                    <li><a href=" {{ url('products/create') }}" ><font color="#3097d1"><strong>Sell A Product</strong></font></a></li>
                 @endif
 
                 @if (Auth::guest())

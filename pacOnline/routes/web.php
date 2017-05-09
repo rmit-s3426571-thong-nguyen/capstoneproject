@@ -72,6 +72,9 @@ Route::post('/edit/{id}', 'ProductController@update');
 Route::get('about',function(){
 	return view('pages/about');
 });
+Route::get('faq',function(){
+	return view('pages/faq');
+});
 
 Route::get('/mydetails/{username}', 'UserController2@index');
 Route::get('/editpassword/{username}', 'UpdatePasswordController@edit');
