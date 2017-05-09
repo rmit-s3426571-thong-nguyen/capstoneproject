@@ -10,8 +10,8 @@
             <div class="col-sm-2" style="border-right: 1px solid black; height: 100%;">
                 <h4>Filter</h4>
                 <ul class="nav nav-pills nav-stacked">
-                    <li><a href="/"><label>Categories</label></a>
-                        <ul>
+                    <li><h5 style="margin: 0px">Categories</h5>
+                        <ul class="gap-bottom">
                             @foreach($categories as $category)
                                 @if($category->children->count() > 0)
                                     <li><a href="/?category={{$category->id}}">{{ $category->name }} </a>
@@ -29,13 +29,20 @@
                             @endforeach
                         </ul>
                     </li>
-                    <li><a href="/"><label>Price Range</label></a>
+                    <li><h5 style="margin: 0px">Price Range</h5>
                         <form action="{{ url('/') }}" method="get">
-                            <div>
-                                <input type="input" name="price-min" id="price-min" value="{{ old('price-min') }}" min="{{ \App\Product::min('price') }}" max="{{ \App\Product::max('price') }} required">
-                                <input type="input" name="price-max" id="price-max" value="{{ old('price-max') }}" min="{{ \App\Product::min('price') }}" max="{{ \App\Product::max('price') }} required">
+                            <div class="gap-bottom">
+                                <input type="input" size="5" name="price-min" id="price-min" placeholder="min"
+                                       value="{{ old('price-min') }}" min="{{ \App\Product::min('price') }}"
+                                       max="{{ \App\Product::max('price') }} required">
+                                to 
+                                <input type="input" size="5" name="price-max" id="price-max" placeholder="max"
+                                       value="{{ old('price-max') }}" min="{{ \App\Product::min('price') }}" 
+                                       max="{{ \App\Product::max('price') }} required">
                             </div>
-                            <input type="submit" data-inline="true" value="Search" class="pull-right">
+                            <div class="text-center">
+                                <input type="submit" data-inline="true" value="Apply">
+                            </div>
                         </form>
                     </li>
                 </ul>
@@ -50,7 +57,7 @@
                             <span class="caret"></span></button>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
                             <li><a href="/?sort=lth">Price: Low to High</a></li>
-                            <li><a href="/?sort=htl">Price: Hight to Low</a></li>
+                            <li><a href="/?sort=htl">Price: High to Low</a></li>
                         </ul>
                     </div>
                 </div>

@@ -166,11 +166,11 @@
                                 <label for="category" class="col-md-4 control-label"></label>
 
                                 <div class="col-md-6">
-                                    <label>Hi :) Please selection your three favourite categories. </br>We will do our best to help make your shopping with us easier.</label>
-                                    <label><strong>Favourite Categories :</strong></label>
+                                    <label>Rate your three favourite categories from highest to lowest. </br>We will do our best make your shopping experience easier.</label>
+                                    <label><strong>Please select from the following:</strong></label>
                                 </div>
 
-                                <label for="category" class="col-md-4 control-label">Favourite 1 (H)</label>
+                                <label for="category" class="col-md-4 control-label">Favourite 1 </label>
                                 <div class="col-md-6">
                                     <select class="form-control" name="category_1">
                                         @foreach($categories as $category)
@@ -183,7 +183,7 @@
                                         </span>
                                     @endif
                                 </div>
-                                <label for="category" class="col-md-4 control-label">Favourite 2 (M) </label>
+                                <label for="category" class="col-md-4 control-label">Favourite 2 </label>
                                 <div class="col-md-6">
                                     <select class="form-control" name="category_2">
                                         @foreach($categories as $category)
@@ -196,7 +196,7 @@
                                         </span>
                                     @endif
                                 </div>
-                                <label for="category" class="col-md-4 control-label">Favourite 3 (L)</label>
+                                <label for="category" class="col-md-4 control-label">Favourite 3 </label>
                                 <div class="col-md-6">
                                     <select class="form-control" name="category_3">
                                         @foreach($categories as $category)

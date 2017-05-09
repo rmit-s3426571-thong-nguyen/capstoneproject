@@ -13,14 +13,14 @@ maybe extends master view here :P
     
     @if(count($products) > 0)
     	<div class="row">
-            <h4 class="text-center"> This is what we could find ... </h4>
+            <h4 class="text-center"> This is what we found ... </h4>
         	@foreach($products as $product)
             	@include('shop.product')
         	@endforeach
         </div>
     @else
-        <div class="alert alert-danger fade in">
-    		<p><strong>Sorry!</strong> The product you are trying to find is NOT available.</p>
+        <div class="alert alert-danger fade in text-center">
+    		<p><strong>Sorry!</strong> The we could not find what you are looking for.</p>
     		<p>Please search for something else.</p>
 		</div>
 	@endif

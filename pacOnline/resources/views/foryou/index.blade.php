@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    For You
+    Recommended
 @endsection
 
 @section('content')

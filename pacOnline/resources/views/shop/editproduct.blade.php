@@ -19,7 +19,7 @@
 			</div>
 
 			<div class="form-group">
-				<label for="desc">Desciption</label>
+				<label for="desc">Description</label>
 				<input type="body" class="form-control" id="desc" value="{{ $products->desc }}" name="desc"></input>
 			</div>
 

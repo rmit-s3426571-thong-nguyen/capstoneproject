@@ -1,36 +1,37 @@
-{{-- This page changes the products on products page --}}
-
 @extends('layouts.master')
 
+@section('title')
+    PREVIEW
+@endsection
+
 @section('content')
-    <div class="container">
-        <h1>Yo! this is how it looks when you post it</h1>
-        <hr>
-        <div class="product-container">
+    <h3 class="jumbotron text-center gap-bottom">PREVIEW!! This does not create a listing.</h3>
 
-            <div class="product-padding">
-
-                <div class="product-image gap-bottom">
+    <div class="product-wrapper">
+        <div class="col-1-2">
+            <div class="product-wrap">
+                <div class="product-shot">
                     <img src="/uploads/productImages/{{$product->imageLocation}}" alt="..." style="max-height: 150px"
                          class="img-responsive">
                 </div>
-
-                <a class="text-left" style="text-decoration: none">
-                    <h3>{{ $product->title }}</h3>
-                </a>
-
-                <div class ="gap-bottom">
-                    <p class="product-container">{{ $product->user->name  }} posted
-
-                    <div class="pull-left product-container"><b>${{ $product->price }}</b></div>
-                </div>
-                <div class="gap-bottom">
-                    <p style="clear:both;">{{ $product->desc }}.</p>
-                </div>
             </div>
         </div>
-        <div>
-            <a class="btn btn-primary product-button pull-left" role="button" href="javascript:history.back()">Go Back</a>
+
+        <div class="col-1-2">
+            <div class="product-info">
+                <h2>{{ $product->title }}</h2>
+                
+                <p class="product-container">{{ $product->user->name  }} posted today </p>
+
+                <div class="price"><b>${{ $product->price }}</b></div>
+
+                <div class="desc">
+                    <p style="clear:both;">{{ $product->desc }}.</p>
+                </div>
+                <div><a class="btn btn-success product-button pull-left"
+                        role="button" href="javascript:history.back()">Go Back</a>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
