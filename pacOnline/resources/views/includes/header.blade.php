@@ -27,7 +27,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::user())
-                    <li style="background: hotpink; border-radius: 10px;"><a href=" {{ url('products/create') }}" ><strong>Sell A Product</strong></a></li>
+                    <li><a href=" {{ url('products/create') }}" ><font color="#3097d1"><strong>Sell A Product</strong></font></a></li>
                 @endif
 
                 @if (Auth::guest())
