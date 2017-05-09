@@ -37,7 +37,7 @@
 
 
 			<div class="form-group">
-					<button type="submit" class="btn btn-primary">Edit product</button>
+					<button type="submit" class="btn btn-primary">Save Changes</button>
 			</div>
 
 			@include('includes.errors')

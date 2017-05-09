@@ -20,8 +20,8 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li><a href="/">All Products</a></li>
-                <li><a href="/foryou">For You</a></li>
+                <li><a href="/">All Listings</a></li>
+                <li><a href="/foryou">Recommended</a></li>
                 <li><a href="/about">About Us</a></li>
                 <li><a href="/faq">FAQ</a></li>
             </ul>
