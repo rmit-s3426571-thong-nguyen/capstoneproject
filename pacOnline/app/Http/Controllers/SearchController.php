@@ -21,7 +21,7 @@ class SearchController extends Controller
 
         $products = $query
             ? Product::where('title', 'LIKE', '%'.$query.'%')
-                     ->orWhere('desc', 'LIKE', '%'.$query.'%')->latest()->get()
+                    ->orWhere('desc', 'LIKE', '%'.$query.'%')->latest()->get()
             : Product::latest()->get();
 
         return view('search.result', compact('products'));
