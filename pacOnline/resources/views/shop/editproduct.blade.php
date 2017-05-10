@@ -28,12 +28,17 @@
 				<input type="body" class="form-control" id="price" value="{{ $products->price }}" name="price" ></input>
 			</div>
 
-            <div class="form-group{{ $errors->has('imageLocation') ? ' has-error' : '' }}">
-                <div class="form-group">
-                         <label>Update Product Image</label>
-                         <input type="file" name='imageLocation'>
-                </div>
-            </div>
+         {{--   <div class="form-group{{ $errors->has('imageLocation') ? ' has-error' : '' }}">
+            --    <div class="form-group">
+            --             <label>Update Product Image</label>
+            --             <input type="file" name='imageLocation'>
+            --   </div>
+            -- </div>
+			--}}
+            <div class="form-group">
+				<label for="image">Images</label>
+				<input type="body" class="form-control" id="imageLocation"  value="{{ $products->imageLocation }}" placeholder="Just paste a product image url here..." name="imageLocation" ></input>
+			</div>
 
 
 			<div class="form-group">

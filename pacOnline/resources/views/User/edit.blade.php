@@ -139,6 +139,7 @@
 
                         <div class="center gap-bottom">
                             <label>Change Avatar</label>
+                            
                             <input type="file" name='avatar' value="{{ old('avatar') }}">
                         </div>
 
