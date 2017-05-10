@@ -9,7 +9,7 @@
 	<div class="col-sm-12">
 		<h1>Post a product</h1>
 		<hr>
-		<form method="POST" action="/products">
+		<form method="POST" action="/products" enctype="multipart/form-data">
 
 			{{ csrf_field() }}
             <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
@@ -46,10 +46,10 @@
 
             <div class="form-group{{ $errors->has('imageLocation') ? ' has-error' : '' }}">
                 <div class="form-group">
-                        <label for="image">Images</label>
-                        <textarea type="body" class="form-control" id="imageLocation"  value="{{ old('imageLocation') }}" placeholder="Just paste a product image url here..." name="imageLocation" ></textarea>
-                       {{--  <label>Upload Product Image</label>
-                         <input type="file" name='imageLocation'> --}}
+                        {{--<label for="image">Images</label>--}}
+                        {{--<textarea type="body" class="form-control" id="imageLocation"  value="{{ old('imageLocation') }}" placeholder="Just paste a product image url here..." name="imageLocation" ></textarea>--}}
+                         <label>Upload Product Image</label>
+                         <input type="file" name='image'>
                 </div>
             </div>
 

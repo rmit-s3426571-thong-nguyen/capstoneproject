@@ -9,6 +9,8 @@ use App\Category;
 use App\UserCategoriesList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+
 use Session;
 
 class ProductController extends Controller
@@ -91,8 +93,11 @@ class ProductController extends Controller
             'desc' => 'required',
             'category_id' => 'required|integer',
             'price' => 'required|regex:/^[0-9]+(\.[0-9][0-9]?)?$/',
-            'imageLocation' => 'required',
+            'image' => 'required|image|max:2000',
         ]);
+
+        $s3 = Storage::disk('s3');
+        $image = request()->image;
 
         if (request()->get('sell')){
             $product = new Product;
@@ -102,7 +107,10 @@ class ProductController extends Controller
             $product->desc = request('desc');
             $product->category_id = request('category_id');
             $product->price = request('price');
-            $product->imageLocation = request('imageLocation');
+
+            $path = $s3->putFileAs('product_images/'.$product->user_id, $image, $image->getClientOriginalName() , 'public');
+
+            $product->imageLocation = Storage::disk('s3')->url($path);
 
             // save to the database
             $product->save();
