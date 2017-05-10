@@ -1,6 +1,7 @@
-    @extends('layouts.master')
+<!-- ?? Currently not in use? -->
+@extends('layouts.master')
 
-    @section('content')
+@section('content')
 
     <div class="row">
         <div class="col-md-8">

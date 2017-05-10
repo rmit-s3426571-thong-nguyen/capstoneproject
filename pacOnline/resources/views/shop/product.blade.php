@@ -1,9 +1,10 @@
 {{-- This page changes the products on index page --}}
+
 <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
 
         <a href="/products/{{ $product->id }}"><img src="/uploads/productImages/{{$product->imageLocation}}" alt="..."
-            style="max-height: 150px" class="img-responsive"></a>
+            style="max-height: 150px" class="img-responsive container"></a>
 
         <div class="caption">
 
@@ -17,7 +18,7 @@
 
             <span class="label label-success">{{ $product->category->name }}</span>
 
-            <p>{{ str_limit($product->desc, 45) }}</p>
+            <p>{{ str_limit($product->desc, 35) }}</p>
 
             <div class="clearfix">
                 <div class="pull-left"><p><b>${{ $product->price }}</b></p></div>

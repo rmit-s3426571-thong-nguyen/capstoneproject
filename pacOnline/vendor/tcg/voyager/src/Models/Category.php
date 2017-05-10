@@ -28,6 +28,10 @@ class Category extends Model
     //         ->orderBy('created_at', 'DESC');
     // }
 
+    public function children() {
+        return $this->hasMany(Category::class, 'parent_id','id');
+    }
+
     public function parentId()
     {
         return $this->belongsTo(self::class);

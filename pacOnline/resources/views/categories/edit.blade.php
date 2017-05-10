@@ -1,6 +1,7 @@
+<!--- FOR NEW CATEGORY?? Currently not in use? -->
+
 @extends('layouts.master')
 
-<!--- someone please make this pretty pleaseeeeeeeee -->
 @section('content')
 	<div class="col-md-12">
 		<h1>Edit: {{ $category->name }}</h1>

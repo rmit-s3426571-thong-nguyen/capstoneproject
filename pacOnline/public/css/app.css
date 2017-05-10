@@ -469,8 +469,8 @@ td,th{padding:0}
 		text-decoration:none;
 	}
 	a:focus,a:hover {
-		color:#216a94;
-		text-decoration:underline;
+		color:#00283f;
+		font-weight:bold;
 	}
 	a:focus {
 		outline:5px auto -webkit-focus-ring-color;
@@ -2191,7 +2191,6 @@ td,th{padding:0}
 		.nav>li>a{padding:10px 15px}
 		.nav>li>a:focus,.nav>li>a:hover {
 			text-decoration:none;
-			background-color:#eee;
 		}
 		.nav>li.disabled>a{color:#777}
 		.nav>li.disabled>a:focus,.nav>li.disabled>a:hover {
@@ -2959,63 +2958,153 @@ td,th{padding:0}
 				.hide{display:none!important}.show{display:block!important}.invisible{visibility:hidden}.text-hide{font:0/0 a;color:transparent;text-shadow:none;background-color:transparent;border:0}.hidden{display:none!important}.affix{position:fixed}@-ms-viewport{width:device-width}.visible-lg,.visible-lg-block,.visible-lg-inline,.visible-lg-inline-block,.visible-md,.visible-md-block,.visible-md-inline,.visible-md-inline-block,.visible-sm,.visible-sm-block,.visible-sm-inline,.visible-sm-inline-block,.visible-xs,.visible-xs-block,.visible-xs-inline,.visible-xs-inline-block{display:none!important}@media (max-width:767px){.visible-xs{display:block!important}table.visible-xs{display:table!important}tr.visible-xs{display:table-row!important}td.visible-xs,th.visible-xs{display:table-cell!important}}@media (max-width:767px){.visible-xs-block{display:block!important}}@media (max-width:767px){.visible-xs-inline{display:inline!important}}@media (max-width:767px){.visible-xs-inline-block{display:inline-block!important}}@media (min-width:768px) and (max-width:991px){.visible-sm{display:block!important}table.visible-sm{display:table!important}tr.visible-sm{display:table-row!important}td.visible-sm,th.visible-sm{display:table-cell!important}}@media (min-width:768px) and (max-width:991px){.visible-sm-block{display:block!important}}@media (min-width:768px) and (max-width:991px){.visible-sm-inline{display:inline!important}}@media (min-width:768px) and (max-width:991px){.visible-sm-inline-block{display:inline-block!important}}@media (min-width:992px) and (max-width:1199px){.visible-md{display:block!important}table.visible-md{display:table!important}tr.visible-md{display:table-row!important}td.visible-md,th.visible-md{display:table-cell!important}}@media (min-width:992px) and (max-width:1199px){.visible-md-block{display:block!important}}@media (min-width:992px) and (max-width:1199px){.visible-md-inline{display:inline!important}}@media (min-width:992px) and (max-width:1199px){.visible-md-inline-block{display:inline-block!important}}@media (min-width:1200px){.visible-lg{display:block!important}table.visible-lg{display:table!important}tr.visible-lg{display:table-row!important}td.visible-lg,th.visible-lg{display:table-cell!important}}@media (min-width:1200px){.visible-lg-block{display:block!important}}@media (min-width:1200px){.visible-lg-inline{display:inline!important}}@media (min-width:1200px){.visible-lg-inline-block{display:inline-block!important}}@media (max-width:767px){.hidden-xs{display:none!important}}@media (min-width:768px) and (max-width:991px){.hidden-sm{display:none!important}}@media (min-width:992px) and (max-width:1199px){.hidden-md{display:none!important}}@media (min-width:1200px){.hidden-lg{display:none!important}}.visible-print{display:none!important}@media print{.visible-print{display:block!important}table.visible-print{display:table!important}tr.visible-print{display:table-row!important}td.visible-print,th.visible-print{display:table-cell!important}}.visible-print-block{display:none!important}@media print{.visible-print-block{display:block!important}}.visible-print-inline{display:none!important}@media print{.visible-print-inline{display:inline!important}}.visible-print-inline-block{display:none!important}@media print{.visible-print-inline-block{display:inline-block!important}}@media print{.hidden-print{display:none!important}}
 
 /*new css*/
-				.banner-header a {
-					color:inherit;
-					font-size:30px;
-					margin-top:0px;
-					margin-bottom:5px;
-				}
+		.banner-header a {
+			color:inherit;
+			font-size:30px;
+			margin-top:0px;
+			margin-bottom:5px;
+		}
+		
+		.gap-bottom {margin-bottom:20px}
 
-				.gap-bottom p{margin-bottom:20px}
+		.footer{
+			display: block;
+		}
 
-				.product-padding {
-					padding-right: 20px;
-					padding-left: 20px;
-				}
+		.padding-space {
+			padding-top: 30px;
+			padding-bottom: 30px;
+		}
 
-				.product-container {
-					margin-right: 50px;
-					margin-left: 10px;
-				}	
+		.product-padding {
+			padding-right: 20px;
+			padding-left: 20px;
+			padding-top: 30px;
+			padding-bottom: 30px;
+		}
 
-				.product-image {
-					float:left;
-					padding-right:20px;
-				}
+		.product-container {
+			margin-right: 50px;
+			margin-left: 10px;
+		}	
 
-				.product-button {
-					float:right;
-				}
+		.product-image {
+			float:left;
+			padding-right:20px;
+		}
 
-				.cart {
-  					display: block;
-  					border-collapse: collapse;
-  					margin: auto;
-  					padding-left:50px;
-  					padding-right:50px;
-  					width: 100%;
-  					font-size: 1.2em;
-  					color: #444;
-				}
-				.cart thead th.image {
-  					width: 40px;
-  					text-align: center;
-				}
-				.cart thead th.title {
-  					width: 250px;
-  					text-align: center;
-				}
-				.cart thead th.number {
-  					width: 100px;
-  					text-align: center;
-				}
-				.cart thead th.bin {
-  					width: 50px;
-  					text-align: center;
-				}
-				.cart tbody td {
-  					text-align: center;
-  					margin-top: 4px;
-				}
+		.product-button {
+			float:right;
+		}
+
+		.edit-listing {
+			margin-right: 10px;
+		}
+
+		.center {
+			margin: auto;
+    		width: 50%;
+    		padding: 10px;
+		}
+
+		/* 
+		 * CCS code for the cart
+		 */
+
+		.cart {
+			display: block;
+			border-collapse: collapse;
+			margin: auto;
+  			padding-left:50px;
+  			padding-right:50px;
+  			width: 100%;
+  			font-size: 1.2em;
+  			color: #444;
+		}
+		.cart thead th.image {
+  			width: 40px;
+  			text-align: center;
+		}
+		.cart thead th.title {
+  			width: 250px;
+  			text-align: center;
+		}
+		.cart thead th.number {
+  			width: 100px;
+  			text-align: center;
+		}
+		.cart thead th.bin {
+  			width: 50px;
+  			text-align: center;
+		}
+		.cart tbody td {
+  			text-align: center;
+  			margin-top: 4px;
+		}
+		.checkout-button {
+			margin-top: 10px;
+		}
+
+		/*
+		 * CSS code for Product page display
+		 * 
+		 * the following code was adapted from https://codepen.io/stefcharle/pen/EagXgX
+		 * -- for educational purposes only
+		 */
+
+		.wrapper{
+			max-width: 950px;
+			margin-left: 230px;
+		}
+
+		.col-1-2{
+  			float: left;
+  			width: 50%;
+		}
+
+		.product-wrap{
+  			margin: 0 auto;
+  			width: 350px;
+
+			.product-shot{
+    			padding-top: 30px;
+  			}
+		}
+
+		.product-info{
+			margin: 0 auto;
+
+  			h2{
+    			padding-bottom: 15px;
+    			font-size: 32px; 
+    			border-bottom: 1px solid #d9d9d9;
+  			}
+  
+  			.desc{ 
+    			margin-top: 25px;
+    			font-size: 16px;
+    			line-height: 1.6;
+  			}
+  
+			.price{
+    			margin-top: 25px;
+    			padding: 0px;
+    			list-style-type: none; 
+  			}
+		  
+  			.size{ 
+    			display: inline;
+    			margin-right: 10px;
+    			padding: 10px 15px; 
+    			color: rgb(194, 194, 194);
+    			border: 1px solid rgb(194, 194, 194);
+    			cursor: pointer;
+	    
+    			&.active{
+      				color: white;
+      				background-color: rgb(194, 194, 194);
+    			}
+  			}
+		}
 
 /*end of new css*/

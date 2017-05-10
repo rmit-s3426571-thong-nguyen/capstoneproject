@@ -21,7 +21,7 @@
 
             <div class="form-group{{ $errors->has('desc') ? ' has-error' : '' }}">
                 <div class="form-group">
-                    <label for="desc">Desciption</label>
+                    <label for="desc">Description</label>
                     <textarea type="body" class="form-control" id="desc" value="{{ old('desc') }}" name="desc"></textarea>
                 </div>
             </div>

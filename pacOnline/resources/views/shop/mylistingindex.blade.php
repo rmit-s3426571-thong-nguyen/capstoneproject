@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Pac Online
+    My Listings
 @endsection
 
 @section('content')

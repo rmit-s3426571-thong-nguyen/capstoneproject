@@ -18,19 +18,7 @@ class ProductController extends Controller
         $this->middleware('auth')->except(['index','show', ]);
     }
 
-//    public function getProductsForCatId($userId) {
-//
-//        $allUsersCats = UserCategoriesList::where('user_id', $userId)->get();
-//
-//        $products = [];
-//        foreach ($allUsersCats as $userCat) {
-//            $product = Product::where('category_id', $userCat->cat_id)->first();
-//            array_push($products, $product);
-//        }
-//        return view('shop.index',compact('products'));
-//    }
-
-    public function index()
+    public function recommendation()
     {
         if($user = Auth::user())
         {
@@ -40,19 +28,39 @@ class ProductController extends Controller
 
             foreach ($allUsersCats as $userCat) {
 
-                $userCatProducts = Product::where('category_id', $userCat->cat_id)->get();
+                $userCatProducts = Product::where('category_id', $userCat->cat_id)->orderBy('created_at','DESC')->get();
 
                 foreach($userCatProducts as $product){
                     $products->push($product);
                 }
             }
-            return view('shop.index',compact('products'));
+            return view('foryou.index',compact('products'));
+        }
+    }
+
+    public function index()
+    {
+        $catID = request('category');
+        $price_min = request('price-min');
+        $price_max = request('price-max');
+        $sort = request('sort');
+
+        if ($catID){
+            $products = Product::where('category_id',$catID)->orderBy('created_at','DESC')->get();
+        }elseif ($price_min || $price_max){
+            $products = Product::whereBetween('price', [$price_min, $price_max])->get();
+        }elseif($sort){
+            if ($sort == "lth")
+                $products = Product::orderBy('price','ASC')->get();
+            elseif ($sort == "htl")
+                $products = Product::orderBy('price','DESC')->get();
+        }
+        else{
+            $products = Product::latest()->get();
         }
 
-    	//using Elequent to get all the products
-        $products = Product::latest()->get();
-
-        return view('shop.index',compact('products'));
+        $categories = Category::all();
+        return view('shop.index',compact('products', 'categories'));
     }
 
     //get all products and pass to UserProducts

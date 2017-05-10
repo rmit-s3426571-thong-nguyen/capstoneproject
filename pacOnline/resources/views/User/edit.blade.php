@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
+@section('title')
+    Update Details
+@endsection
+
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -71,7 +75,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
-                            <label for="address" class="col-md-4 control-label">address</label>
+                            <label for="address" class="col-md-4 control-label">Address</label>
 
                             <div class="col-md-6">
                                 <input id="address" type="text" class="form-control" name="address" value="{{Auth::user()->address}}" required autofocus>
@@ -133,15 +137,14 @@
                         </div>
 
 
+                        <div class="center gap-bottom">
+                            <label>Change Avatar</label>
+                            <input type="file" name='avatar' value="{{ old('avatar') }}">
+                        </div>
 
-                         <label>Update Profile Image</label>
-                         <input type="file" name='avatar' value="{{ old('avatar') }}">
-
-                        <div class="form-group">
+                        <div class="form-group text-center">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Edit
-                                </button>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
                             </div>
                         </div>
                     </form>

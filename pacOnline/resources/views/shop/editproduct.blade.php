@@ -19,7 +19,7 @@
 			</div>
 
 			<div class="form-group">
-				<label for="desc">Desciption</label>
+				<label for="desc">Description</label>
 				<input type="body" class="form-control" id="desc" value="{{ $products->desc }}" name="desc"></input>
 			</div>
 
@@ -37,7 +37,7 @@
 
 
 			<div class="form-group">
-					<button type="submit" class="btn btn-primary">Edit product</button>
+					<button type="submit" class="btn btn-primary">Save Changes</button>
 			</div>
 
 			@include('includes.errors')

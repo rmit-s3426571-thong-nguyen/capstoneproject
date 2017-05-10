@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Category;
 use Auth;
 use Session;
+use Carbon\Carbon;
 
 class RegisterController extends Controller
 {
@@ -32,7 +33,7 @@ class RegisterController extends Controller
      * @var string
      */
 
-    protected $redirectTo = '/';
+    protected $redirectTo = '/foryou';
 
     /**
      * Create a new controller instance.
@@ -51,10 +52,8 @@ class RegisterController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
 
-//<<<<<<< HEAD
-//    // protected $dt = new Carbon\Carbon();
-//    //protected $before = $dt->subYears(13);
-//=======
+//    protected $dt = new Carbon();
+//    protected $before = $dt->subYears(13);
 
     protected function validator(array $data)
     {
@@ -65,7 +64,9 @@ class RegisterController extends Controller
             'phone' => 'required|regex:/^0[0-8]\d{8}$/',
             'zip' => 'required|regex:/^[0-9]\d{3}$/',
             'password' => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!@$#%^&*?]).*$/|confirmed',
-            'category_id' => 'required|integer'
+            'category_1' => 'integer|different:category_2|different:category_3',
+            'category_2' => 'integer|different:category_1|different:category_3',
+            'category_3' => 'integer|different:category_1|different:category_2'
         ]);
     }
 
@@ -74,6 +75,7 @@ class RegisterController extends Controller
          $user = User::whereId($id)->first();
          return view('Auth.register', compact('user'));
     }
+
     /**
      * Create a new user instance after a valid registration.
      *
@@ -96,15 +98,11 @@ class RegisterController extends Controller
             'password' => $data['password'],
         ]);
 
-        $user->userCats = UserCategoriesList::create([
-            'user_id' => $user->id,
-            'cat_id' => $data['category_id']
+        $user->categories()->saveMany([
+            new UserCategoriesList(['cat_id' => $data['category_1']]),
+            new UserCategoriesList(['cat_id' => $data['category_2']]),
+            new UserCategoriesList(['cat_id' => $data['category_3']]),
         ]);
-
         return $user;
     }
-
-
-    
-
 }

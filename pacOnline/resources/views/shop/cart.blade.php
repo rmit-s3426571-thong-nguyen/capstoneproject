@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Shopping Cart
+    My Cart
 @endsection
 
 @section('content')
@@ -23,7 +23,7 @@
                     @foreach($products as $product)
                     <tr>
                         <td><span><img src="{{ $product['product']['imageLocation'] }}"
-                            alt="..." class="img-responsive"></span></td>
+                            alt="..." style="max-height: 150px" class="img-responsive container-fluid"></span></td>
                         <td><span>{{ $product['product']['title'] }}</span></td>
                         <td>{{ $product['qty'] }}</td>
                         <td>{{ $product['price'] }}</td>
@@ -42,15 +42,15 @@
         </div>
 
 
-        <div class="row">
+        <div class="row checkout-button">
             <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3 text-right">
                 <button type="button" class="btn btn-success">Checkout</button>
             </div>
         </div>
     @else
-        <div class="row">
+        <div class="row text-center">
             <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-                <h1>Your cart is empty</h1>
+                <h1><strong>Uh Oh!</strong> It seems like your cart is empty.</h1>
             </div>
         </div>
     @endif

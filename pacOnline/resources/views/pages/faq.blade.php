@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-  Pac Online
+  F.A.Q.
 @endsection
 
 @section('content')
@@ -12,7 +12,7 @@
 		<strong>2) What goods are sellers allowed to list on PAC Online?</strong>
 	    <p>Brand new or pre-loved, you are welcome to sell your goods on PAC!</p>
 	    <br/>
-	    <strong>3) Where is PAC Online based?
+	    <strong>3) Where is PAC Online based?</strong>
 	   	<p> We are based in Melbourne, Australia</p>
 	   	<br/>
 	   	<strong>4) How is PAC Online able to find me stuff that I love?</strong>

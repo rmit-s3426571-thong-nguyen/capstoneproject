@@ -27,10 +27,10 @@
                 <button class="btn btn-primary btn-danger pull-right"  role="button">Delete</button>
                 </form>
                 
-                <a href="/editproduct/{{$product->id}}" class="btn btn-primary pull-right"  role="button">Edit </a>
-    @endif   
+                <a href="/editproduct/{{$product->id}}" class="btn btn-primary pull-right edit-listing"
+                   role="button">Edit </a>
             </div>
-
         </div>
+    @endif
     </div>
 </div>
