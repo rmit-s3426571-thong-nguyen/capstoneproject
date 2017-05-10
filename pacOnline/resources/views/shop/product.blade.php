@@ -6,7 +6,7 @@
         <a href="/products/{{ $product->id }}">
             <img src="{{ $product->imageLocation }}" alt="..." style="max-height: 150px"
             {{-- <img src="/uploads/productImages/{{$product->imageLocation}}" alt="..." style="max-height: 150px" --}}
-            class="img-responsive container"></a>
+            class="img-responsive product-container"></a>
 
         <div class="caption">
 
