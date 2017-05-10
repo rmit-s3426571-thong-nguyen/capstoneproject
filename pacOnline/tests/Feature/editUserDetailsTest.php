@@ -40,7 +40,7 @@ class editDetailsTest extends TestCase
             $this->visit('/edit/16');
             $this->seePageIs('/edit/16');
             $this->type('0433333333', 'phone');
-            $this->press('Edit');
+            $this->press('Save Changes');
             $this->seePageIs('/mydetails/{username}');
         }
 
@@ -55,7 +55,7 @@ class editDetailsTest extends TestCase
             $this->visit('/edit/16');
             $this->seePageIs('/edit/16');
             $this->type('3333333333', 'phone');
-            $this->press('Edit');
+            $this->press('Save Changes');
             $this->seePageIs('/edit/16');
         }
 
@@ -70,7 +70,7 @@ class editDetailsTest extends TestCase
             $this->visit('/edit/16');
             $this->seePageIs('/edit/16');
             $this->type('30000', 'zip');
-            $this->press('Edit');
+            $this->press('Save Changes');
             $this->seePageIs('/edit/16');
         }
 
@@ -85,7 +85,7 @@ class editDetailsTest extends TestCase
             $this->visit('/edit/16');
             $this->seePageIs('/edit/16');
             $this->type('17/13/2000', 'birth');
-            $this->press('Edit');
+            $this->press('Save Changes');
             $this->seePageIs('/edit/16');
         }
     /*public function testEditDetailsEmailError()

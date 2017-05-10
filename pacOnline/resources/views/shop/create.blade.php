@@ -46,10 +46,14 @@
 
             <div class="form-group{{ $errors->has('imageLocation') ? ' has-error' : '' }}">
                 <div class="form-group">
-                         <label>Upload Product Image</label>
-                         <input type="file" name='imageLocation'>
+                        <label for="image">Images</label>
+                        <textarea type="body" class="form-control" id="imageLocation"  value="{{ old('imageLocation') }}" placeholder="Just paste a product image url here..." name="imageLocation" ></textarea>
+                       {{--  <label>Upload Product Image</label>
+                         <input type="file" name='imageLocation'> --}}
                 </div>
             </div>
+
+
 
 			<div class="form-group">
                 <button name="sell" value="sell" type="submit" class="btn btn-primary">Sell this product</button>
