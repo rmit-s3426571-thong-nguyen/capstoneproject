@@ -99,8 +99,9 @@ class UpdatePasswordController extends Controller
             $validator = $this->admin_credential_rules($request_data);
             if($validator->fails())
             {
-              $error = array('current-password' => 'Please enter correct current password');
-        return response()->json(array('error' => $error), 400); 
+                 return view('User.editpassword', compact('user'));
+             // $error = array('current-password' => 'Please enter correct current password');
+        //return response()->json(array('error' => $error), 400); 
             }
             else
             {  
@@ -114,9 +115,10 @@ class UpdatePasswordController extends Controller
                 return redirect('/mydetails/{username}');
               }
               else
-              {           
-                $error = array('current-password' => 'Please enter correct current password');
-                return response()->json(array('error' => $error), 400);
+              {  
+                return view('User.editpassword', compact('user')); 
+                //$error = array('current-password' => 'Please enter correct current password');
+                //return response()->json(array('error' => $error), 400);
               }
             }        
           }
