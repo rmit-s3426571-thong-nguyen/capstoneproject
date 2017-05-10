@@ -9,7 +9,7 @@
 	<div class="col-sm-12">
 		<h1>Edit Your product</h1>
 		<hr>
-		<form method="POST" action="/product/{{$products->id}}">
+		<form method="POST" action="/product/{{$products->id}}" enctype="multipart/form-data">
 			{{ method_field('PUT') }}
 			{{ csrf_field() }}
 
@@ -22,22 +22,33 @@
 				<label for="desc">Description</label>
 				<input type="body" class="form-control" id="desc" value="{{ $products->desc }}" name="desc"></input>
 			</div>
+			<div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
+				<div class="form-group">
+					<label for="category_id">Category</label>
+                    <?php $productCat = \App\Category::find($products->category_id); ?>
+					<select class="form-control" name="category_id" >
+						@foreach($categories as $category)
+							@if($category == $productCat)
+								<option value="{{ $category->id }}" selected> {{ $category->name }}</option>
+							@else
+								<option value="{{ $category->id }}"> {{ $category->name }}</option>
+							@endif
+						@endforeach
+					</select>
+				</div>
+			</div>
 
 			<div class="form-group">
 				<label for="price">Price($)</label>
 				<input type="body" class="form-control" id="price" value="{{ $products->price }}" name="price" ></input>
 			</div>
 
-         {{--   <div class="form-group{{ $errors->has('imageLocation') ? ' has-error' : '' }}">
-            --    <div class="form-group">
-            --             <label>Update Product Image</label>
-            --             <input type="file" name='imageLocation'>
-            --   </div>
-            -- </div>
-			--}}
-            <div class="form-group">
-				<label for="image">Images</label>
-				<input type="body" class="form-control" id="imageLocation"  value="{{ $products->imageLocation }}" placeholder="Just paste a product image url here..." name="imageLocation" ></input>
+			<div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
+				<img src="{{ $products->imageLocation }}" alt="..." style="max-height: 150px" class="img-responsive">
+				<div class="form-group">
+					<label>Change Product Image</label>
+					<input type="file" name='image'>
+				</div>
 			</div>
 
 
