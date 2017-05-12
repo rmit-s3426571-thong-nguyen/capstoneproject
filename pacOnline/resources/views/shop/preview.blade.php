@@ -11,8 +11,9 @@
         <div class="col-1-2">
             <div class="product-wrap">
                 <div class="product-shot">
-                    <img src="/uploads/productImages/{{$product->imageLocation}}" alt="..." style="max-height: 150px"
-                         class="img-responsive">
+                     <img src="{{ $product->imageLocation }}" alt="..." style="max-height: 150px"
+                    {{-- <img src="/uploads/productImages/{{$product->imageLocation}}" alt="..." style="max-height: 150px" --}}
+                         class="img-responsive"> 
                 </div>
             </div>
         </div>

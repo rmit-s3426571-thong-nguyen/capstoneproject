@@ -50,9 +50,9 @@
             <div class="col-sm-10">
                 <div class="row">
                     <div class="pull-left">
-                        <h4>All products </h4>
+                        <h3>Most Recent</h3>
                     </div>
-                    <div class="dropdown pull-right">
+                    <div class="dropdown pull-right sort-by-dropdown">
                         <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Sort by ...
                             <span class="caret"></span></button>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">

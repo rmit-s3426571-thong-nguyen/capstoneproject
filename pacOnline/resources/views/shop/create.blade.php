@@ -9,7 +9,7 @@
 	<div class="col-sm-12">
 		<h1>Post a product</h1>
 		<hr>
-		<form method="POST" action="/products">
+		<form method="POST" action="/products" enctype="multipart/form-data">
 
 			{{ csrf_field() }}
             <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
@@ -47,10 +47,9 @@
             <div class="form-group{{ $errors->has('imageLocation') ? ' has-error' : '' }}">
                 <div class="form-group">
                          <label>Upload Product Image</label>
-                         <input type="file" name='imageLocation'>
+                         <input type="file" name='image'>
                 </div>
             </div>
-
 			<div class="form-group">
                 <button name="sell" value="sell" type="submit" class="btn btn-primary">Sell this product</button>
                 <button name="preview" value="preview" type="submit" class="btn btn-success">Preview this product</button>

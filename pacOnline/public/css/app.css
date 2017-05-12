@@ -2967,6 +2967,11 @@ td,th{padding:0}
 		
 		.gap-bottom {margin-bottom:20px}
 
+		.sort-by-dropdown {
+			margin-bottom:20px;
+			margin-right: 20px;
+		}
+
 		.footer{
 			display: block;
 		}

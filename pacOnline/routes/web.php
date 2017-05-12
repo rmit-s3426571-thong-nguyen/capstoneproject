@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,7 +9,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 
 // recommend products base on users interested categories.
 Route::get('/user-cats/{userId}','ProductController@getProductsForCatId');
