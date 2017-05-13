@@ -26,13 +26,23 @@ Route::get('/products/{product}','ProductController@show');
 Route::get('/userproducts/{id}', 'ProductController@index2');
 Route::get('/editproduct/{id}', 'ProductController@edit');
 
+Route::get('/cart',[
+    'uses' => 'CartController@cart',
+    'as'   => 'product.cart']);
+
 Route::get('/cart/{id}',[
-    'uses' => 'ProductController@addToCart',
+    'uses' => 'CartController@addToCart',
     'as'   => 'product.addToCart']);
 
-Route::get('/cart',[
-    'uses' => 'ProductController@cart',
-    'as'   => 'product.cart']);
+
+Route::get('/removeProductFromCart/{id}',[
+    'uses' => 'CartController@removeFromCart',
+    'as'   => 'product.removeProductFromCart']);
+
+Route::get('/emptyCart',[
+    'uses' => 'CartController@emptyCart',
+    'as'   => 'product.emptyCart']);
+
 
 Route::get('/login', [
     'name' => 'login', 
