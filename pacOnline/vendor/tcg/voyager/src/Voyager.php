@@ -21,6 +21,7 @@ use TCG\Voyager\Models\Role;
 use TCG\Voyager\Models\Setting;
 use TCG\Voyager\Models\User;
 use TCG\Voyager\Traits\Translatable;
+use App\Product;
 
 class Voyager
 {
@@ -39,6 +40,7 @@ class Voyager
     protected $users = [];
 
     protected $models = [
+        'Product'    => Product::class,
         'Category'   => Category::class,
         'DataRow'    => DataRow::class,
         'DataType'   => DataType::class,
@@ -50,6 +52,7 @@ class Voyager
         'Role'       => Role::class,
         'Setting'    => Setting::class,
         'User'       => User::class,
+
     ];
 
     public function __construct()

@@ -62,6 +62,7 @@ class CartController extends Controller
             }
         }
         request()->session()->put('cart', $cart);
+
         if($cart->totalQty == 0){
             request()->session()->forget('cart');
         }

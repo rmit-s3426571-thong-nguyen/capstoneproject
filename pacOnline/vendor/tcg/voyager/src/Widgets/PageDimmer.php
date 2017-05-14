@@ -20,16 +20,16 @@ class PageDimmer extends AbstractWidget
      */
     public function run()
     {
-        $count = Voyager::model('Page')->count();
-        $string = $count == 1 ? 'page' : 'pages';
+        $count = Voyager::model('Category')->count();
+        $string = $count == 1 ? 'category' : 'categories';
 
         return view('voyager::dimmer', array_merge($this->config, [
-            'icon'   => 'voyager-group',
+            'icon'   => 'voyager-categories',
             'title'  => "{$count} {$string}",
-            'text'   => "You have {$count} {$string} in your database. Click on button below to view all pages.",
+            'text'   => "You have {$count} {$string} in your database. Click on button below to view all categories.",
             'button' => [
-                'text' => 'View all pages',
-                'link' => route('voyager.pages.index'),
+                'text' => 'View all categories',
+                'link' => url('/admin/categories'),
             ],
             'image' => voyager_asset('images/widget-backgrounds/03.png'),
         ]));
