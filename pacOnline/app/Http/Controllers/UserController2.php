@@ -20,7 +20,8 @@ class UserController2 extends Controller
     public function index($id)
     {
          $user = User::whereId($id)->first();
-         return view('User.mydetails', compact('user', 'categories'));
+         $UserCategoriesLists = $user->categories()->get();
+         return view('User.mydetails', compact('user', 'UserCategoriesList', 'UserCategoriesLists', 'categories'));
     }
 
     /**
@@ -110,10 +111,12 @@ class UserController2 extends Controller
         ]);
         $user = User::findOrFail($id);
        
-        $categories = Category::all();
+        $UserCategoriesLists = $user->categories()->get();
+        /*foreach ($UserCategoriesLists as $UserCategoriesList){
+            $UserCategoriesList->update($request->all());
+        }*/
         $user->update($request->all());
-        $user->categories()->update($request->all());
-       
+
         return redirect('/mydetails/{username}');
     }
 

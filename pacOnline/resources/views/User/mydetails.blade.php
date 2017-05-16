@@ -26,7 +26,9 @@
               <h5>{{Auth::user()->birth}}</h3>
               <h5>0{{ Auth::user()->phone }}</h3>
               <h5>{{ Auth::user()->address }}, {{ Auth::user()->city }}, {{ Auth::user()->state }} {{ Auth::user()->zip }}</h5>
-              <h5>{{$user->categories}}</h5>
+              @foreach($UserCategoriesLists as $number=>$UserCategoriesList)
+                 <h5>Favorite{{++$number}} = {{$UserCategoriesList->category->name}}</h5>
+              @endforeach
             </div>
               <br>
               <small>
