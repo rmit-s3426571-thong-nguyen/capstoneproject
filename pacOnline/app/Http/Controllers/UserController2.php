@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Auth;
 use App\Category;
+use App\UserCategoriesList;
 use Session;
 
 class UserController2 extends Controller
@@ -19,7 +20,7 @@ class UserController2 extends Controller
     public function index($id)
     {
          $user = User::whereId($id)->first();
-         return view('User.mydetails', compact('user'));
+         return view('User.mydetails', compact('user', 'categories'));
     }
 
     /**
@@ -30,7 +31,14 @@ class UserController2 extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('User.edit',compact('categories'));
+        
+        $user->categories()->saveMany([
+            new UserCategoriesList(['cat_id' => $data['category_1']]),
+            new UserCategoriesList(['cat_id' => $data['category_2']]),
+            new UserCategoriesList(['cat_id' => $data['category_3']]),
+        ]);
+
+        return view('User.edit', compact('user', 'categories'));
     }
 
     /**
@@ -78,7 +86,8 @@ class UserController2 extends Controller
     public function edit($id)
     {
         $users = User::findOrFail($id);
-        return view('User.edit', compact('users'));
+        $categories = Category::all();
+        return view('User.edit', compact('users', 'categories'));
     }
 
 
@@ -101,7 +110,10 @@ class UserController2 extends Controller
         ]);
         $user = User::findOrFail($id);
        
+        $categories = Category::all();
         $user->update($request->all());
+        $user->categories()->update($request->all());
+       
         return redirect('/mydetails/{username}');
     }
 

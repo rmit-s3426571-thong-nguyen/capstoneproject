@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Category;
 
 
 class UserController extends Controller
@@ -34,7 +35,13 @@ class UserController extends Controller
     $user = Auth::user();
     $user->name = Request::input('name');
     $user->email = Request::input('email');
+            $user->categories()->saveMany([
+            new UserCategoriesList(['cat_id' => $data['category_1']]),
+            new UserCategoriesList(['cat_id' => $data['category_2']]),
+            new UserCategoriesList(['cat_id' => $data['category_3']]),
+        ]);
     $user->save();
+    return $user;
     return view('/mydetails/{username}');
    }
 }
