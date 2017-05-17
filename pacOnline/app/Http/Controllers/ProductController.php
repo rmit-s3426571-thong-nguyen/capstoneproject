@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use App\Cart;
 use App\Product;
 use App\Category;
 use App\UserCategoriesList;
@@ -93,7 +92,7 @@ class ProductController extends Controller
             'desc' => 'required',
             'category_id' => 'required|integer',
             'price' => 'required|regex:/^[0-9]+(\.[0-9][0-9]?)?$/',
-            'image' => 'required|image|max:2000',
+            'image' => 'image|max:2000',
         ]);
 
         $s3 = Storage::disk('s3');
@@ -108,9 +107,14 @@ class ProductController extends Controller
             $product->category_id = request('category_id');
             $product->price = request('price');
 
-            $path = $s3->putFileAs('product_images/'.$product->user_id, $image, $image->getClientOriginalName() , 'public');
+            if ($image){
+                $path = $s3->putFileAs('product_images/'.$product->user_id, $image, $image->getClientOriginalName() , 'public');
+                $product->imageLocation = Storage::disk('s3')->url($path);
 
-            $product->imageLocation = Storage::disk('s3')->url($path);
+            }else{
+                $path = Storage::disk('s3')->url('product_images/default/default.png');
+                $product->imageLocation = $path;
+            }
 
             // save to the database
             $product->save();
@@ -126,9 +130,15 @@ class ProductController extends Controller
         $product->desc = request('desc');
         $product->category_id = request('category_id');
         $product->price = request('price');
-        $path = $s3->putFileAs('product_images/'.$product->user_id, $image, $image->getClientOriginalName() , 'public');
 
-        $product->imageLocation = Storage::disk('s3')->url($path);
+        if ($image){
+            $path = $s3->putFileAs('product_images/'.$product->user_id, $image, $image->getClientOriginalName() , 'public');
+            $product->imageLocation = Storage::disk('s3')->url($path);
+
+        }else{
+            $path = Storage::disk('s3')->url('product_images/default/default.png');
+            $product->imageLocation = $path;
+        }
 
         return view('shop.preview', compact('product'));
     }
@@ -176,36 +186,5 @@ class ProductController extends Controller
         $products->delete($id);
 
         return redirect("/userproducts/$products->user_id");
-    }
-    
-
-    public function addToCart(Request $request, $id)
-    {
-        $product = Product::find($id);
-
-        $origCart = Session::has('cart') ? Session::get('cart') : null;
-
-        $newCart = new Cart($origCart);
-
-        $newCart->add($product, $product->id);
-
-        $request->session()->put('cart', $newCart);
-
-        return redirect('/');
-
-    }
-
-    public function cart()
-    {
-        if (!Session::has('cart'))
-        {
-            return view('shop.cart');
-        }
-        else
-        {
-            $origCart = Session::get('cart');
-            $newCart = new Cart($origCart);
-            return view('shop.cart',['products' => $newCart->products, 'totalPrice' => $newCart->totalPrice]);
-        }
     }
 }

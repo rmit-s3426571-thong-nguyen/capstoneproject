@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pagination\Paginator;
 
 class Cart extends Model
 {
@@ -38,4 +39,21 @@ class Cart extends Model
 
     }
 
+    public function remove($product, $id){
+
+        $removedProduct = $this->products[$id];
+
+        if ($removedProduct['qty'] > 1){
+            $removedProduct['qty'] -= 1;
+            $removedProduct['price'] = $product->price * $removedProduct['qty'];
+            $this->totalQty--;
+            $this->totalPrice -= $product->price;
+            $this->products[$id] = $removedProduct;
+        }elseif($removedProduct['qty'] <= 1){
+            $removedProduct['qty'] = 0;
+            $this->totalQty--;
+            $this->totalPrice -= $product->price;
+            unset($this->products[$id]);
+        }
+    }
 }
