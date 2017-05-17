@@ -143,6 +143,69 @@
                             <input type="file" name='avatar' value="{{ old('avatar') }}">
                         </div>
 
+                        <?php
+                            $cat = collect(new \App\UserCategoriesList());
+                            foreach (Auth::user()->categories as $category){
+                                    $cat->push($category->cat_id);
+                            }
+                            $cat1 = \App\Category::find($cat[0]);
+                            $cat2 = \App\Category::find($cat[1]);
+                            $cat3 = \App\Category::find($cat[2]);
+                        ?>
+
+                        <label for="category" class="col-md-4 control-label">Favourite 1 </label>
+                        <div class="col-md-6">
+                            <select class="form-control" name="category_1">
+                                @foreach($categories as $category)
+                                    @if($category == $cat1)
+                                        <option value="{{ $category->id }}" selected> {{ $category->name }}</option>
+                                    @else
+                                        <option value="{{ $category->id }}"> {{ $category->name }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                            @if ($errors->has('category_1'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('category_1') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                        <label for="category" class="col-md-4 control-label">Favourite 2 </label>
+                        <div class="col-md-6">
+                            <select class="form-control" name="category_2">
+                                @foreach($categories as $category)
+                                    @if($category == $cat2)
+                                        <option value="{{ $category->id }}" selected> {{ $category->name }}</option>
+                                    @else
+                                        <option value="{{ $category->id }}"> {{ $category->name }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                            @if ($errors->has('category_2'))
+                                <span class="help-block">
+                                            <strong>{{ $errors->first('category_2') }}</strong>
+                                        </span>
+                            @endif
+                        </div>
+                        <label for="category" class="col-md-4 control-label">Favourite 3 </label>
+                        <div class="col-md-6">
+                            <select class="form-control" name="category_3">
+                                @foreach($categories as $category)
+                                    @if($category == $cat3)
+                                        <option value="{{ $category->id }}" selected> {{ $category->name }}</option>
+                                    @else
+                                        <option value="{{ $category->id }}"> {{ $category->name }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                            @if ($errors->has('category_3'))
+                                <span class="help-block">
+                                            <strong>{{ $errors->first('category_3') }}</strong>
+                                        </span>
+                            @endif
+                        </div>
+
+
                         <div class="form-group text-center">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">Save Changes</button>

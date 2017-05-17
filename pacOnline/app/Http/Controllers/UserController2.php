@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
+use App\UserCategoriesList;
 use App\User;
 use Auth;
 use App\Category;
@@ -18,8 +20,10 @@ class UserController2 extends Controller
      */
     public function index($id)
     {
-         $user = User::whereId($id)->first();
-         return view('User.mydetails', compact('user'));
+        $user = User::whereId($id)->first();
+        $categories = Category::all();
+
+        return view('User.mydetails', compact('user', 'categories'));
     }
 
     /**
@@ -78,7 +82,8 @@ class UserController2 extends Controller
     public function edit($id)
     {
         $users = User::findOrFail($id);
-        return view('User.edit', compact('users'));
+        $categories = Category::all();
+        return view('User.edit', compact('users', 'categories'));
     }
 
 
@@ -97,9 +102,21 @@ class UserController2 extends Controller
             'birth' => 'required|date_format:"d/m/Y"|before_or_equal:-13 years|after_or_equal:-80 years',
             'phone' => 'required|regex:/^0[0-8]\d{8}$/',
             'zip' => 'required|regex:/^[0-9]\d{3}$/',
-            
+            'category_1' => 'integer|different:category_2|different:category_3',
+            'category_2' => 'integer|different:category_1|different:category_3',
+            'category_3' => 'integer|different:category_1|different:category_2'
         ]);
         $user = User::findOrFail($id);
+
+        foreach($user->categories()->get() as $userCat){
+            $userCat->delete();
+        }
+
+        $user->categories()->saveMany([
+            new UserCategoriesList(['cat_id' => $request['category_1']]),
+            new UserCategoriesList(['cat_id' => $request['category_2']]),
+            new UserCategoriesList(['cat_id' => $request['category_3']]),
+        ]);
        
         $user->update($request->all());
         return redirect('/mydetails/{username}');
