@@ -29,12 +29,10 @@
 
                     </div>
                     <div>
-                        <ul>
-                            <label>Your interests:</label>
-                            @foreach (Auth::user()->categories as $userCat)
-                                <li style="background: hotpink">{{ \App\Category::find($userCat['cat_id'])->name }}</li>
-                            @endforeach
-                        </ul>
+                        <label>Your interests:</label>
+                        @foreach (Auth::user()->categories as $userCat)
+                            <h5>{{ \App\Category::find($userCat['cat_id'])->name }}</h5>
+                        @endforeach
                     </div>
                     <hr>
                     <div>
