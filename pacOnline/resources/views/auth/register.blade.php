@@ -174,7 +174,11 @@
                                 <div class="col-md-6">
                                     <select class="form-control" name="category_1">
                                         @foreach($categories as $category)
-                                            <option value="{{ $category->id }}"> {{ $category->name }}</option>
+                                            @if($category->id == 1)
+                                                <option value="{{ $category->id }}" selected> {{ $category->name }}</option>
+                                            @else
+                                                <option value="{{ $category->id }}"> {{ $category->name }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
                                     @if ($errors->has('category_1'))
@@ -187,8 +191,11 @@
                                 <div class="col-md-6">
                                     <select class="form-control" name="category_2">
                                         @foreach($categories as $category)
-                                            <option value="{{ $category->id }}"> {{ $category->name }}</option>
-                                        @endforeach
+                                            @if($category->id == 2)
+                                                <option value="{{ $category->id }}" selected> {{ $category->name }}</option>
+                                            @else
+                                                <option value="{{ $category->id }}"> {{ $category->name }}</option>
+                                            @endif                                        @endforeach
                                     </select>
                                     @if ($errors->has('category_2'))
                                         <span class="help-block">
@@ -200,8 +207,11 @@
                                 <div class="col-md-6">
                                     <select class="form-control" name="category_3">
                                         @foreach($categories as $category)
-                                            <option value="{{ $category->id }}"> {{ $category->name }}</option>
-                                        @endforeach
+                                            @if($category->id == 3)
+                                                <option value="{{ $category->id }}" selected> {{ $category->name }}</option>
+                                            @else
+                                                <option value="{{ $category->id }}"> {{ $category->name }}</option>
+                                            @endif                                        @endforeach
                                     </select>
                                     @if ($errors->has('category_3'))
                                         <span class="help-block">
