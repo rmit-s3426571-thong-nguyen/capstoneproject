@@ -39,7 +39,6 @@ class editProductDetailsTest extends TestCase
 	    $this->type('mockproduct1', 'title');
 	    $this->type('fake fake', 'desc');
 	    $this->type('1234','price');
-	    $this->attach('default.jpg','imageLocation');
 	    $this->press('Sell this product');
     }
 

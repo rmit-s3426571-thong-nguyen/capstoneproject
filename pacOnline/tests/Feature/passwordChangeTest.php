@@ -34,8 +34,8 @@ class passwordChangeTest extends TestCase
             $this->type('A!1234', 'password');
             $this->press('Login');
             $this->seePageIs('/');
-            $this->visit('/editpassword/17');
-            $this->seePageIs('/editpassword/17');
+            $this->visit('/editpassword/21');
+            $this->seePageIs('/editpassword/21');
             $this->type('A!1234', 'old');
             $this->type('A!1233', 'password');
             $this->type('A!1233', 'password_confirmation');
@@ -52,8 +52,8 @@ class passwordChangeTest extends TestCase
             $this->type('A!1233', 'password');
             $this->press('Login');
             $this->seePageIs('/');
-            $this->visit('/editpassword/17');
-            $this->seePageIs('/editpassword/17');
+            $this->visit('/editpassword/21');
+            $this->seePageIs('/editpassword/21');
             $this->type('A!1233', 'old');
             $this->type('A!1234', 'password');
             $this->type('A!1234', 'password_confirmation');
@@ -71,13 +71,13 @@ class passwordChangeTest extends TestCase
             $this->type('A!1234', 'password');
             $this->press('Login');
             $this->seePageIs('/');
-            $this->visit('/editpassword/17');
-            $this->seePageIs('/editpassword/17');
+            $this->visit('/editpassword/21');
+            $this->seePageIs('/editpassword/21');
             $this->type('A!1234', 'old');
             $this->type('A!1233', 'password');
             $this->type('A!1234', 'password_confirmation');
             $this->press('Save');
-            $this->seePageIs('/password/17');
+            $this->seePageIs('/password/21');
         }
 
     public function testEditPasswordRegex()
@@ -88,13 +88,13 @@ class passwordChangeTest extends TestCase
             $this->type('A!1234', 'password');
             $this->press('Login');
             $this->seePageIs('/');
-            $this->visit('/editpassword/17');
-            $this->seePageIs('/editpassword/17');
+            $this->visit('/editpassword/21');
+            $this->seePageIs('/editpassword/21');
             $this->type('A!1234', 'old');
             $this->type('password', 'password');
             $this->type('password', 'password_confirmation');
             $this->press('Save');
-            $this->seePageIs('/password/17');
+            $this->seePageIs('/password/21');
         }
 
 
