@@ -8,6 +8,8 @@ use Auth;
 use App\Category;
 use App\UserCategoriesList;
 use Session;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class UserController2 extends Controller
 {
@@ -39,7 +41,7 @@ class UserController2 extends Controller
             new UserCategoriesList(['cat_id' => $data['category_3']]),
         ]);
 
-        return view('User.edit', compact('user', 'categories'));
+        return view('User.edit', compact('user', 'categories', 'UserCategoriesList'));
     }
 
     /**
@@ -88,7 +90,8 @@ class UserController2 extends Controller
     {
         $users = User::findOrFail($id);
         $categories = Category::all();
-        return view('User.edit', compact('users', 'categories'));
+        $UserCategoriesList = $users->categories()->get();
+        return view('User.edit', compact('users', 'categories', 'UserCategoriesList'));
     }
 
 
@@ -111,10 +114,11 @@ class UserController2 extends Controller
         ]);
         $user = User::findOrFail($id);
        
-        $UserCategoriesLists = $user->categories()->get();
-        /*foreach ($UserCategoriesLists as $UserCategoriesList){
-            $UserCategoriesList->update($request->all());
-        }*/
+      /*  $UserCategoriesLists = $user->categories()->get();
+        foreach ($UserCategoriesLists as $UserCategoriesList){
+        echo $UserCategoriesLists;
+        Auth::user()->UserCategoriesList()->save($UserCategoriesLists);
+        } */
         $user->update($request->all());
 
         return redirect('/mydetails/{username}');

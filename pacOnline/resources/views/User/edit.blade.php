@@ -161,7 +161,7 @@
                                 <div class="col-md-6">
                                     <select class="form-control" name="category_2">
                                         @foreach($categories as $category)
-                                            <option value="{{ $category->id }}"> {{ $category->name }}</option>
+                                            <option value="{{ $UserCategoriesList->category->id }}"> {{ $category->name }}</option>
                                         @endforeach
                                     </select>
                                     @if ($errors->has('category_2'))
