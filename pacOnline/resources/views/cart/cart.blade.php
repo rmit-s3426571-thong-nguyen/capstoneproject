@@ -28,8 +28,9 @@
                         <td>{{ $product['qty'] }}</td>
                         <td>{{ $product['price'] }}</td>
                         <th>
-                            <div class="clearfix">
-                                <a href="{{ route('product.removeProductFromCart',['id' => $product['product']['id']] ) }}" class="btn btn-danger"  role="button">Remove</a>
+                            <div class="container-fluid text-center">
+                                <a href="{{ route('product.removeProductFromCart',['id' => $product['product']['id']] ) }}"  
+                                   class="btn btn-info" role="button">Remove</a>
                             </div>
                         </th>
                     </tr>
@@ -40,6 +41,7 @@
                         <td></td>
                         <td>Total</td>
                         <td>{{$totalPrice}}</td>
+                        <td><a href="{{ route('product.emptyCart') }}" class="btn btn-danger" role="button">Empty Cart</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -48,7 +50,7 @@
 
         <div class="row checkout-button">
             <div class=" col-md-8 col-md-offset-2">
-                <a href="{{ route('product.emptyCart') }}" class="btn btn-danger pull-left" role="button">Empty Cart</a>
+                
 
                 <a href="#" class="btn btn-success pull-right" role="button">Checkout</a>
 

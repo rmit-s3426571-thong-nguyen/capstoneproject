@@ -14,7 +14,7 @@ class adminPanelTest extends TestCase
         $this->visit('/admin');
         $this->seePageIs('/admin/login');
         $this->type('admin@admin.com', 'email');
-        $this->type('Admin2017!!', 'password');
+        $this->type('Password1!', 'password');
         $this->press('Login');
         $this->seePageIs('/admin');
        
@@ -36,7 +36,7 @@ class adminPanelTest extends TestCase
         $this->visit('/admin');
         $this->seePageIs('/admin/login');
         $this->type('admin@example.com', 'email');
-        $this->type('Admin2017!!', 'password');
+        $this->type('Password1!', 'password');
         $this->press('Login');
         $this->seePageIs('/admin/login');
     }
@@ -45,7 +45,7 @@ class adminPanelTest extends TestCase
     {
         $this->visit('/admin');
         $this->seePageIs('/admin/login');
-        $this->type('Admin2017!!', 'password');
+        $this->type('Password1!!', 'password');
         $this->press('Login');
         $this->seePageIs('/admin/login');
     }
