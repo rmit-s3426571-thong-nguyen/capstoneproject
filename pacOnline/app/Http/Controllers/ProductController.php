@@ -19,6 +19,7 @@ class ProductController extends Controller
         $this->middleware('auth')->except(['index','show', ]);
     }
 
+    //Algorithm for finding suitable product for the users
     public function recommendation()
     {
         if($user = Auth::user())
@@ -39,6 +40,8 @@ class ProductController extends Controller
         }
     }
 
+
+    // Showing all products on the main page of website
     public function index()
     {
         $catID = request('category');
@@ -72,18 +75,20 @@ class ProductController extends Controller
         return view('shop.mylistingindex', compact('products'));
     }
 
-
+    //Create new product in the database
     public function create()
     {
         $categories = Category::all();
     	return view('shop.create',compact('categories'));
     }
 
+    //show the product in the website main page
     public function show(Product $product)
     {
     	return view('shop.show', compact('product'));
     }
 
+    // Store all product's details into the database
     public function store()
     {
         //form validation
@@ -95,6 +100,7 @@ class ProductController extends Controller
             'image' => 'image|max:2000',
         ]);
 
+        // Store product image into the database
         $s3 = Storage::disk('s3');
         $image = request()->image;
 
@@ -123,6 +129,7 @@ class ProductController extends Controller
             return redirect('/');
         }
 
+        // Store user's products detail
         $product = new Product;
 
         $product->user_id = auth()->id();
@@ -143,6 +150,7 @@ class ProductController extends Controller
         return view('shop.preview', compact('product'));
     }
 
+    // edit user's old product with the newest
     public function edit($id)
     {
         $products = Product::findOrFail($id);
@@ -150,6 +158,7 @@ class ProductController extends Controller
         return view('shop.editproduct', compact('products','categories'));
     }
 
+    // Update the old product into the newest one
     public function update(Request $request, $id)
     {
         $this->validate(request(),[
@@ -179,6 +188,7 @@ class ProductController extends Controller
         return redirect("/userproducts/$product->user_id");
     }
 
+    // remove the product from the user's database
     public function destroy($id)
     {
         $products = Product::findOrFail($id);

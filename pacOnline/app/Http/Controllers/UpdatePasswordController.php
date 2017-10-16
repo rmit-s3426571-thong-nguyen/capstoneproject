@@ -57,7 +57,8 @@ class UpdatePasswordController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * { Entering old and new password in the field }
+     * { Validation for the new password}
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -84,8 +85,10 @@ class UpdatePasswordController extends Controller
       return $validator;
     }  
 
+
     /**
-     * Update the specified resource in storage.
+     *  { Overwrite the old password with the new password }
+     * 
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id

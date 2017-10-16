@@ -39,9 +39,8 @@ class CategoryController extends Controller
         //
     }
 
+    //Store all categories in the database
     /**
-     * Store a newly created resource in storage.
-     *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
@@ -85,6 +84,7 @@ class CategoryController extends Controller
         return view('categories.edit', compact('category','allCategories'));
     }
 
+    //Update user's old categories with newest one
     /**
      * Update the specified resource in storage.
      *
@@ -108,6 +108,7 @@ class CategoryController extends Controller
         return redirect()->route('categories.index');
     }
 
+    //Remove user's categories in the database
     /**
      * Remove the specified resource from storage.
      *

@@ -27,11 +27,10 @@ class UserController extends Controller
    	 return view('User.edit', compact('user'));
    }
    
+
+ // Save categories in the database for category 1, 2 and 3
    public function update(Request $request, $id)
    {
-    /*$user = User::findOrFail($id);
-    $user->update($request->all());
-    return Redirect::to('/mydetails/{username}');*/
     $user = Auth::user();
     $user->name = Request::input('name');
     $user->email = Request::input('email');

@@ -8,7 +8,6 @@ use App\UserCategoriesList;
 use App\User;
 use Auth;
 use App\Category;
-use App\UserCategoriesList;
 use Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -30,6 +29,7 @@ class UserController2 extends Controller
         return view('User.mydetails', compact('user', 'categories'));
     }
 
+    // Create new categories field in the database
     /**
      * Show the form for creating a new resource.
      *
@@ -48,6 +48,7 @@ class UserController2 extends Controller
         return view('User.edit', compact('user', 'categories', 'UserCategoriesList'));
     }
 
+    // Validation for the new create user
     /**
      * Store a newly created resource in storage.
      *
@@ -67,6 +68,7 @@ class UserController2 extends Controller
         
     }
 
+    //Store all user's details into the database
     public function store(Request $request)
     {
         User::create($request->all());
@@ -84,6 +86,7 @@ class UserController2 extends Controller
         return $users;
     }
 
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -99,6 +102,7 @@ class UserController2 extends Controller
     }
 
 
+    // Overwrite the user old details with the new one
     /**
      * Update the specified resource in storage.
      *
@@ -124,6 +128,8 @@ class UserController2 extends Controller
             $userCat->delete();
         }
 
+
+        // update old user's categories with the newest one
         $user->categories()->saveMany([
             new UserCategoriesList(['cat_id' => $request['category_1']]),
             new UserCategoriesList(['cat_id' => $request['category_2']]),
